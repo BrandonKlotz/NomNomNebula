@@ -1,0 +1,14 @@
+extends Sprite2D
+
+@onready var player : Player = get_parent()
+@export var distance : float = 10
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var player_direction :Vector2 = Globals.rotation_to_vector(player.rotation)
+	global_position = player.position + player_direction * distance

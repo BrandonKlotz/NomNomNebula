@@ -8,6 +8,15 @@ var progress: Array = []
 @onready var bg: ColorRect = $ColorRect
 @onready var label: Label = $Label
 
+func _ready() -> void:
+	#Hide game_load scene if the current scene is not main
+	var main_scene_path: String = ProjectSettings.get_setting("application/run/main_scene")
+	if main_scene_path.begins_with("uid://"):
+		main_scene_path = ResourceUID.get_id_path(ResourceUID.text_to_id(main_scene_path))
+	var is_main_scene: bool = get_tree().current_scene.scene_file_path == main_scene_path
+	if not is_main_scene:
+		self.visible = false
+
 func transition_to(scene: String, show_loader: bool) -> void:
 	target_scene = scene
 	fade_out(on_fade_out_finished, show_loader)
@@ -54,7 +63,6 @@ func start_loading_scene() -> void:
 func _process(_delta: float) -> void:
 	if not is_loading or target_scene.is_empty():
 		return
-	
 	var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(target_scene, progress)
 	if status == ResourceLoader.THREAD_LOAD_LOADED:
 		is_loading = false

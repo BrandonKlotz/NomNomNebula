@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ot3b6jppp04d"]
+
+[ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="1_a8v3n"]
+[ext_resource type="Script" uid="uid://by8bmmu5nu88p" path="res://scripts/player/player_test.gd" id="1_fdpfy"]
+[ext_resource type="Script" uid="uid://c1npqec65kjpn" path="res://scripts/player/vel_direction_arrow.gd" id="2_6p80c"]
+
+[sub_resource type="Gradient" id="Gradient_6p80c"]
+offsets = PackedFloat32Array(0.686747, 1)
+colors = PackedColorArray(0.5647059, 0.6627451, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ut53"]
+gradient = SubResource("Gradient_6p80c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8652174, 0.21304348)
+
+[node name="PlayerTest" type="Node2D" unique_id=1205687715]
+script = ExtResource("1_fdpfy")
+forward_speed = 100.0
+burts_speed = 500.0
+turn_speed = 4.0
+
+[node name="VelDirectionArrow" type="Sprite2D" parent="." unique_id=119820616]
+rotation = 1.5707964
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_a8v3n")
+script = ExtResource("2_6p80c")
+distance = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=148926646]
+rotation = 1.5707964
+texture = SubResource("GradientTexture2D_8ut53")
