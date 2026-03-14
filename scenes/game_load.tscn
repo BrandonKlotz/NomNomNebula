@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bsxgfcqbim072"]
+
+[ext_resource type="Script" uid="uid://ctooacr6lwlcv" path="res://scripts/game_load.gd" id="1_1q2qr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv0q1"]
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+
+[node name="GameLoad" type="Node2D" unique_id=747436028]
+script = ExtResource("1_1q2qr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1814972713]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=289657763]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vv0q1")

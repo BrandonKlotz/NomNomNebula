@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crkreoscmv1kf"
+path="res://.godot/imported/Ambient Music.wav-f74a4355e628a64dd2a19ec1b7e8dbfc.sample"
+
+[deps]
+
+source_file="res://audio/sounds/Ambient Music.wav"
+dest_files=["res://.godot/imported/Ambient Music.wav-f74a4355e628a64dd2a19ec1b7e8dbfc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

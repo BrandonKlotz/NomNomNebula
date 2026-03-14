@@ -11,8 +11,42 @@ config_version=5
 [application]
 
 config/name="GalacticGrowth"
+config/version="0.0.1"
+run/main_scene="uid://bsxgfcqbim072"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="GalacticGrowth"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.09411765, 0.09411765, 0.09411765, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://dfvumdwmllrki"
+
+[autoload]
+
+SceneManager="*uid://8rb1dwvntrjc"
+EventManager="*uid://besayhl1gwvtv"
+AudioManager="*uid://1xo03vidsxyr"
+Globals="*uid://calhrghpd1wx5"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://components/": "orange",
+"res://resources/": "pink",
+"res://scenes/": "purple",
+"res://scripts/": "green",
+"res://shaders/": "yellow"
+}
 
 [physics]
 

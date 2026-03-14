@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://xw5t2uhf8057"]
+
+[ext_resource type="Script" uid="uid://bje3wu1qqmsyh" path="res://scripts/game_title.gd" id="1_ke8lo"]
+[ext_resource type="Texture2D" uid="uid://xs064oduc2xk" path="res://resources/icons/ic_human_made.png" id="2_db77j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8lo"]
+
+[node name="GameTitle" type="Node2D" unique_id=1992495304]
+script = ExtResource("1_ke8lo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=271165557]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2080807672]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ke8lo")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=591377701]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 54.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 55
+text = "GALACTIC GROWTH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Panel" unique_id=184369723]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 409.0
+offset_right = 190.0
+offset_bottom = 440.0
+text = "START"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Panel" unique_id=2103535409]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 455.0
+offset_right = 190.0
+offset_bottom = 486.0
+text = "CREDITS"
+
+[node name="SettungsButton" type="Button" parent="CanvasLayer/Panel" unique_id=1533022336]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 502.0
+offset_right = 193.0
+offset_bottom = 533.0
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Panel" unique_id=1997179881]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 549.0
+offset_right = 203.0
+offset_bottom = 580.0
+text = "EXIT"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel" unique_id=43577506]
+layout_mode = 0
+offset_left = 1203.0
+offset_top = 640.0
+offset_right = 1264.0
+offset_bottom = 701.0
+texture = ExtResource("2_db77j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer/Panel" unique_id=421910889]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 680.0
+offset_right = 77.0
+offset_bottom = 715.0
+text = "v-.-.-"

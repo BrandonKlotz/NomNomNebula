@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dmfm4cm8u2nbi"]
+
+[ext_resource type="Script" uid="uid://bc4t2ev56ebnm" path="res://scripts/game_world.gd" id="1_0biqy"]
+
+[node name="GameWorld" type="Node2D" unique_id=1299650942]
+script = ExtResource("1_0biqy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=73551857]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=539200775]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=2025503657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Here's the actual game"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioTable" format=3 uid="uid://ceqrmo1e3xtbx"]
+
+[ext_resource type="Script" uid="uid://cjikpvjnra8yr" path="res://audio/audio_setting.gd" id="1_ixyf6"]
+[ext_resource type="Script" uid="uid://qkqrrmo7u8ws" path="res://audio/audio_table.gd" id="1_nflnj"]
+[ext_resource type="AudioStream" uid="uid://b0lqgixmtsrpv" path="res://audio/sounds/clickv2.wav" id="2_1sgt3"]
+[ext_resource type="AudioStream" uid="uid://crkreoscmv1kf" path="res://audio/sounds/Ambient Music.wav" id="4_1sgt3"]
+
+[sub_resource type="Resource" id="Resource_a6wuk"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("2_1sgt3")
+pitch_randomness = 0.5
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_va0tg"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("4_1sgt3")
+volume_db = -5.0
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[resource]
+script = ExtResource("1_nflnj")
+click = SubResource("Resource_a6wuk")
+title_music = SubResource("Resource_va0tg")
+metadata/_custom_type_script = "uid://qkqrrmo7u8ws"
