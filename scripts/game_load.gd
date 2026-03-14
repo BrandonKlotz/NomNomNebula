@@ -24,3 +24,5 @@ func _start_animation() -> void:
 	#tween.tween_property(panel1, "modulate:a", 0.0, fade_duration)
 	#tween.tween_callback(_navigate_to_title)
 	pass
+
+	# some comment
