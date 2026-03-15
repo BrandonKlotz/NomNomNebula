@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://ge3n0d66rcq8"]
+
+[ext_resource type="Script" uid="uid://dpqwcej6nfhgq" path="res://scripts/galaxy/galaxy.gd" id="1_n7ltq"]
+[ext_resource type="Texture2D" uid="uid://beslbylfv2lgf" path="res://resources/Art/Galaxy Sprite Sheets/Larger galaxy 1.0.png" id="2_ky37o"]
+[ext_resource type="Script" uid="uid://bp640lhsn8ukq" path="res://scripts/data/galaxy_data.gd" id="2_pctnl"]
+[ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
+[ext_resource type="Script" uid="uid://iccc1ul8qm2x" path="res://scripts/galaxy/galaxy_idle_state.gd" id="4_xxujj"]
+[ext_resource type="Script" uid="uid://sunbyn5fx5l1" path="res://scripts/galaxy/galaxy_attrach_state.gd" id="5_pctnl"]
+
+[sub_resource type="Resource" id="Resource_0t61a"]
+script = ExtResource("2_pctnl")
+strength = 2
+interaction_radius = 80
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbxba"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7440w"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxujj"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pctnl"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t61a"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oih2"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxljd"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po1id"]
+atlas = ExtResource("2_ky37o")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ylll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbxba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7440w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxujj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pctnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t61a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oih2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxljd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po1id")
+}],
+"loop": true,
+"name": &"main",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ky37o"]
+offsets = PackedFloat32Array(0.6626506, 1)
+colors = PackedColorArray(1, 1, 1, 0.45882353, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbxba"]
+gradient = SubResource("Gradient_ky37o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8130435, 0.16521738)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ky37o"]
+radius = 84.0
+
+[node name="Galaxy" type="Node2D" unique_id=1049821020]
+script = ExtResource("1_n7ltq")
+data = SubResource("Resource_0t61a")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1067041141]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6ylll")
+animation = &"main"
+
+[node name="InteractionAreaSprite" type="Sprite2D" parent="." unique_id=827481830]
+scale = Vector2(4.105, 4.105)
+texture = SubResource("GradientTexture2D_nbxba")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=685365449]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=20703046]
+shape = SubResource("CircleShape2D_ky37o")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1730946245 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_nbxba")
+initial_state = NodePath("GalaxyIdle")
+
+[node name="GalaxyIdle" type="Node" parent="StateMachine" unique_id=2024121028 node_paths=PackedStringArray("galaxy", "attraction_area")]
+script = ExtResource("4_xxujj")
+galaxy = NodePath("../..")
+attraction_area = NodePath("../../InteractionArea")
+speed = 1.0
+metadata/_custom_type_script = "uid://iccc1ul8qm2x"
+
+[node name="GalaxyAttrach" type="Node" parent="StateMachine" unique_id=1523281905 node_paths=PackedStringArray("galaxy", "attraction_area")]
+script = ExtResource("5_pctnl")
+galaxy = NodePath("../..")
+attraction_area = NodePath("../../InteractionArea")
+metadata/_custom_type_script = "uid://sunbyn5fx5l1"

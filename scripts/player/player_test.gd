@@ -9,6 +9,9 @@ extends Node2D
 
 var velocity: Vector2 = Vector2.ZERO
 
+func _init() -> void:
+	Globals.player = self
+
 func _ready() -> void:
 	pass
 
@@ -42,3 +45,6 @@ func try_dash(_delta: float) -> void:
 
 func get_dash_count() -> int:
 	return dash_component.dash_count
+	
+func apply_force(force) -> void:
+	velocity += force

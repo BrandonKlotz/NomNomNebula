@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://ge3n0d66rcq8"]
-
-[ext_resource type="Script" uid="uid://dpqwcej6nfhgq" path="res://scripts/galaxy.gd" id="1_n7ltq"]
-
-[node name="Galaxy" type="Node2D" unique_id=1049821020]
-script = ExtResource("1_n7ltq")

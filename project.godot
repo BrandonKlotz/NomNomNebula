@@ -50,6 +50,11 @@ folder_colors={
 "res://shaders/": "yellow"
 }
 
+[global_group]
+
+player_hb=""
+main_camera=""
+
 [gui]
 
 theme/custom_font="uid://cnpjby8k78q58"
