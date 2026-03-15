@@ -7,19 +7,23 @@ var dash_count: int
 var recharging: bool = false
 var recharge_elapsed: float = 0.0
 var recharge_time: float
+var dash_delay: float = 1.0
+var dash_delay_timer: float = 0.0
 
 func _ready() -> void:
 	dash_count = max_dashes
 	recharge_time = max_dashes * recharge_time_per_use
 
 func can_dash() -> bool:
-	return dash_count > 0 and not recharging
+	return dash_count > 0 and not recharging and dash_delay_timer <= 0
 
 func use_dash() -> void:
 	if not can_dash():
 		return
 
 	dash_count -= 1
+	dash_delay_timer = dash_delay
+	
 	EventManager.on_dash_used.emit()
 	AudioManager.play_sfx(AudioManager.tracks.dash)
 
@@ -39,6 +43,9 @@ func _start_recharge() -> void:
 	AudioManager.play_sfx(AudioManager.tracks.dash_empty)
 
 func _process(delta: float) -> void:
+	if dash_delay_timer > 0:
+		dash_delay_timer -= delta
+
 	if not recharging:
 		return
 

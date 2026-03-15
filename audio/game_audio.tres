@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjikpvjnra8yr" path="res://audio/audio_setting.gd" id="1_ixyf6"]
 [ext_resource type="Script" uid="uid://qkqrrmo7u8ws" path="res://audio/audio_table.gd" id="1_nflnj"]
 [ext_resource type="AudioStream" uid="uid://b0lqgixmtsrpv" path="res://audio/sounds/clickv2.wav" id="2_1sgt3"]
-[ext_resource type="AudioStream" uid="uid://b8y0qfprmgxp3" path="res://audio/sounds/dash_v1.wav" id="3_va0tg"]
+[ext_resource type="AudioStream" uid="uid://vschk7arja7x" path="res://audio/sounds/dash_v1.wav" id="3_va0tg"]
 [ext_resource type="AudioStream" uid="uid://crkreoscmv1kf" path="res://audio/sounds/Ambient Music.wav" id="4_1sgt3"]
 [ext_resource type="AudioStream" uid="uid://c2ec7w6563y2n" path="res://audio/sounds/Spark 14.wav" id="4_va0tg"]
 [ext_resource type="AudioStream" uid="uid://cs0jf3rbilywe" path="res://audio/sounds/Shield Device 1 Stop.wav" id="4_xqoq0"]

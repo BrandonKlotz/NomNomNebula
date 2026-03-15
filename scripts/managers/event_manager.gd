@@ -6,6 +6,7 @@ extends Node
 #region GameClock
 signal on_world_ready
 signal on_camera_shake
+signal on_game_over
 
 signal on_galaxy_collided(data: GalaxyData)
 

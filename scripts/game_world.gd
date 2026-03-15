@@ -5,16 +5,20 @@ extends Node
 @onready var pause_menu: PauseMenu = $CanvasLayer/PauseMenu
 @onready var pause_button: Button = $CanvasLayer/PauseButton
 @onready var animation_component: AnimationComponent = $AnimationComponent
+@onready var game_over_button: Button = $CanvasLayer/GameOverButton
 
 func _ready() -> void:
 	dash_panel.setup(player_test.get_dash_count())
 	
+	game_over_button.pressed.connect(_on_game_over)
+	pause_menu.on_resume.connect(_handle_toggle_pause)
+	pause_menu.on_finish.connect(_handle_finish)
 	pause_button.pressed.connect(func() -> void:
 		_handle_toggle_pause()
 		animation_component.subtle_wobble(pause_button)
 	)
-	pause_menu.on_resume.connect(_handle_toggle_pause)
 	
+	EventManager.on_game_over.connect(_on_game_over)
 	SceneManager.fade_in()
 
 func _process(_delta: float) -> void:
@@ -29,3 +33,9 @@ func _handle_toggle_pause() -> void:
 		pause_menu.show()
 		# TODO: Stop engine time, animations, etc
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
+
+func _on_game_over() -> void:
+	SceneManager.transition_to(Scenes.FINISH, false)
+
+func _handle_finish() -> void:
+	SceneManager.transition_to(Scenes.TITLE, false)

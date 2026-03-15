@@ -93,19 +93,15 @@ func on_temp_finished(player: AudioStreamPlayer) -> void:
 	if player.has_meta("temp"):
 		player.queue_free()
 
-func configure_audio_server(_general_level: int, _sfx_level: int, _music_level: int) -> void:
+func configure_audio_server(_sfx_level: int, _music_level: int) -> void:
 	var sfx_level: float = float(_sfx_level) / 10
 	var music_level: float = float(_music_level) / 10
-	var general_level: float = float(_general_level) / 10
 	
-	general_level = clampf(general_level, 0, 1)
 	music_level = clampf(music_level, 0, 1)
 	sfx_level = clampf(sfx_level, 0, 1)
 	
-	var master_bus_id: int = AudioServer.get_bus_index("Master")
 	var music_bus_id: int = AudioServer.get_bus_index("Music")
 	var sfx_bus_id: int = AudioServer.get_bus_index("SFX")
 	
 	AudioServer.set_bus_volume_db(sfx_bus_id, linear_to_db(sfx_level))
 	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(music_level))
-	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(general_level))

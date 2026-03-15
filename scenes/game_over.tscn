@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c60pdghh651sm"]
+
+[ext_resource type="Script" uid="uid://bpc4j0pk5q4ck" path="res://scripts/game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="Node2D" unique_id=962722867]
+script = ExtResource("1_xeevv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=928735873]
+
+[node name="SummaryPanel" type="Panel" parent="CanvasLayer" unique_id=1191687201]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/SummaryPanel" unique_id=754256228]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 29.0
+offset_right = 228.0
+offset_bottom = 165.0
+
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1235052244]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.0
+offset_right = 82.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 12
+text = "Finished"
+
+[node name="Label2" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=765802719]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 39.0
+offset_right = 108.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 12
+text = "Your score: 25"
+
+[node name="Label3" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1030136943]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 56.0
+offset_right = 108.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 12
+text = "Highest score: 21"
+
+[node name="StartOverButton" type="Button" parent="CanvasLayer/SummaryPanel/Panel" unique_id=353620936]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 83.0
+offset_right = 87.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 12
+text = "Start Over"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/SummaryPanel/Panel" unique_id=787000946]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 107.0
+offset_right = 97.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 12
+text = "Return to Title"
