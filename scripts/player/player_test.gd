@@ -4,7 +4,7 @@ extends Node2D
 @onready var dash_component: DashComponent = $DashComponent
 
 @export var forward_speed: float = 10
-@export var dash_speed: float = 10
+@export var dash_speed: float = 50
 @export var turn_speed: float = 10
 
 var velocity: Vector2 = Vector2.ZERO
@@ -30,9 +30,10 @@ func move_forward(delta: float, speed: float) -> void:
 	var dir_vec: Vector2 = Utils.rotation_to_vector(rotation)
 	velocity += dir_vec * speed * delta
 
-func try_dash(delta: float) -> void:
+func try_dash(_delta: float) -> void:
 	if dash_component.can_dash():
-		move_forward(delta, dash_speed)
+		var dir_vec: Vector2 = Utils.rotation_to_vector(rotation)
+		velocity += dir_vec * dash_speed
 		dash_component.use_dash()
 	else:
 		EventManager.on_dash_error.emit()
