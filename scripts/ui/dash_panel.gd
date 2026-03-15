@@ -3,6 +3,8 @@ extends Node
 
 @onready var h_box_container: HBoxContainer = $HBoxContainer
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var animation_component: AnimationComponent = $AnimationComponent
+@onready var texture_rect: TextureRect = $TextureRect
 
 var slot_count: int = 0
 var remaning: int = 0
@@ -10,6 +12,7 @@ var is_recharging: bool = false
 
 func _ready() -> void:
 	EventManager.on_dash_used.connect(_on_dash_used)
+	EventManager.on_dash_error.connect(_on_dash_error)
 	EventManager.on_dash_fully_recovered.connect(_on_dash_recovered)
 	EventManager.on_dash_recover_progress.connect(_on_dash_recharging)
 
@@ -39,6 +42,7 @@ func _update() -> void:
 func _on_dash_used() -> void:
 	remaning -= 1
 	_update()
+	animation_component.subtle_wobble(texture_rect)
 
 func _on_dash_recovered() -> void:
 	remaning = slot_count
@@ -48,4 +52,6 @@ func _on_dash_recovered() -> void:
 func _on_dash_recharging(progress: float) -> void:
 	is_recharging = true
 	progress_bar.value = progress * 100
-	
+
+func _on_dash_error() -> void:
+	pass

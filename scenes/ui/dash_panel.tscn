@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cc2n5h16db6yg" path="res://scripts/ui/dash_panel.gd" id="1_x53hx"]
 [ext_resource type="Texture2D" uid="uid://dlceat5pxal78" path="res://resources/Art/icons/keyboard_space.png" id="2_ble8e"]
+[ext_resource type="Script" uid="uid://bo0y5ea02unt7" path="res://scripts/animation_component.gd" id="2_tfr0o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ble8e"]
 bg_color = Color(0.09411765, 0.09411765, 0.09411765, 0.61960787)
@@ -13,6 +14,9 @@ offset_right = 74.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ble8e")
 script = ExtResource("1_x53hx")
+
+[node name="AnimationComponent" type="Node2D" parent="." unique_id=757096355]
+script = ExtResource("2_tfr0o")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=47428910]
 layout_mode = 0

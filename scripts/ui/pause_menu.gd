@@ -3,7 +3,7 @@ extends Node
 
 signal on_resume
 
-@onready var resume_button: Button = $ResumeButton
+@onready var resume_button: Button = $PauseMenu/ResumeButton
 
 func _ready() -> void:
 	resume_button.pressed.connect(func() -> void: on_resume.emit())
