@@ -42,6 +42,7 @@ script = ExtResource("4_8ut53")
 script = ExtResource("5_2ue4q")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1609183663 groups=["player_hb"]]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=804966322]
 shape = SubResource("CircleShape2D_1lhng")

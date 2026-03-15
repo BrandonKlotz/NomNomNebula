@@ -8,7 +8,7 @@ var zoom_target : Vector2 = Vector2(1.0, 1.0)
 var target_zoom: Vector2 = Vector2(1, 1)
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(delta: float) -> void:
 	position += (target.global_position - global_position)/follow_reduction_factor * delta

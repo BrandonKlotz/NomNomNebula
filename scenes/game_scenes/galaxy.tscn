@@ -103,6 +103,8 @@ scale = Vector2(4.105, 4.105)
 texture = SubResource("GradientTexture2D_nbxba")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=685365449]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=20703046]
 shape = SubResource("CircleShape2D_ky37o")

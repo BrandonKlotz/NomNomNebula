@@ -14,7 +14,7 @@ func _ready() -> void:
 	animation.play("main")
 	
 func _process(delta: float) -> void:
-	size = lerp(size, 1.0, scaling_speed*delta)
+	size = lerp(size, 1.0, scaling_speed * delta)
 	scale = Vector2(size, size)
 	position += velocity*delta
 

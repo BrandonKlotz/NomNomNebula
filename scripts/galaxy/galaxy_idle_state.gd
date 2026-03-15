@@ -13,9 +13,8 @@ func enter() -> void:
 func update(_delta: float) -> void:
 	add_random_velocity()
 
-func start_attraction_state(area: Area2D) -> void:
-	if area.is_in_group("player_hb"):
-		change_state.emit(self, "galaxyattrach")
+func start_attraction_state(_area: Area2D) -> void:
+	change_state.emit(self, "galaxyattrach")
 
 func add_random_velocity() -> void:
 	var random_direction: float = randf_range(-PI, PI)
