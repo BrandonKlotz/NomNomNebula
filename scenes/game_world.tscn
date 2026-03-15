@@ -131,6 +131,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 19.0
 offset_bottom = 18.0
+focus_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PauseButton" unique_id=112404304]
 layout_mode = 1

@@ -4,8 +4,6 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 
 @onready var version_label: Label = $CanvasLayer/Panel/VersionLabel
 @onready var start_button: Button = $CanvasLayer/Panel/VBoxContainer/StartButton
-@onready var settings_button: Button = $CanvasLayer/Panel/VBoxContainer/SettingsButton
-@onready var credits_button: Button = $CanvasLayer/Panel/VBoxContainer/CreditsButton
 @onready var exit_button: Button = $CanvasLayer/Panel/VBoxContainer/ExitButton
 
 func _ready() -> void:
@@ -15,12 +13,6 @@ func _ready() -> void:
 	
 	start_button.pressed.connect(_on_start_button_pressed)
 	start_button.mouse_entered.connect(_on_hover)
-	
-	#settings_button.pressed.connect(_on_start_button_pressed)
-	settings_button.mouse_entered.connect(_on_hover)
-	
-	#credits_buttontton.pressed.connect(_on_start_button_pressed)
-	credits_button.mouse_entered.connect(_on_hover)
 	
 	exit_button.pressed.connect(_on_exit_button_pressed)
 	exit_button.mouse_entered.connect(_on_hover)

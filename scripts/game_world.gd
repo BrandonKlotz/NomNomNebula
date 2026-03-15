@@ -27,4 +27,5 @@ func _handle_toggle_pause() -> void:
 		pause_menu.dismiss()
 	else:
 		pause_menu.show()
+		# TODO: Stop engine time, animations, etc
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
