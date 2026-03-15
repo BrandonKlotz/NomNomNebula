@@ -25,4 +25,5 @@ func end_attraction_state(area:Area2D) -> void:
 func exit() -> void:
 	camera.set_target(Globals.player)
 	camera.target_zoom *= 2
+	attraction_area.area_exited.desconnect(end_attraction_state)
 	
