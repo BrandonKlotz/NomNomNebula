@@ -1,10 +1,6 @@
 extends Node
 
-func _ready() -> void:
-	var prefs: UserPreferences = DataManager.load_prefs()
-	
-	TranslationServer.set_locale(prefs.language)
-	AudioManager.configure_audio_server(prefs)
+func _ready() -> void:	
 	SceneManager.fade_in()
 	
 	if Flags.skip_logos():

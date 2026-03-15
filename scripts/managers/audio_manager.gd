@@ -93,10 +93,10 @@ func on_temp_finished(player: AudioStreamPlayer) -> void:
 	if player.has_meta("temp"):
 		player.queue_free()
 
-func configure_audio_server(prefs: UserPreferences) -> void:
-	var sfx_level: float = float(prefs.sfx_level) / 10
-	var music_level: float = float(prefs.music_level) / 10
-	var general_level: float = float(prefs.general_level) / 10
+func configure_audio_server(_general_level: int, _sfx_level: int, _music_level: int) -> void:
+	var sfx_level: float = float(_sfx_level) / 10
+	var music_level: float = float(_music_level) / 10
+	var general_level: float = float(_general_level) / 10
 	
 	general_level = clampf(general_level, 0, 1)
 	music_level = clampf(music_level, 0, 1)

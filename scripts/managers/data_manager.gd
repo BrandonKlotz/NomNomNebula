@@ -1,22 +1,7 @@
 class_name DataManager
 extends Node
 
-const PREFS_BASE_PATH: String = "user://prefs/"
 const SAVE_BASE_PATH: String = "user://saves/"
-
-# PREFERENCES
-static func write_prefs(prefs: UserPreferences) -> void:
-	var filepath: String = get_filepath(PREFS_BASE_PATH, "prefs")
-	ResourceSaver.save(prefs, filepath)
-
-### If not prefs found, create a new one
-static func load_prefs() -> UserPreferences:
-	var filepath: String = get_filepath(PREFS_BASE_PATH, "prefs")
-	
-	if ResourceLoader.exists(filepath):
-		return ResourceLoader.load(filepath, "", ResourceLoader.CACHE_MODE_IGNORE)
-
-	return UserPreferences.new()
 
 # PLAYER SAVES
 static func load_all_saves() -> Array[SaveGame]:

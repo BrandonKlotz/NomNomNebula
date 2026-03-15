@@ -7,6 +7,23 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var exit_button: Button = $CanvasLayer/Panel/VBoxContainer/ExitButton
 
 func _ready() -> void:
+	var saves = DataManager.load_all_saves()
+	var save: SaveGame
+	
+	if saves.is_empty():
+		save = DataManager.new_save_file(0)
+		DataManager.write_save(save)
+	else:
+		save = saves[0]
+	
+	Globals.current_save = save
+	
+	AudioManager.configure_audio_server(
+		save.data.general_level,
+		save.data.sfx_level,
+		save.data.music_level
+	)
+	
 	SceneManager.fade_in()
 	Input.set_custom_mouse_cursor(POINTER_C)
 	#AudioManager.play_music(AudioManager.tracks.title_music)
