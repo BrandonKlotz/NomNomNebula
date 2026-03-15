@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://exsf0igc7o8v"]
 
 [ext_resource type="Script" uid="uid://cc2n5h16db6yg" path="res://scripts/ui/dash_panel.gd" id="1_x53hx"]
-[ext_resource type="Texture2D" uid="uid://dlceat5pxal78" path="res://resources/Art/keyboard_space.png" id="2_ble8e"]
+[ext_resource type="Texture2D" uid="uid://dlceat5pxal78" path="res://resources/Art/icons/keyboard_space.png" id="2_ble8e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ble8e"]
 bg_color = Color(0.09411765, 0.09411765, 0.09411765, 0.61960787)
