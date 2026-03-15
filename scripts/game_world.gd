@@ -7,6 +7,8 @@ extends Node
 @onready var animation_component: AnimationComponent = $AnimationComponent
 @onready var game_over_button: Button = $CanvasLayer/GameOverButton
 
+var current_score: int = 10
+
 func _ready() -> void:
 	dash_panel.setup(player_test.get_dash_count())
 	
@@ -35,6 +37,11 @@ func _handle_toggle_pause() -> void:
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
 
 func _on_game_over() -> void:
+	if current_score > Globals.current_save.data.highest_score:
+		Globals.current_save.data.highest_score = current_score
+		DataManager.write_save(Globals.current_save)
+	
+	Globals.current_score = current_score
 	SceneManager.transition_to(Scenes.FINISH, false)
 
 func _handle_finish() -> void:

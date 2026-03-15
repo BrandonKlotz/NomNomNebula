@@ -23,30 +23,31 @@ offset_bottom = 165.0
 
 [node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1235052244]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 7.0
-offset_right = 82.0
-offset_bottom = 21.0
+offset_left = 28.0
+offset_top = 5.0
+offset_right = 85.0
+offset_bottom = 19.0
 theme_override_font_sizes/font_size = 12
 text = "Finished"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=765802719]
+[node name="CurrentLabel" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=765802719]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 39.0
 offset_right = 108.0
 offset_bottom = 53.0
 theme_override_font_sizes/font_size = 12
-text = "Your score: 25"
+text = "Your score: 99"
 
-[node name="Label3" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1030136943]
+[node name="HighestLabel" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1030136943]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 56.0
 offset_right = 108.0
 offset_bottom = 70.0
 theme_override_font_sizes/font_size = 12
-text = "Highest score: 21"
+text = "Highest score: 99"
 
 [node name="StartOverButton" type="Button" parent="CanvasLayer/SummaryPanel/Panel" unique_id=353620936]
 layout_mode = 0
