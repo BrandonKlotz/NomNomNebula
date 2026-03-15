@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GalacticGrowth"
-config/version="0.0.1"
+config/version="pre_0.0.1"
 run/main_scene="uid://bsxgfcqbim072"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GalacticGrowth"
