@@ -10,6 +10,7 @@ extends Node
 var current_score: int = 10
 
 func _ready() -> void:
+	Globals.player = player
 	dash_panel.setup(player.get_dash_count())
 	
 	game_over_button.pressed.connect(_on_game_over)

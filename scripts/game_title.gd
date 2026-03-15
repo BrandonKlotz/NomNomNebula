@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	SceneManager.fade_in()
 	Input.set_custom_mouse_cursor(POINTER_C)
-	AudioManager.play_music(AudioManager.tracks.title_music)
+	#AudioManager.play_music(AudioManager.tracks.title_music)
 	
 	start_button.pressed.connect(_on_start_button_pressed)
 	start_button.mouse_entered.connect(_on_hover)
