@@ -43,7 +43,7 @@ func _load_save() -> SaveGame:
 	return save
 	
 func _setup_ui() -> void:
-	version_label.text = "Version " + ProjectSettings.get_setting("application/config/version")
+	version_label.text = "v_" + ProjectSettings.get_setting("application/config/version")
 
 func _on_start_button_pressed() -> void:
 	SceneManager.transition_to(Scenes.WORLD, false)

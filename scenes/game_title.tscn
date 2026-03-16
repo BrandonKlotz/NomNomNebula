@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://xs064oduc2xk" path="res://resources/Art/icons/ic_human_made.png" id="2_db77j"]
 [ext_resource type="Texture2D" uid="uid://d2rdhv0ac2g1t" path="res://resources/UI/GG-MenuBG.png" id="2_o0nwa"]
 [ext_resource type="Texture2D" uid="uid://bsom30nxt55e2" path="res://resources/UI/GG-Panel.png" id="3_1bayt"]
-[ext_resource type="FontFile" uid="uid://c8fgyu76fdr84" path="res://resources/fonts/aseprite-mini.otf" id="3_j72ot"]
 [ext_resource type="Texture2D" uid="uid://b0x7d3nctq4im" path="res://resources/Art/canvas_guide.png" id="3_ljt7x"]
+[ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="5_o0nwa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8lo"]
 
@@ -38,29 +38,30 @@ position = Vector2(159, 112)
 texture = ExtResource("3_1bayt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1416375453]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 83.0
-offset_right = 196.0
-offset_bottom = 142.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -6.0
+offset_right = 45.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=184369723]
+[node name="StartButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=287327500 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_j72ot")
-theme_override_font_sizes/font_size = 8
-text = "start"
+custom_title = "start"
 
-[node name="LeaderboardButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1345930339]
+[node name="LeaderboardButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2005136893 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_j72ot")
-theme_override_font_sizes/font_size = 8
-text = "leaderboard"
+custom_title = "leaderboard"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1997179881]
+[node name="ExitButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1238453203 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_j72ot")
-theme_override_font_sizes/font_size = 8
-text = "exit"
+custom_title = "exit"
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/Panel" unique_id=591377701]
 layout_mode = 1
@@ -69,7 +70,6 @@ anchor_right = 1.0
 offset_top = 14.0
 offset_bottom = 66.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_j72ot")
 text = "GALACTIC GROWTH"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -93,6 +93,6 @@ offset_left = 4.0
 offset_top = -12.0
 offset_right = 45.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 4
 text = "v-.-.-"
 vertical_alignment = 1

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dmhkwqvc0qyc7"]
+
+[ext_resource type="Script" uid="uid://quen3p5dq1bw" path="res://scripts/ui/main_button.gd" id="1_5a7nu"]
+[ext_resource type="Texture2D" uid="uid://b53onynrxfexa" path="res://resources/UI/arrow_right.png" id="2_vecgi"]
+
+[node name="MainButton" type="Button" unique_id=287327500]
+custom_minimum_size = Vector2(50, 15)
+theme_override_font_sizes/font_size = 8
+script = ExtResource("1_5a7nu")
+
+[node name="MarginContainer" type="PanelContainer" parent="." unique_id=1363251487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=451190135]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Arrow" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=638409778]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_vecgi")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1850738964]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 8
+text = "start"
