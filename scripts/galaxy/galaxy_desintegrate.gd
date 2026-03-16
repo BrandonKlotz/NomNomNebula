@@ -2,19 +2,17 @@ class_name GalaxyDesintegrate
 extends State
 
 @export var galaxy: Galaxy
-
 @export var desintegration_duration: float = 0.8
 @export var spin_rotations: float = 3.0
-
 
 var tween: Tween
 
 func enter() -> void:
-	#Stop Galaxy
+	# Stop Galaxy
 	galaxy.velocity = Vector2.ZERO
 	galaxy.set_process(false)
 	
-	#Disable Physics
+	# Disable Physics
 	for child in galaxy.get_children():
 		if child is Area2D:
 			child.set_deferred("monitoring", false)

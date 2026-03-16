@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var animation: AnimatedSprite2D = get_node("Animation")
 @onready var size: float = data.size
+@onready var timer_label: Label = $TimerLabel
 
 var velocity: Vector2 = Vector2.ZERO
 
@@ -18,10 +19,9 @@ func _process(delta: float) -> void:
 	scale = Vector2(size, size)
 	position += velocity * delta
 
-func apply_force(force:Vector2) ->void:
+func apply_force(force: Vector2) ->void:
 	velocity += force
 
-
-func _on_center_area_entered(area: Area2D) -> void:
+func _on_center_area_entered(_area: Area2D) -> void:
 	Globals.player.velocity = Vector2.ZERO
 	Globals.player.apply_force((Globals.player.global_position - global_position).normalized() * 500)

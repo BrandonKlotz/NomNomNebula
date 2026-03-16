@@ -3,10 +3,12 @@ extends State
 
 @export var galaxy: Galaxy
 @export var attraction_area: Area2D
-@export var absorption_time_required : float
-@onready var target : Node2D = get_node("Target")
-@onready var camera : Camera2D = get_tree().get_first_node_in_group("main_camera")
-@onready var absorbing_timer : float = absorption_time_required
+@export var absorption_time_required: float
+
+@onready var target: Node2D = get_node("Target")
+@onready var camera: Camera2D = get_tree().get_first_node_in_group("main_camera")
+@onready var absorbing_timer: float = absorption_time_required
+
 var inner_radius: float = 50
 
 func enter() -> void:
@@ -29,9 +31,10 @@ func update(delta: float) -> void:
 		EventManager.on_galaxy_absorbed.emit(galaxy.data)
 		change_state.emit(self, "desintegrate")
 	
+	galaxy.timer_label.text = str(absorbing_timer)
+	
 func calc_force(_delta: float) -> Vector2:
 	var offset: Vector2 = get_offset_to_player()
-	#var dist: float = offset.length()
 	var dir: Vector2 = offset.normalized()
 
 	var outer_force: float = galaxy.data.strength

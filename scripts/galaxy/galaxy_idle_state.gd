@@ -1,11 +1,11 @@
 class_name GalaxyIdle
 extends State
 
-@export var galaxy :Galaxy 
-@export var attraction_area :Area2D
-@export var speed : float = 5
+@export var galaxy: Galaxy 
+@export var attraction_area: Area2D
+@export var speed: float = 5
 
-var direction :float = 0
+var direction: float = 0
 
 func enter() -> void:
 	attraction_area.area_entered.connect(start_attraction_state)

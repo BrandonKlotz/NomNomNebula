@@ -153,13 +153,13 @@ scale = Vector2(0.29, 0.29)
 texture = ExtResource("5_nxljd")
 
 [node name="InnerArea" type="Area2D" parent="." unique_id=1058516218]
-visible = false
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InnerArea" unique_id=1236035796]
 shape = SubResource("CircleShape2D_0t61a")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=685365449]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -167,7 +167,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_ky37o")
 
 [node name="Center" type="Area2D" parent="." unique_id=352193348]
-visible = false
 scale = Vector2(1.545, 1.545)
 collision_layer = 4
 collision_mask = 2
@@ -199,5 +198,13 @@ metadata/_custom_type_script = "uid://sunbyn5fx5l1"
 script = ExtResource("7_0t61a")
 galaxy = NodePath("../..")
 metadata/_custom_type_script = "uid://btwfig6s12las"
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1434764620]
+offset_left = -19.0
+offset_top = -31.0
+offset_right = 35.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 12
+text = "123"
 
 [connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]
