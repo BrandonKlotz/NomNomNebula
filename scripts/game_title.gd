@@ -43,7 +43,7 @@ func _setup_ui() -> void:
 	version_label.text = "v_" + ProjectSettings.get_setting("application/config/version")
 
 func _on_start_button_pressed() -> void:
-	SceneManager.transition_to(Scenes.WORLD, false)
+	SceneManager.transition_to(Scenes.WORLD)
 	AudioManager.play_sfx(AudioManager.tracks.click)
 
 func _on_exit_button_pressed() -> void:

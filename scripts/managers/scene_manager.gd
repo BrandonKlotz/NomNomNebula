@@ -1,15 +1,16 @@
 extends CanvasLayer
 
 var target_scene: String = ""
-var duration: float = 0.5
+var duration: float = 0.8
 var is_loading: bool = false
 var progress: Array = []
+var material: ShaderMaterial
 
 @onready var bg: ColorRect = $ColorRect
-@onready var label: Label = $Label
 
 func _ready() -> void:
-	#Hide game_load scene if the current scene is not main
+	material = bg.material
+	 
 	var main_scene_path: String = ProjectSettings.get_setting("application/run/main_scene")
 	if main_scene_path.begins_with("uid://"):
 		main_scene_path = ResourceUID.get_id_path(ResourceUID.text_to_id(main_scene_path))
@@ -17,35 +18,31 @@ func _ready() -> void:
 	if not is_main_scene:
 		self.visible = false
 
-func transition_to(scene: String, show_loader: bool) -> void:
+func transition_to(scene: String) -> void:
 	target_scene = scene
-	fade_out(on_fade_out_finished, show_loader)
+	fade_out(on_fade_out_finished)
 
 # from scene to black
-func fade_out(block: Callable, show_loader: bool = false) -> void:
-	bg.color = Colors.TRANSPARENT
-	label.modulate.a = 0.0
+func fade_out(block: Callable) -> void:
+	self.material.set_shader_parameter("progress", 0.0)
 	
 	self.visible = true
 	
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(bg, "color", Colors.BASE_COLOR, duration)
+	tween.tween_property(material, "shader_parameter/progress", 1.0, duration)
 	
 	var callback: Callable = func() -> void:
-		if show_loader:
-			label.modulate.a = 1.0
 		block.call()
 	
 	tween.connect("finished", callback)
 
 # from black to scene
 func fade_in(block: Callable = func() -> void: pass) -> void:
-	bg.color = Colors.BASE_COLOR
 	self.visible = true
-	self.label.modulate.a = 0
+	self.material.set_shader_parameter("progress", 1.0)
 	
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(bg, "color", Colors.TRANSPARENT, duration)
+	tween.tween_property(material, "shader_parameter/progress", 0.0, duration)
 	
 	var callback: Callable = func() -> void:
 		self.visible = false

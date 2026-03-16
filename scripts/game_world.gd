@@ -71,10 +71,11 @@ func _on_game_over() -> void:
 		DataManager.write_save(Globals.current_save)
 	
 	Globals.current_score = current_score
-	SceneManager.transition_to(Scenes.FINISH, false)
+	SceneManager.transition_to(Scenes.FINISH)
 
 func _handle_finish() -> void:
-	SceneManager.transition_to(Scenes.TITLE, false)
+	Engine.time_scale = 1.0
+	SceneManager.transition_to(Scenes.TITLE)
 
 func _on_galaxy_absorbed(data: GalaxyData) -> void:
 	player.absorb_galaxy(data)

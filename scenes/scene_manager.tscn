@@ -1,30 +1,24 @@
 [gd_scene format=3 uid="uid://8rb1dwvntrjc"]
 
 [ext_resource type="Script" uid="uid://drwf05fxl20hq" path="res://scripts/managers/scene_manager.gd" id="1_we8k5"]
+[ext_resource type="Shader" uid="uid://bbtnymibvfe8l" path="res://shaders/loading_screen.gdshader" id="2_65mdo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b81s6"]
+shader = ExtResource("2_65mdo")
+shader_parameter/progress = 0.0
+shader_parameter/reverse = false
+shader_parameter/numberOfTiles = Vector2(20, 20)
+shader_parameter/pixelsPerTile = Vector2(16, 16)
 
 [node name="SceneManager" type="CanvasLayer" unique_id=805521949]
 layer = 99
 script = ExtResource("1_we8k5")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=389808455]
+material = SubResource("ShaderMaterial_b81s6")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09411765, 0.09411765, 0.09411765, 1)
-
-[node name="Label" type="Label" parent="." unique_id=1108201581]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -76.0
-offset_top = -35.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 20
-text = "Loading..."
-horizontal_alignment = 1
-vertical_alignment = 1

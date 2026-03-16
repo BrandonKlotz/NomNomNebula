@@ -1,7 +1,7 @@
 class_name Flags
 
 #region Values
-const SKIP_LOGOS: int = 1
+const SKIP_LOGOS: int = 0
 #endregion
 
 #region Functions

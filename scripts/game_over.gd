@@ -13,10 +13,10 @@ func _ready() -> void:
 	SceneManager.fade_in()
 
 func _start_over() -> void:
-	SceneManager.transition_to(Scenes.WORLD, false)
+	SceneManager.transition_to(Scenes.WORLD)
 	
 func _exit_game() -> void:
-	SceneManager.transition_to(Scenes.TITLE, false)
+	SceneManager.transition_to(Scenes.TITLE)
 
 func _setup_data() -> void:
 	var save: SaveGame = Globals.current_save
