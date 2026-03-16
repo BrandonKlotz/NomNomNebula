@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsom30nxt55e2" path="res://resources/UI/GG-Panel.png" id="3_1bayt"]
 [ext_resource type="FontFile" uid="uid://c8fgyu76fdr84" path="res://resources/fonts/aseprite-mini.otf" id="3_j72ot"]
 [ext_resource type="Texture2D" uid="uid://b0x7d3nctq4im" path="res://resources/Art/canvas_guide.png" id="3_ljt7x"]
+[ext_resource type="Texture2D" uid="uid://dgst7skxoyyj" path="res://resources/UI/hover-arrow.png" id="6_3o3s0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8lo"]
 
@@ -61,6 +62,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j72ot")
 theme_override_font_sizes/font_size = 8
 text = "exit"
+
+[node name="HoverArrow" type="Sprite2D" parent="CanvasLayer/Panel/VBoxContainer" unique_id=62347721]
+position = Vector2(18, 8)
+texture = ExtResource("6_3o3s0")
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/Panel" unique_id=591377701]
 layout_mode = 1
