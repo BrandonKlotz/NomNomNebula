@@ -54,9 +54,9 @@ value = 41.29
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=785799344]
 layout_mode = 0
-offset_left = -10.0
+offset_left = -20.0
 offset_top = -41.0
-offset_right = 54.0
+offset_right = 44.0
 offset_bottom = 23.0
 scale = Vector2(0.325, 0.325)
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -65,7 +65,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=365482104]
 layout_mode = 0
-offset_left = 33.0
+offset_left = 27.0
 offset_top = -14.0
 offset_right = 73.0
 theme_override_font_sizes/font_size = 12
