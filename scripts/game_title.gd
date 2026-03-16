@@ -23,10 +23,7 @@ func _ready() -> void:
 	#AudioManager.play_music(AudioManager.tracks.title_music)
 	
 	start_button.pressed.connect(_on_start_button_pressed)
-	start_button.mouse_entered.connect(_on_hover)
-	
 	exit_button.pressed.connect(_on_exit_button_pressed)
-	exit_button.mouse_entered.connect(_on_hover)
 	
 	_setup_ui()
 
@@ -48,9 +45,6 @@ func _setup_ui() -> void:
 func _on_start_button_pressed() -> void:
 	SceneManager.transition_to(Scenes.WORLD, false)
 	AudioManager.play_sfx(AudioManager.tracks.click)
-
-func _on_hover() -> void:
-	AudioManager.play_sfx(AudioManager.tracks.hover)
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()

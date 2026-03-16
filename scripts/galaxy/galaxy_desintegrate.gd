@@ -18,9 +18,10 @@ func enter() -> void:
 			child.set_deferred("monitoring", false)
 			child.set_deferred("monitorable", false)
 
-	play_disintegration_tween()
+	_play_disintegration_tween()
+	EventManager.on_galaxy_absorbed.emit(galaxy.data)
 
-func play_disintegration_tween() -> void:
+func _play_disintegration_tween() -> void:
 	tween = galaxy.create_tween()
 
 	var current_scale: Vector2 = galaxy.scale
@@ -57,8 +58,8 @@ func play_disintegration_tween() -> void:
 	
 	var timer = get_tree().create_timer(1)
 	Globals.player.apply_force((Globals.player.global_position - galaxy.global_position).normalized() * 250)
-	timer.timeout.connect(free_galaxy)
+	timer.timeout.connect(_free_galaxy)
 
-func free_galaxy() -> void:
+func _free_galaxy() -> void:
 	tween.kill()
 	galaxy.queue_free()

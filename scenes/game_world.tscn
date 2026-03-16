@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://bo0y5ea02unt7" path="res://scripts/animation_component.gd" id="2_odt01"]
 [ext_resource type="PackedScene" uid="uid://exsf0igc7o8v" path="res://scenes/ui/dash_panel.tscn" id="3_ywgp6"]
 [ext_resource type="Script" uid="uid://cxkmvv3xyv3iv" path="res://scripts/minimap.gd" id="4_0vfqx"]
+[ext_resource type="Resource" uid="uid://baxkohgisu4jk" path="res://scripts/galaxy/data/galaxy_1.tres" id="5_4xvvt"]
 [ext_resource type="PackedScene" uid="uid://ge3n0d66rcq8" path="res://scenes/game_scenes/galaxy.tscn" id="5_dlaip"]
+[ext_resource type="Resource" uid="uid://bt1bbrc3g1atx" path="res://scripts/galaxy/data/galaxy_2.tres" id="6_oyepb"]
 [ext_resource type="Texture2D" uid="uid://h8thuxv38bgh" path="res://resources/Art/icons/keyboard_s.png" id="6_u1jpj"]
 [ext_resource type="Texture2D" uid="uid://b0ng54pfpsfq7" path="res://resources/Art/icons/keyboard_w.png" id="7_uh34q"]
 [ext_resource type="Texture2D" uid="uid://dq7ue6vtdx1jb" path="res://resources/Art/icons/keyboard_a.png" id="8_ph1f2"]
@@ -14,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://deemgxdklxpvu" path="res://scenes/ui/pause_menu.tscn" id="11_odt01"]
 [ext_resource type="Texture2D" uid="uid://bwgjk5vsqnrxm" path="res://resources/Art/icons/gear.png" id="11_ph1f2"]
 [ext_resource type="Script" uid="uid://cfujeq18btljh" path="res://scripts/main_camera.gd" id="13_6ll7h"]
+[ext_resource type="Script" uid="uid://1hy21bsnn0ng" path="res://scripts/ui/galaxy_info_panel.gd" id="17_oyepb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhwwd"]
 texture = ExtResource("2_6c6v5")
@@ -48,13 +51,15 @@ tile_set = SubResource("TileSet_pdbwf")
 [node name="Galaxy" parent="." unique_id=1049821020 instance=ExtResource("5_dlaip")]
 position = Vector2(72, 5)
 scale = Vector2(2, 2)
+data = ExtResource("5_4xvvt")
 
 [node name="Galaxy2" parent="." unique_id=729116090 instance=ExtResource("5_dlaip")]
 position = Vector2(-250, -19)
 scale = Vector2(2, 2)
+data = ExtResource("6_oyepb")
 
 [node name="Player" parent="." unique_id=1205687715 instance=ExtResource("2_47u71")]
-position = Vector2(-32, 40)
+position = Vector2(-92, 141)
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1474096558 node_paths=PackedStringArray("target") groups=["main_camera"]]
 position = Vector2(35, 33)
@@ -171,4 +176,32 @@ offset_top = 8.0
 offset_right = -5.0
 offset_bottom = 30.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 9
 text = "Force game over"
+
+[node name="GalaxyInfoPanel" type="Panel" parent="CanvasLayer" unique_id=893638207]
+offset_left = 114.0
+offset_top = 21.0
+offset_right = 200.0
+offset_bottom = 59.0
+script = ExtResource("17_oyepb")
+
+[node name="Label" type="Label" parent="CanvasLayer/GalaxyInfoPanel" unique_id=193440778]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 7
+text = "Galaxy data"
+horizontal_alignment = 1
+
+[node name="DataLabel" type="Label" parent="CanvasLayer/GalaxyInfoPanel" unique_id=506995605]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 15.0
+offset_right = 82.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 7
+text = "Galaxy data"
+horizontal_alignment = 1

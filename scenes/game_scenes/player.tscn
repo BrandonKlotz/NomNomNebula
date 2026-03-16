@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://ot3b6jppp04d"]
 
-[ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="1_a8v3n"]
 [ext_resource type="Script" uid="uid://by8bmmu5nu88p" path="res://scripts/player/player.gd" id="1_fdpfy"]
-[ext_resource type="Script" uid="uid://c1npqec65kjpn" path="res://scripts/player/vel_direction_arrow.gd" id="2_6p80c"]
 [ext_resource type="Script" uid="uid://u0bc1marrjav" path="res://scripts/player/dash_component.gd" id="4_8ut53"]
 [ext_resource type="Script" uid="uid://cdsyiosey41jg" path="res://scripts/player/stabilization_component.gd" id="5_2ue4q"]
 
@@ -22,12 +20,6 @@ radius = 22.090721
 [node name="Player" type="Node2D" unique_id=1205687715]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fdpfy")
-
-[node name="VelDirectionArrow" type="Sprite2D" parent="." unique_id=119820616]
-rotation = 1.5707964
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_a8v3n")
-script = ExtResource("2_6p80c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=148926646]
 rotation = 1.5707964

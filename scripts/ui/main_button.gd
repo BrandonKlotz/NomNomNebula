@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	arrow.show()
+	AudioManager.play_sfx(AudioManager.tracks.hover)
 
 func _on_mouse_exited() -> void:
 	arrow.hide()

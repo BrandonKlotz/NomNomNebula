@@ -6,12 +6,16 @@ extends Node
 @onready var pause_button: Button = $CanvasLayer/PauseButton
 @onready var animation_component: AnimationComponent = $AnimationComponent
 @onready var game_over_button: Button = $CanvasLayer/GameOverButton
+@onready var galaxy_info_panel: GalaxyInfoPanel = $CanvasLayer/GalaxyInfoPanel
 
 var current_score: int = 10
+var tooltip_timer: Timer
 
 func _ready() -> void:
 	Globals.player = player
 	dash_panel.setup(player.get_dash_count())
+	
+	_setup_tooltip_timer()
 	
 	game_over_button.pressed.connect(_on_game_over)
 	pause_menu.on_resume.connect(_handle_toggle_pause)
@@ -21,6 +25,8 @@ func _ready() -> void:
 		animation_component.subtle_wobble(pause_button)
 	)
 	
+	EventManager.on_tooltip_show.connect(_on_galaxy_tooltip_show)
+	EventManager.on_tooltip_hide.connect(_on_galaxy_tooltip_hide)
 	EventManager.on_game_over.connect(_on_game_over)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
 	SceneManager.fade_in()
@@ -28,13 +34,21 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		_handle_toggle_pause()
-	
+
+func _setup_tooltip_timer() -> void:
+	tooltip_timer = Timer.new()
+	tooltip_timer.timeout.connect(_on_hide_tooltip_timeout)
+	tooltip_timer.wait_time = 3
+	tooltip_timer.one_shot = false
+	add_child(tooltip_timer)
+	tooltip_timer.start()
+
 func _handle_toggle_pause() -> void:
 	if pause_menu.visible:
 		AudioManager.play_sfx(AudioManager.tracks.dismiss_ui)
 		pause_menu.dismiss()
 	else:
-		pause_menu.show()
+		pause_menu.present()
 		# TODO: Stop engine time, animations, etc
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
 
@@ -51,3 +65,13 @@ func _handle_finish() -> void:
 
 func _on_galaxy_absorbed(data: GalaxyData) -> void:
 	player.absorb_galaxy(data)
+
+func _on_galaxy_tooltip_show(data: GalaxyData) -> void:
+	galaxy_info_panel.present(data)
+	tooltip_timer.stop()
+
+func _on_galaxy_tooltip_hide() -> void:
+	tooltip_timer.start()
+
+func _on_hide_tooltip_timeout():
+	galaxy_info_panel.dismiss()

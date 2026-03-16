@@ -2,20 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cjikpvjnra8yr" path="res://audio/audio_setting.gd" id="1_ixyf6"]
 [ext_resource type="Script" uid="uid://qkqrrmo7u8ws" path="res://audio/audio_table.gd" id="1_nflnj"]
-[ext_resource type="AudioStream" uid="uid://b0lqgixmtsrpv" path="res://audio/sounds/clickv2.wav" id="2_1sgt3"]
+[ext_resource type="AudioStream" uid="uid://b110a8113hg6b" path="res://audio/sounds/Device Toggle 04.wav" id="2_7rb6b"]
 [ext_resource type="AudioStream" uid="uid://vschk7arja7x" path="res://audio/sounds/dash_v1.wav" id="3_va0tg"]
 [ext_resource type="AudioStream" uid="uid://crkreoscmv1kf" path="res://audio/sounds/Ambient Music.wav" id="4_1sgt3"]
-[ext_resource type="AudioStream" uid="uid://c2ec7w6563y2n" path="res://audio/sounds/Spark 14.wav" id="4_va0tg"]
-[ext_resource type="AudioStream" uid="uid://cs0jf3rbilywe" path="res://audio/sounds/Shield Device 1 Stop.wav" id="4_xqoq0"]
-[ext_resource type="AudioStream" uid="uid://donptr6hkusrk" path="res://audio/sounds/Shield Device 2 Start.wav" id="6_s34iw"]
+[ext_resource type="AudioStream" uid="uid://bw7ryiieicpwa" path="res://audio/sounds/Device 5 Stop.wav" id="4_lelip"]
+[ext_resource type="AudioStream" uid="uid://r01so3ds2i34" path="res://audio/sounds/Spark 18.wav" id="5_lelip"]
+[ext_resource type="AudioStream" uid="uid://ncpmaii2ben3" path="res://audio/sounds/Device 5 Start.wav" id="6_7rb6b"]
 [ext_resource type="AudioStream" uid="uid://dxmyt2nsf77jq" path="res://audio/sounds/Abstract2.mp3" id="7_d16nq"]
 [ext_resource type="AudioStream" uid="uid://bpb36h71m85n0" path="res://audio/sounds/Ratchet_Click_1.mp3" id="7_s34iw"]
+[ext_resource type="AudioStream" uid="uid://b1gjtho0xxfqd" path="res://audio/sounds/Digital Click 12.wav" id="8_7rb6b"]
+[ext_resource type="AudioStream" uid="uid://mogetiy4d4i1" path="res://audio/sounds/Laser Saber 1_3.wav" id="8_lelip"]
 [ext_resource type="AudioStream" uid="uid://0xdt4tdyyt7m" path="res://audio/sounds/Abstract1.mp3" id="10_lelip"]
 
 [sub_resource type="Resource" id="Resource_a6wuk"]
 script = ExtResource("1_ixyf6")
-source = ExtResource("2_1sgt3")
-volume_db = 5.0
+source = ExtResource("2_7rb6b")
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
@@ -27,26 +28,39 @@ metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_w1bj7"]
 script = ExtResource("1_ixyf6")
-source = ExtResource("4_xqoq0")
-volume_db = -8.0
+source = ExtResource("4_lelip")
+volume_db = -3.0
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_xqoq0"]
 script = ExtResource("1_ixyf6")
-source = ExtResource("4_va0tg")
+source = ExtResource("5_lelip")
 volume_db = -3.0
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_d16nq"]
 script = ExtResource("1_ixyf6")
-source = ExtResource("6_s34iw")
+source = ExtResource("6_7rb6b")
 volume_db = -3.0
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_7rb6b"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("7_d16nq")
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_nagqu"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("8_7rb6b")
+volume_db = -3.0
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_lqfd0"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("8_lelip")
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
@@ -79,5 +93,7 @@ dash = SubResource("Resource_ndm53")
 dash_error = SubResource("Resource_xqoq0")
 dash_empty = SubResource("Resource_w1bj7")
 dash_recovered = SubResource("Resource_d16nq")
+galaxy_repel = SubResource("Resource_lqfd0")
+galaxy_info = SubResource("Resource_nagqu")
 title_music = SubResource("Resource_va0tg")
 metadata/_custom_type_script = "uid://qkqrrmo7u8ws"

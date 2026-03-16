@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GalaxyData" format=3 uid="uid://bt1bbrc3g1atx"]
+
+[ext_resource type="Script" uid="uid://bp640lhsn8ukq" path="res://scripts/data/galaxy_data.gd" id="1_2onp5"]
+
+[resource]
+script = ExtResource("1_2onp5")
+name = "galaxy_2"
+strength = 2
+interaction_radius = 80
+metadata/_custom_type_script = "uid://bp640lhsn8ukq"

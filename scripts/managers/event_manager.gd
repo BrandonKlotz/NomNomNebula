@@ -9,7 +9,8 @@ signal on_camera_shake
 signal on_game_over
 
 signal on_galaxy_absorbed(data: GalaxyData)
-
+signal on_tooltip_show(data: GalaxyData)
+signal on_tooltip_hide
 signal on_dash_used
 signal on_dash_error
 signal on_dash_fully_recovered

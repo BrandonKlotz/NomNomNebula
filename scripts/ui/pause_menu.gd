@@ -23,7 +23,7 @@ func _ready() -> void:
 	_subscribe_to_sliders()
 	dismiss()
 
-func show() -> void:
+func present() -> void:
 	self.visible = true
 
 func dismiss() -> void:
