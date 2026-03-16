@@ -11,6 +11,9 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	if target == Globals.player:
+		target_zoom = Vector2.ONE - Vector2(Globals.player.velocity.length() * 0.0015, Globals.player.velocity.length() * 0.0015)
+
 	position += (target.global_position - global_position)/follow_reduction_factor * delta
 	zoom = lerp(zoom, target_zoom, zoom_speed*delta)
 

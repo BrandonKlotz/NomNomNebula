@@ -47,7 +47,11 @@ tile_set = SubResource("TileSet_pdbwf")
 
 [node name="Galaxy" parent="." unique_id=1049821020 instance=ExtResource("5_dlaip")]
 position = Vector2(72, 5)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
+
+[node name="Galaxy2" parent="." unique_id=729116090 instance=ExtResource("5_dlaip")]
+position = Vector2(-250, -19)
+scale = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=1205687715 instance=ExtResource("2_47u71")]
 position = Vector2(-32, 40)

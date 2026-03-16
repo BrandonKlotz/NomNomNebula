@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://dpqwcej6nfhgq" path="res://scripts/galaxy/galaxy.gd" id="1_n7ltq"]
 [ext_resource type="Texture2D" uid="uid://beslbylfv2lgf" path="res://resources/Art/Galaxy Sprite Sheets/Larger galaxy 1.0.png" id="2_ky37o"]
 [ext_resource type="Script" uid="uid://bp640lhsn8ukq" path="res://scripts/data/galaxy_data.gd" id="2_pctnl"]
+[ext_resource type="Shader" uid="uid://b5nxg5x7mydn4" path="res://resources/Shaders/galaxy_distortion.gdshader" id="3_4oih2"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
 [ext_resource type="Script" uid="uid://iccc1ul8qm2x" path="res://scripts/galaxy/galaxy_idle_state.gd" id="4_xxujj"]
+[ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="5_nxljd"]
 [ext_resource type="Script" uid="uid://sunbyn5fx5l1" path="res://scripts/galaxy/galaxy_attach_state.gd" id="6_pctnl"]
 [ext_resource type="Script" uid="uid://btwfig6s12las" path="res://scripts/galaxy/galaxy_desintegrate.gd" id="7_0t61a"]
 
@@ -12,6 +14,26 @@
 script = ExtResource("2_pctnl")
 strength = 2
 interaction_radius = 80
+
+[sub_resource type="Gradient" id="Gradient_ky37o"]
+offsets = PackedFloat32Array(0.20481928, 1)
+colors = PackedColorArray(1, 0.77, 0.77, 1, 0.42, 0.1848, 0.1848, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbxba"]
+gradient = SubResource("Gradient_ky37o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8130435, 0.16521738)
+
+[sub_resource type="Gradient" id="Gradient_0t61a"]
+offsets = PackedFloat32Array(0.71686745, 1)
+colors = PackedColorArray(0.68, 0.2992, 0.49594676, 0.5137255, 0.75, 0.11249998, 0.12312484, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4oih2"]
+gradient = SubResource("Gradient_0t61a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8347826, 0.1521739)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbxba"]
 atlas = ExtResource("2_ky37o")
@@ -77,38 +99,81 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_ky37o"]
-offsets = PackedFloat32Array(0.6626506, 1)
-colors = PackedColorArray(1, 1, 1, 0.45882353, 0, 0, 0, 0)
+[sub_resource type="Gradient" id="Gradient_nxljd"]
+offsets = PackedFloat32Array(0, 0.98507464)
+colors = PackedColorArray(1, 0.22000003, 0.22000003, 0.7294118, 0.5399998, 0.31, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbxba"]
-gradient = SubResource("Gradient_ky37o")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8130435, 0.16521738)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_po1id"]
+gradient = SubResource("Gradient_nxljd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e83e5"]
+shader = ExtResource("3_4oih2")
+shader_parameter/resolution = Vector2(32, 32)
+shader_parameter/colorResolution = 100.0
+shader_parameter/distortionIntensity = 1.0
+shader_parameter/spiralDistortionIntensity = 1.0
+shader_parameter/holeSize = 0.0
+shader_parameter/image = ExtResource("5_nxljd")
+shader_parameter/rotations = 1.0
+shader_parameter/depth = 0.5
+shader_parameter/spiralIntensity = 1.0
+shader_parameter/shrinkSpeed = 0.2
+shader_parameter/roationSpeed = 0.1
+shader_parameter/haloColor = SubResource("GradientTexture2D_po1id")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t61a"]
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ky37o"]
 radius = 84.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4oih2"]
 
 [node name="Galaxy" type="Node2D" unique_id=1049821020]
 script = ExtResource("1_n7ltq")
 data = SubResource("Resource_0t61a")
 
-[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1067041141]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_6ylll")
-animation = &"main"
-
 [node name="InteractionAreaSprite" type="Sprite2D" parent="." unique_id=827481830]
 scale = Vector2(4.105, 4.105)
 texture = SubResource("GradientTexture2D_nbxba")
 
+[node name="InteractionAreaSprite2" type="Sprite2D" parent="." unique_id=1035562769]
+scale = Vector2(1.545, 1.545)
+texture = SubResource("GradientTexture2D_4oih2")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." unique_id=1067041141]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6ylll")
+animation = &"main"
+frame_progress = 0.7782148
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=998042952]
+material = SubResource("ShaderMaterial_e83e5")
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("5_nxljd")
+
+[node name="InnerArea" type="Area2D" parent="." unique_id=1058516218]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerArea" unique_id=1236035796]
+shape = SubResource("CircleShape2D_0t61a")
+
 [node name="InteractionArea" type="Area2D" parent="." unique_id=685365449]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=20703046]
 shape = SubResource("CircleShape2D_ky37o")
+
+[node name="Center" type="Area2D" parent="." unique_id=352193348]
+visible = false
+scale = Vector2(1.545, 1.545)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center" unique_id=1403290327]
+shape = SubResource("CircleShape2D_4oih2")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1730946245 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_nbxba")
@@ -125,8 +190,14 @@ metadata/_custom_type_script = "uid://iccc1ul8qm2x"
 script = ExtResource("6_pctnl")
 galaxy = NodePath("../..")
 attraction_area = NodePath("../../InteractionArea")
+absorption_time_required = 3.0
 metadata/_custom_type_script = "uid://sunbyn5fx5l1"
 
-[node name="desintegrate" type="Node" parent="StateMachine" unique_id=2144533327]
+[node name="Target" type="Node2D" parent="StateMachine/attach" unique_id=1446115246]
+
+[node name="desintegrate" type="Node" parent="StateMachine" unique_id=2144533327 node_paths=PackedStringArray("galaxy")]
 script = ExtResource("7_0t61a")
+galaxy = NodePath("../..")
 metadata/_custom_type_script = "uid://btwfig6s12las"
+
+[connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]

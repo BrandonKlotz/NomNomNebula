@@ -14,9 +14,14 @@ func _ready() -> void:
 	animation.play("main")
 	
 func _process(delta: float) -> void:
-	size = lerp(size, 1.0, scaling_speed * delta)
+	size = lerp(size, 2.0, scaling_speed * delta)
 	scale = Vector2(size, size)
 	position += velocity * delta
 
 func apply_force(force:Vector2) ->void:
 	velocity += force
+
+
+func _on_center_area_entered(area: Area2D) -> void:
+	Globals.player.velocity = Vector2.ZERO
+	Globals.player.apply_force((Globals.player.global_position - global_position).normalized() * 500)
