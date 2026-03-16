@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bp640lhsn8ukq" path="res://scripts/data/galaxy_data.gd" id="2_pctnl"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
 [ext_resource type="Script" uid="uid://iccc1ul8qm2x" path="res://scripts/galaxy/galaxy_idle_state.gd" id="4_xxujj"]
-[ext_resource type="Script" uid="uid://sunbyn5fx5l1" path="res://scripts/galaxy/galaxy_attrach_state.gd" id="5_pctnl"]
+[ext_resource type="Script" uid="uid://sunbyn5fx5l1" path="res://scripts/galaxy/galaxy_attach_state.gd" id="5_pctnl"]
 
 [sub_resource type="Resource" id="Resource_0t61a"]
 script = ExtResource("2_pctnl")
@@ -111,16 +111,16 @@ shape = SubResource("CircleShape2D_ky37o")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1730946245 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_nbxba")
-initial_state = NodePath("GalaxyIdle")
+initial_state = NodePath("idle")
 
-[node name="GalaxyIdle" type="Node" parent="StateMachine" unique_id=2024121028 node_paths=PackedStringArray("galaxy", "attraction_area")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=2024121028 node_paths=PackedStringArray("galaxy", "attraction_area")]
 script = ExtResource("4_xxujj")
 galaxy = NodePath("../..")
 attraction_area = NodePath("../../InteractionArea")
 speed = 1.0
 metadata/_custom_type_script = "uid://iccc1ul8qm2x"
 
-[node name="GalaxyAttrach" type="Node" parent="StateMachine" unique_id=1523281905 node_paths=PackedStringArray("galaxy", "attraction_area")]
+[node name="attach" type="Node" parent="StateMachine" unique_id=1523281905 node_paths=PackedStringArray("galaxy", "attraction_area")]
 script = ExtResource("5_pctnl")
 galaxy = NodePath("../..")
 attraction_area = NodePath("../../InteractionArea")

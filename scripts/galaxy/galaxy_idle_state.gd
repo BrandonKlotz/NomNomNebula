@@ -1,5 +1,5 @@
-extends State
 class_name GalaxyIdle
+extends State
 
 @export var galaxy :Galaxy 
 @export var attraction_area :Area2D
@@ -14,7 +14,7 @@ func update(_delta: float) -> void:
 	add_random_velocity()
 
 func start_attraction_state(_area: Area2D) -> void:
-	change_state.emit(self, "galaxyattrach")
+	change_state.emit(self, "attach")
 
 func add_random_velocity() -> void:
 	var random_direction: float = randf_range(-PI, PI)
