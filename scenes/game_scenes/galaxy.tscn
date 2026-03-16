@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bp640lhsn8ukq" path="res://scripts/data/galaxy_data.gd" id="2_pctnl"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
 [ext_resource type="Script" uid="uid://iccc1ul8qm2x" path="res://scripts/galaxy/galaxy_idle_state.gd" id="4_xxujj"]
-[ext_resource type="Script" uid="uid://sunbyn5fx5l1" path="res://scripts/galaxy/galaxy_attach_state.gd" id="5_pctnl"]
+[ext_resource type="Script" uid="uid://lbd107s8k24q" path="res://scripts/galaxy/galaxy_attrach_state.gd" id="5_pctnl"]
 
 [sub_resource type="Resource" id="Resource_0t61a"]
 script = ExtResource("2_pctnl")

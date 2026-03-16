@@ -19,8 +19,8 @@ func start_attraction_state(_area: Area2D) -> void:
 func add_random_velocity() -> void:
 	var random_direction: float = randf_range(-PI, PI)
 	direction += random_direction
-	var vec_rotation : Vector2 = Utils.rotation_to_vector(direction)
-	galaxy.apply_force(vec_rotation*speed)
+	var vec_rotation: Vector2 = Utils.rotation_to_vector(direction)
+	galaxy.apply_force(vec_rotation * speed)
 
 func exit() -> void:
 	attraction_area.area_entered.disconnect(start_attraction_state)
