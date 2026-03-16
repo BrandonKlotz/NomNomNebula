@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://cfujeq18btljh" path="res://scripts/main_camera.gd" id="13_6ll7h"]
 [ext_resource type="Script" uid="uid://1hy21bsnn0ng" path="res://scripts/ui/galaxy_info_panel.gd" id="17_oyepb"]
 [ext_resource type="PackedScene" uid="uid://jgiwhntmki7w" path="res://scenes/ui/stabilization_panel.tscn" id="18_xxaiy"]
+[ext_resource type="Script" uid="uid://c81dqmvah0kk" path="res://scripts/ui/stabilization_screen_fx.gd" id="19_mf52o"]
+[ext_resource type="Shader" uid="uid://d1clynis8x1u3" path="res://shaders/stabilization_screen.gdshader" id="20_iokjm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhwwd"]
 texture = ExtResource("2_6c6v5")
@@ -37,6 +39,13 @@ sources/0 = SubResource("TileSetAtlasSource_bhwwd")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vfqx"]
 bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iokjm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fg3oe"]
+shader = ExtResource("20_iokjm")
+shader_parameter/intensity = 0.0
+shader_parameter/time_scale = 1.0
 
 [node name="GameWorld" type="Node2D" unique_id=1299650942]
 script = ExtResource("1_0biqy")
@@ -208,3 +217,22 @@ text = "Galaxy data"
 horizontal_alignment = 1
 
 [node name="StabilizationPanel" parent="CanvasLayer" unique_id=2092434660 instance=ExtResource("18_xxaiy")]
+
+[node name="StabilizationScreenFX" type="Panel" parent="CanvasLayer" unique_id=1651400057]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iokjm")
+script = ExtResource("19_mf52o")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/StabilizationScreenFX" unique_id=2083616152]
+material = SubResource("ShaderMaterial_fg3oe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

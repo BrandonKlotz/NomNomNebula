@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_stabilization_changed(data: Dictionary) -> void:
 	progress_bar.value = data["progress"] * 100
-	label.text = str(round(data["current_time"])) + " / " + str(round(data["max_time"]))
+	label.text = str(int(round(data["current_time"]))) + " / " + str(int(round(data["max_time"])))
 
 func _on_stabilization_warning() -> void:
 	progress_bar.modulate = warning_color

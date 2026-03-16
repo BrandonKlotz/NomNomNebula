@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpqwcej6nfhgq" path="res://scripts/galaxy/galaxy.gd" id="1_n7ltq"]
 [ext_resource type="Texture2D" uid="uid://beslbylfv2lgf" path="res://resources/Art/Galaxy Sprite Sheets/Larger galaxy 1.0.png" id="2_ky37o"]
-[ext_resource type="Shader" uid="uid://b5nxg5x7mydn4" path="res://resources/Shaders/galaxy_distortion.gdshader" id="3_4oih2"]
+[ext_resource type="Shader" uid="uid://b5nxg5x7mydn4" path="res://shaders/galaxy_distortion.gdshader" id="3_4oih2"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
 [ext_resource type="Script" uid="uid://iccc1ul8qm2x" path="res://scripts/galaxy/galaxy_idle_state.gd" id="4_xxujj"]
 [ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="5_nxljd"]
