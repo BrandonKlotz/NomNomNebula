@@ -9,10 +9,16 @@ var galaxies: Array = []
 var galaxy_markers: Dictionary = {}
 
 func _ready() -> void:
-	pass
+	EventManager.on_galaxies_updated.connect(_on_galaxies_updated)
 
+func _on_galaxies_updated(data: Dictionary) -> void:
+	var new_galaxies: Array = data["galaxies"]
+	set_galaxies(new_galaxies)
+	
 func set_galaxies(new_galaxies: Array) -> void:
 	galaxies = new_galaxies
+	Utils.clear_node(self)
+	galaxy_markers.clear()
 
 	for galaxy in galaxies:
 		var id: String = galaxy.uid()

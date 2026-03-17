@@ -120,6 +120,7 @@ func _handle_finish() -> void:
 
 func _on_galaxy_absorbed(data: GalaxyData) -> void:
 	player.absorb_galaxy(data)
+	galaxy_spawner.remove_galaxy(data)
 
 func _on_galaxy_tooltip_show(data: GalaxyData) -> void:
 	galaxy_info_panel.present(data)
