@@ -7,10 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://b0x7d3nctq4im" path="res://resources/Art/canvas_guide.png" id="3_ljt7x"]
 [ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="5_o0nwa"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0nwa"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0nwa"]
 
 [node name="GameTitle" type="Node2D" unique_id=1992495304]
 script = ExtResource("1_ke8lo")
+
+[node name="GgMenuBg" type="Sprite2D" parent="." unique_id=2125538280]
+position = Vector2(160, 90)
+texture = ExtResource("2_o0nwa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=137655603]
+visible = false
+position = Vector2(167, 89)
+process_material = SubResource("ParticleProcessMaterial_o0nwa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=271165557]
 
@@ -21,10 +34,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o0nwa")
-
-[node name="GgMenuBg" type="Sprite2D" parent="CanvasLayer/Panel" unique_id=2125538280]
-position = Vector2(160, 90)
-texture = ExtResource("2_o0nwa")
 
 [node name="GuideBG" type="TextureRect" parent="CanvasLayer/Panel" unique_id=1792984943]
 visible = false

@@ -5,11 +5,11 @@ extends Node2D
 @export var scaling_speed: float = 1
 
 @onready var animation: AnimatedSprite2D = get_node("Animation")
-@onready var size: float = data.size
 @onready var timer_label: Label = $TimerLabel
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 
+var size: float
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -18,6 +18,7 @@ func _ready() -> void:
 	var shape: CircleShape2D = interaction_collision_shape.shape.duplicate()
 	shape.radius = data.interaction_radius
 	interaction_collision_shape.shape = shape
+	size = data.size
 	
 	animation.play("main")
 
