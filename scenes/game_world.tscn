@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dq7ue6vtdx1jb" path="res://resources/Art/icons/keyboard_a.png" id="8_ph1f2"]
 [ext_resource type="Script" uid="uid://b57h78r6ydopc" path="res://scripts/minimap_camera.gd" id="8_y5rsn"]
 [ext_resource type="Resource" uid="uid://bt1bbrc3g1atx" path="res://scripts/galaxy/data/galaxy_2.tres" id="9_0y38y"]
-[ext_resource type="Texture2D" uid="uid://b0brg6q7c4jai" path="res://resources/Art/player_marker.png" id="9_kbri5"]
 [ext_resource type="Texture2D" uid="uid://cqqm3gsucj7e6" path="res://resources/Art/icons/keyboard_d.png" id="9_odt01"]
 [ext_resource type="PackedScene" uid="uid://deemgxdklxpvu" path="res://scenes/ui/pause_menu.tscn" id="11_odt01"]
 [ext_resource type="Texture2D" uid="uid://bwgjk5vsqnrxm" path="res://resources/Art/icons/gear.png" id="11_ph1f2"]
@@ -25,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bi43xj8ctf3ny" path="res://scripts/data/black_hole_data.gd" id="19_wgh4l"]
 [ext_resource type="Shader" uid="uid://d1clynis8x1u3" path="res://shaders/stabilization_screen.gdshader" id="20_iokjm"]
 [ext_resource type="Script" uid="uid://b7dq2ueha14dg" path="res://scripts/ui/stats_panel.gd" id="22_wgh4l"]
+[ext_resource type="Texture2D" uid="uid://6yo25fpoqpne" path="res://resources/Art/minimap_marker.png" id="24_0y38y"]
 
 [sub_resource type="Resource" id="Resource_arcjp"]
 script = ExtResource("19_wgh4l")
@@ -264,6 +264,7 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_5nmku")
 
 [node name="PlayerMarker" type="TextureRect" parent="CanvasLayer/MinimapPanel" unique_id=331728141]
+modulate = Color(0.24705882, 0.5137255, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -277,7 +278,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("9_kbri5")
+texture = ExtResource("24_0y38y")
 
 [node name="StabilizationScreenFX" type="Panel" parent="CanvasLayer" unique_id=1651400057]
 anchors_preset = 15

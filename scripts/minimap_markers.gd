@@ -20,12 +20,18 @@ func set_galaxies(new_galaxies: Array) -> void:
 	Utils.clear_node(self)
 	galaxy_markers.clear()
 
-	for galaxy in galaxies:
+	for galaxy: Galaxy in galaxies:
 		var id: String = galaxy.uid()
 
 		if not galaxy_markers.has(id):
 			var marker: Sprite2D = Sprite2D.new()
 			marker.texture = MINIMAP_MARKER
+			
+			if galaxy.is_good_galaxy():
+				marker.modulate = Color.GREEN
+			else:
+				marker.modulate = Color.RED
+			
 			marker.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 			marker.centered = true
 
