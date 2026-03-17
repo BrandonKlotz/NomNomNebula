@@ -3,18 +3,20 @@ extends State
 
 @export var attraction_area: Area2D
 @export var black_hole : BlackHole
-@export var normal_time : float = 2.0 #Chage variable name
-@export var strenght : float = 3.0
+@export var sprite : Sprite2D
 
+@onready var strenght : float = black_hole.data.strength
+@onready var max_time : float = black_hole.data.event_start_time
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("main_camera")
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 
+var timer
 var last_dash_used_time : float
 var strong_attrach_start_time : float
-
-var timer: float
+var elapsed_time :  float = 0
 
 func enter() -> void:
-	timer = 5
+	timer = max_time
 	attraction_area.area_exited.connect(on_exited_area)
 	EventManager.on_dash_used.connect(on_player_dash_used)
 	EventManager.on_attraching_player.emit()
@@ -23,11 +25,18 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	timer -= delta
+	elapsed_time += delta
+	
 	if timer <= 0:
 		strong_attrach_start_time = Time.get_ticks_msec()/1000.0
 		strenght = 5.0
+		timer = max_time
+		elapsed_time = 0
+	print(strenght)
+		
 	var force : Vector2 = calc_force()
 	Globals.player.apply_force(force)
+	sprite.material.set_shader_parameter("holeSize", 0.1+0.4*elapsed_time/max_time)
 	
 	black_hole.timer_label.text = "%.2f" % timer
 
@@ -49,5 +58,6 @@ func get_offset_to_player() -> Vector2:
 	
 func on_player_dash_used():
 	last_dash_used_time = Time.get_ticks_msec()/1000.0
-	if timer < 1.0 or abs(last_dash_used_time - strong_attrach_start_time) < 1:
-		print('a')
+	if timer < 0.5 or abs(last_dash_used_time - strong_attrach_start_time) < 0.5:
+		change_state.emit(self, "blackholedisabled")
+		sprite.material.set_shader_parameter("holeSize", 0.0)

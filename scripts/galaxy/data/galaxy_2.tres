@@ -7,4 +7,7 @@ script = ExtResource("1_2onp5")
 uid = "g2"
 strength = 2
 interaction_radius = 70
+animation = "orange"
+halo_color1 = Color(0.69411767, 0.30588236, 0.06666667, 1)
+halo_color2 = Color(0.85490197, 0, 0.10980392, 1)
 metadata/_custom_type_script = "uid://bp640lhsn8ukq"

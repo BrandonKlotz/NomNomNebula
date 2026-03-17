@@ -1,11 +1,19 @@
 class_name BlackHole
 extends Node2D
 
-@onready var timer_label : Label = get_node("TimerLabel")
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var data : BlackHoleData
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@onready var timer_label : Label = get_node("TimerLabel")
+@onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
+
+func _ready() -> void:
+	var shape: CircleShape2D = interaction_collision_shape.shape.duplicate()
+	shape.radius = data.interaction_radius
+	interaction_collision_shape.shape = shape
+
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_center_area_entered(area: Area2D) -> void:
+	EventManager.on_player_absorbed.emit()

@@ -5,6 +5,7 @@ var active_tutorial : bool = false
 @onready var tutorial_panel = get_parent().get_node("CanvasLayer/AbsortionTutorial")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	return
 	EventManager.on_attraching_player.connect(on_start_tutorial)
 	pass # Replace with function body.
 

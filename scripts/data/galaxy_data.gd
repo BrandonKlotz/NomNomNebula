@@ -6,6 +6,6 @@ extends Resource
 @export var size: float = 1.0
 @export var interaction_radius = 440
 
-@export_category("Sprite")
-@export var sprite: Texture2D
-@export var sprite_size: Vector2i
+@export var animation: String
+@export var halo_color1 : Color
+@export var halo_color2 : Color

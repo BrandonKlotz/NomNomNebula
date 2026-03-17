@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://2abshypl4ly5"]
+
+[ext_resource type="PackedScene" uid="uid://ot3b6jppp04d" path="res://scenes/game_scenes/player.tscn" id="1_nmrg2"]
+[ext_resource type="PackedScene" uid="uid://bliqp60aweli1" path="res://scenes/game_scenes/black_hole.tscn" id="2_83w42"]
+[ext_resource type="Script" uid="uid://bi43xj8ctf3ny" path="res://scripts/data/black_hole_data.gd" id="2_nokcc"]
+[ext_resource type="PackedScene" uid="uid://dpwoginuct65t" path="res://scenes/main_camera.tscn" id="3_scbos"]
+
+[sub_resource type="Resource" id="Resource_w5mvv"]
+script = ExtResource("2_nokcc")
+interaction_radius = 300.0
+metadata/_custom_type_script = "uid://bi43xj8ctf3ny"
+
+[node name="BlackHoleTest" type="Node" unique_id=1264580448]
+
+[node name="BlackHole" parent="." unique_id=585464348 instance=ExtResource("2_83w42")]
+position = Vector2(198, 27)
+scale = Vector2(0.5, 0.5)
+data = SubResource("Resource_w5mvv")
+
+[node name="Player" parent="." unique_id=1205687715 instance=ExtResource("1_nmrg2")]
+
+[node name="MainCamera" parent="." unique_id=1322683729 node_paths=PackedStringArray("target") instance=ExtResource("3_scbos")]
+target = NodePath("../Player")

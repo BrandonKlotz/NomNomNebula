@@ -8,6 +8,7 @@ extends Node2D
 @onready var timer_label: Label = $TimerLabel
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
+@onready var vortex_effect : Sprite2D = $VortexEffect
 
 var size: float
 var velocity: Vector2 = Vector2.ZERO
@@ -20,7 +21,15 @@ func _ready() -> void:
 	interaction_collision_shape.shape = shape
 	size = data.size
 	
-	animation.play("main")
+	#apply shader parameters
+	var halo : Gradient = Gradient.new()
+	halo.set_color(0, data.halo_color1)
+	halo.set_color(1, data.halo_color2)
+	var tex : GradientTexture1D = GradientTexture1D.new()
+	tex.gradient = halo
+	vortex_effect.material.set_shader_parameter('haloColor', tex)
+	
+	animation.play(data.animation)
 
 func _process(delta: float) -> void:
 	size = lerp(size, 2.0, scaling_speed * delta)
