@@ -5,8 +5,10 @@ extends Node
 func _ready() -> void:
 	self.visible = false
 	
-	if OS.is_debug_build():
+	if Flags.is_debug():
 		self.visible = true
+	else:
+		self.queue_free()
 
 func _process(_delta: float) -> void:
 	_show_stats()
