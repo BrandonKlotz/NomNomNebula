@@ -24,9 +24,9 @@ func _ready() -> void:
 	dash_particles.emitting = false
 	
 	# FIXME: remove
-	await get_tree().create_timer(4.0).timeout
-	var r = GalaxyData.new()
-	absorb_galaxy(r)
+	#await get_tree().create_timer(4.0).timeout
+	#var r = GalaxyData.new()
+	#absorb_galaxy(r)
 
 func _process(_delta: float) -> void:
 	camera_target.global_position = global_position + (velocity)
@@ -55,10 +55,12 @@ func absorb_galaxy(data: GalaxyData) -> void:
 	var buff_debuff: Dictionary = data.buff_debuff
 	
 	# FIXME: Remove
-	#buff_debuff = BuffDebuffPool.pool["buffs"][5]
+	buff_debuff = BuffDebuffPool.buffs[0]
 	#buff_debuff = BuffDebuffPool.pool["debuffs"][4]
 	#print(buff_debuff)
 	
+	# reset all temporary modifications
+	target_size = 0.5
 	player_movement.set_control_type(PlayerMovement.ControlType.NORMAL)
 	dash_component.reset_buffs()
 	stabilization_component.reset_buffs()
