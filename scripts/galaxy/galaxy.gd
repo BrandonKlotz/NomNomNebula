@@ -11,6 +11,7 @@ const VORTEX_MATERIAL: Resource = preload("uid://jske8d54cs0g")
 @onready var timer_label: Label = $TimerLabel
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 @onready var vortex_effect: Sprite2D = $VortexEffect
+@onready var repel_particles: GPUParticles2D = $RepelParticles
 
 var size: float
 var velocity: Vector2 = Vector2.ZERO
@@ -22,6 +23,9 @@ func _ready() -> void:
 	shape.radius = data.interaction_radius
 	interaction_collision_shape.shape = shape
 	size = data.size
+	
+	repel_particles.one_shot = true
+	repel_particles.emitting = false
 	
 	#apply shader parameters
 	var halo: Gradient = Gradient.new()
@@ -48,6 +52,7 @@ func _on_center_area_entered(_area: Area2D) -> void:
 	Globals.player.apply_force((Globals.player.global_position - global_position).normalized() * 400)
 	EventManager.on_camera_shake.emit(4.0, 1.0)
 	AudioManager.play_sfx(AudioManager.tracks.galaxy_repel)
+	repel_particles.restart()
 
 func _on_interaction_area_mouse_entered() -> void:
 	EventManager.on_tooltip_show.emit(data)

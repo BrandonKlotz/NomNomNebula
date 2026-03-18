@@ -15,6 +15,22 @@
 [ext_resource type="Script" uid="uid://btwfig6s12las" path="res://scripts/galaxy/galaxy_desintegrate_state.gd" id="7_0t61a"]
 [ext_resource type="Material" uid="uid://jske8d54cs0g" path="res://shaders/mats/vortex_material.tres" id="9_y80rp"]
 
+[sub_resource type="Gradient" id="Gradient_uaiqi"]
+offsets = PackedFloat32Array(0.6721311, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y80rp"]
+gradient = SubResource("Gradient_uaiqi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dltvo"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 23.45
+radial_velocity_min = -105.25002
+radial_velocity_max = 56.699978
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_y80rp")
+
 [sub_resource type="Gradient" id="Gradient_ky37o"]
 offsets = PackedFloat32Array(0.20481928, 1)
 colors = PackedColorArray(1, 0.77, 0.77, 1, 0.42, 0.1848, 0.1848, 0)
@@ -367,6 +383,15 @@ radius = 50.0
 
 [node name="Galaxy" type="Node2D" unique_id=1049821020]
 script = ExtResource("1_n7ltq")
+
+[node name="RepelParticles" type="GPUParticles2D" parent="." unique_id=912087764]
+emitting = false
+amount = 181
+lifetime = 0.23
+one_shot = true
+explosiveness = 0.2
+randomness = 0.2
+process_material = SubResource("ParticleProcessMaterial_dltvo")
 
 [node name="ChargePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1701965038]
 stream = ExtResource("2_uaiqi")
