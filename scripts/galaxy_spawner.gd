@@ -2,6 +2,7 @@ class_name GalaxySpawner
 extends Node
 
 const GALAXY: PackedScene = preload("uid://ge3n0d66rcq8")
+const BLACK_HOLE: PackedScene = preload("uid://bliqp60aweli1")
 
 const galaxies_variants_data = [
 	preload("uid://baxkohgisu4jk"),
@@ -12,34 +13,58 @@ const galaxies_variants_data = [
 ]
 
 var galaxies: Array = []
+var black_holes: Array = []
+
 var elapsed_time: float = 0.0
 var spawn_timer: float = 0.0
 var base_spawn_interval: float = 2.0
 var max_galaxies: int = 6
+var max_black_holes: int = 2
 var spawn_radius: float = 600.0
+var min_spawn_radius: float = 200.0
 var min_distance_between: float = 150.0
-var initial_galaxies: int = 10
+var initial_galaxies: int = 3
 
 func _ready() -> void:
-	_spawn_initial_galaxies(initial_galaxies)
+	for i in range(initial_galaxies):
+		_spawn_galaxy()
 
 func _process(delta: float) -> void:
 	elapsed_time += delta
 	spawn_timer += delta
-	
+
 	if spawn_timer >= _get_spawn_interval():
 		spawn_timer = 0.0
-		
-		if galaxies.size() < max_galaxies:
-			_spawn_galaxy()
+		_try_spawn()
 
-func _spawn_initial_galaxies(amount: int):
-	for i in range(amount):
+func _try_spawn() -> void:
+	# roll black hole first
+	if false: # black_holes.size() < max_black_holes and Globals.rng.randf() < _get_black_hole_chance():
+		_spawn_black_hole()
+	elif galaxies.size() < max_galaxies:
 		_spawn_galaxy()
+
+func _spawn_black_hole() -> void:
+	var pos: Vector2 = _get_valid_position()
+	if pos == Vector2.ZERO:
+		return
+
+	var black_hole: BlackHole = BLACK_HOLE.instantiate()
+	black_hole.position = pos
+
+	add_child(black_hole)
+	black_holes.append(black_hole)
+
+func remove_black_hole(black_hole: BlackHole) -> void:
+	var idx: int = black_holes.find(black_hole)
+	if idx == -1:
+		return
+	black_hole.queue_free()
+	black_holes.remove_at(idx)
 	
 	EventManager.on_galaxies_updated.emit({"galaxies": galaxies})
 
-func _spawn_galaxy():
+func _spawn_galaxy() -> void:
 	var pos: Vector2 = _get_valid_position()
 	if pos == Vector2.ZERO:
 		return
@@ -53,33 +78,30 @@ func _spawn_galaxy():
 	else:
 		galaxy.set_good()
 	
-	# Black hole
-	#if randf() < _get_black_hole_chance():
-		#if galaxy.has_method("spawn_black_hole"):
-			#galaxy.spawn_black_hole()
-	
 	add_child(galaxy)
 	galaxies.append(galaxy)
 
 func _get_valid_position() -> Vector2:
-	var tries: int = 20
-	
+	var all_objects: Array = galaxies + black_holes
+	var tries: int = 30
+
 	while tries > 0:
 		var angle: float = Globals.rng.randf() * TAU
-		var distance: float = Globals.rng.randf_range(200, spawn_radius)
+		var t: float = Globals.rng.randf()
+		var distance: float = sqrt(t) * (spawn_radius - min_spawn_radius) + min_spawn_radius
 		var pos: Vector2 = Vector2(cos(angle), sin(angle)) * distance
+
 		var valid: bool = true
-		
-		for g in galaxies:
-			if g.position.distance_to(pos) < min_distance_between:
+		for obj in all_objects:
+			if obj.position.distance_to(pos) < min_distance_between:
 				valid = false
 				break
-		
+
 		if valid:
 			return pos
-		
+
 		tries -= 1
-	
+
 	return Vector2.ZERO
 
 #region Probabilities
@@ -88,7 +110,7 @@ func _get_bad_probability() -> float:
 	return clamp(0.2 + elapsed_time * 0.02, 0.2, 0.8)
 
 func _get_black_hole_chance() -> float:
-	return clamp(0.05 + elapsed_time * 0.01, 0.05, 0.5)
+	return clamp(0.05 + elapsed_time * 0.01, 0.05, 0.4)
 
 func _is_bad_galaxy() -> bool:
 	return Globals.rng.randf() < _get_bad_probability()
@@ -96,6 +118,7 @@ func _is_bad_galaxy() -> bool:
 func _get_spawn_interval() -> float:
 	# faster everytime
 	return clamp(base_spawn_interval - elapsed_time * 0.02, 0.6, base_spawn_interval)
+
 #endregion
 
 func remove_galaxy(data: GalaxyData) -> void:

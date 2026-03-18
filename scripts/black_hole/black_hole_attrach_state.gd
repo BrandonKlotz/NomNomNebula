@@ -9,8 +9,8 @@ extends State
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("main_camera")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
-var strenght
-var timer
+var strenght: float
+var timer: float
 var last_dash_used_time : float
 var strong_attrach_start_time : float
 var elapsed_time : float
