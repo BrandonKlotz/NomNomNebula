@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpqwcej6nfhgq" path="res://scripts/galaxy/galaxy.gd" id="1_n7ltq"]
 [ext_resource type="Texture2D" uid="uid://bi3ek0ijq6v3m" path="res://resources/Art/Galaxy Sprite Sheets/Larger galaxy 2.0.png" id="2_e83e5"]
+[ext_resource type="AudioStream" uid="uid://cc3yvxnyuhc4d" path="res://audio/sounds/charge_up.wav" id="2_uaiqi"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_nbxba"]
 [ext_resource type="Texture2D" uid="uid://dk6percugxa6w" path="res://resources/Art/Galaxy Sprite Sheets/Smaller Galaxy 3.0.png" id="3_uaiqi"]
 [ext_resource type="Script" uid="uid://bn6wfo5m712rk" path="res://scripts/movement_wrap.gd" id="3_y80rp"]
@@ -366,6 +367,9 @@ radius = 50.0
 
 [node name="Galaxy" type="Node2D" unique_id=1049821020]
 script = ExtResource("1_n7ltq")
+
+[node name="ChargePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1701965038]
+stream = ExtResource("2_uaiqi")
 
 [node name="MovementWrap" type="Node2D" parent="." unique_id=1419832210]
 script = ExtResource("3_y80rp")

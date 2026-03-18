@@ -4,7 +4,6 @@ extends State
 @export var galaxy: Galaxy
 @export var attraction_area: Area2D
 @export var absorption_time_required: float
-
 @onready var target: Node2D = get_node("Target")
 
 var was_inside_inner_radius: bool = false
@@ -12,6 +11,7 @@ var absorbing_timer: float
 var inner_radius: float = 50
 
 func enter() -> void:
+	galaxy.charge_player.play()
 	attraction_area.area_exited.connect(end_attraction_state)
 	EventManager.on_attracting_player.emit()
 	
@@ -58,3 +58,4 @@ func exit() -> void:
 	Globals.game_camera.target_zoom *= 2
 	attraction_area.area_exited.disconnect(end_attraction_state)
 	absorbing_timer = absorption_time_required
+	galaxy.charge_player.stop()

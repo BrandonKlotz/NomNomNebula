@@ -6,6 +6,7 @@ const VORTEX_MATERIAL: Resource = preload("uid://jske8d54cs0g")
 @export var data: GalaxyData
 @export var scaling_speed: float = 1
 
+@onready var charge_player: AudioStreamPlayer2D = $ChargePlayer
 @onready var animation: AnimatedSprite2D = get_node("Animation")
 @onready var timer_label: Label = $TimerLabel
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D

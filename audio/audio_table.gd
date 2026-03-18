@@ -16,6 +16,7 @@ extends Resource
 @export_category("Galaxy")
 @export var galaxy_repel: AudioSetting
 @export var galaxy_info: AudioSetting
+@export var galaxy_desintegrated: AudioSetting
 
 @export_category("Music")
 @export var title_music: AudioSetting

@@ -11,6 +11,7 @@ func enter() -> void:
 	# Stop Galaxy
 	galaxy.velocity = Vector2.ZERO
 	galaxy.set_process(false)
+	AudioManager.play_sfx(AudioManager.tracks.galaxy_desintegrated)
 	
 	# Disable Physics
 	for child in galaxy.get_children():
