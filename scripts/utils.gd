@@ -1,11 +1,15 @@
 class_name Utils
 
 const SAVE_UID_LENGTH: int = 10
+const UID_LENGTH: int = 10
 	
 static func gen_save_uid() -> String:
-	return "save_" + gen_random_str(SAVE_UID_LENGTH)
+	return "save_" + _gen_random_str(SAVE_UID_LENGTH)
 
-static func gen_random_str(length: int) -> String:
+static func gen_uid(prefix: String) -> String:
+	return prefix + "_" + _gen_random_str(UID_LENGTH)
+
+static func _gen_random_str(length: int) -> String:
 	var charset: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 	var result: String = ""
 	for _i: int in range(length):

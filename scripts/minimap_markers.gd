@@ -12,13 +12,15 @@ func _ready() -> void:
 	EventManager.on_galaxies_updated.connect(_on_galaxies_updated)
 
 func _on_galaxies_updated(data: Dictionary) -> void:
+	return
 	self.galaxies = data["galaxies"]
+	_sync_markers()
 
 func _sync_markers() -> void:
-	for obj: Galaxy in galaxies:
-		if not is_instance_valid(obj):
+	for g: Galaxy in galaxies:
+		if not is_instance_valid(g):
 			continue
-		var id: String = obj.uid()
+		var id: String = g.uid()
 		if not galaxy_markers.has(id):
 			var marker: Sprite2D = _make_marker()
 			galaxy_markers[id] = marker
@@ -27,6 +29,9 @@ func _sync_markers() -> void:
 	var current_ids: Array = galaxies\
 		.filter(func(g: Galaxy): return is_instance_valid(g))\
 		.map(func(g: Galaxy): return g.uid())
+	
+	print(current_ids)
+	print(galaxy_markers.keys())
 	
 	for id in galaxy_markers.keys():
 		if id not in current_ids:

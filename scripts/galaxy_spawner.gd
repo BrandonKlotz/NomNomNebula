@@ -28,8 +28,11 @@ var initial_galaxies: int = 3
 func _ready() -> void:
 	for i in range(initial_galaxies):
 		_spawn_galaxy()
+	
+	EventManager.on_galaxies_updated.emit({"galaxies": galaxies})
 
 func _process(delta: float) -> void:
+	return
 	elapsed_time += delta
 	spawn_timer += delta
 
@@ -39,7 +42,7 @@ func _process(delta: float) -> void:
 
 func _try_spawn() -> void:
 	# roll black hole first
-	if false: # black_holes.size() < max_black_holes and Globals.rng.randf() < _get_black_hole_chance():
+	if black_holes.size() < max_black_holes and Globals.rng.randf() < _get_black_hole_chance():
 		_spawn_black_hole()
 	elif galaxies.size() < max_galaxies:
 		_spawn_galaxy()
@@ -51,6 +54,7 @@ func _spawn_black_hole() -> void:
 
 	var black_hole: BlackHole = BLACK_HOLE.instantiate()
 	black_hole.position = pos
+	black_hole.data = BlackHoleData.new()
 
 	add_child(black_hole)
 	black_holes.append(black_hole)
@@ -72,6 +76,7 @@ func _spawn_galaxy() -> void:
 	var galaxy: Galaxy = GALAXY.instantiate()
 	galaxy.position = pos
 	galaxy.data = galaxies_variants_data.pick_random()
+	galaxy.data.uid = Utils.gen_uid("g")
 	
 	if _is_bad_galaxy():
 		galaxy.set_bad()

@@ -2,7 +2,7 @@ class_name BlackHoleAttrach
 extends State
 
 @export var attraction_area: Area2D
-@export var black_hole : BlackHole
+@export var black_hole: BlackHole
 @export var sprite : Sprite2D
 
 @onready var max_time : float = black_hole.data.event_start_time

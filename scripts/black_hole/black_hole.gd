@@ -1,10 +1,9 @@
 class_name BlackHole
 extends Node2D
 
-
-@export var data : BlackHoleData
-@onready var timer_label : Label = get_node("TimerLabel")
+@export var data: BlackHoleData
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
+@onready var timer_label: Label = $TimerLabel
 
 func _ready() -> void:
 	var shape: CircleShape2D = interaction_collision_shape.shape.duplicate()
