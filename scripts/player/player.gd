@@ -46,11 +46,11 @@ func apply_force(force: Vector2) -> void:
 func absorb_galaxy(data: GalaxyData) -> void:
 	$Sprite2D.material.set_shader_parameter("color_count", color_amount + 1)
 	color_amount += 1
+	var buff_debuff: Dictionary = data.buff_debuff
 	
-	#var buff_debuff: Dictionary = data.buff_debuff
-	
-	#var buff_debuff: Dictionary = BuffDebuffPool.pool["buffs"][4]
-	var buff_debuff: Dictionary = BuffDebuffPool.pool["debuffs"][1]
+	# FIXME: Remove
+	# buff_debuff = BuffDebuffPool.pool["buffs"][4]
+	# buff_debuff = BuffDebuffPool.pool["debuffs"][1]
 	#print(buff_debuff)
 	
 	player_movement.set_control_type(PlayerMovement.ControlType.NORMAL)

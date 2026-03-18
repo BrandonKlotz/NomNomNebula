@@ -17,6 +17,8 @@ gravity = Vector3(0, 0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0nwa"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o3s0"]
+
 [node name="GameTitle" type="Node2D" unique_id=1992495304]
 script = ExtResource("1_ke8lo")
 
@@ -70,9 +72,9 @@ grow_vertical = 2
 layout_mode = 2
 custom_title = "start"
 
-[node name="LeaderboardButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2005136893 instance=ExtResource("5_o0nwa")]
+[node name="CreditsButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2005136893 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
-custom_title = "leaderboard"
+custom_title = "credits"
 
 [node name="ExitButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1238453203 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
@@ -111,3 +113,20 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 4
 text = "v-.-.-"
 vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel" unique_id=771917674]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3o3s0")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel/Panel" unique_id=680753173]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 162.0

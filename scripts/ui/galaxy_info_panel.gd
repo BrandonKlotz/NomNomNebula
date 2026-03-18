@@ -8,10 +8,13 @@ func _ready() -> void:
 
 func present(data: GalaxyData) -> void:
 	self.visible = true
-	data_label.text = "\n".join([
-		data.uid,
-		data.buff_debuff
-	])
+	
+	var lines: Array[String] = ["uid: " + data.uid]
+	for key in data.buff_debuff:
+		var line: String = key + " : " + str(data.buff_debuff[key])
+		lines.append(line)
+		
+	data_label.text = "\n".join(lines)
 
 func dismiss() -> void:
 	self.visible = false

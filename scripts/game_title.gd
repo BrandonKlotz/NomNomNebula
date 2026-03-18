@@ -3,8 +3,9 @@ extends Node
 const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 
 @onready var version_label: Label = $CanvasLayer/Panel/VersionLabel
-@onready var start_button: Button = $CanvasLayer/Panel/VBoxContainer/StartButton
-@onready var exit_button: Button = $CanvasLayer/Panel/VBoxContainer/ExitButton
+@onready var start_button: MainButton = $CanvasLayer/Panel/VBoxContainer/StartButton
+@onready var exit_button: MainButton = $CanvasLayer/Panel/VBoxContainer/ExitButton
+@onready var credits_button: MainButton = $CanvasLayer/Panel/VBoxContainer/CreditsButton
 
 func _ready() -> void:
 	_load_save()
@@ -25,6 +26,7 @@ func _ready() -> void:
 	
 	start_button.pressed.connect(_on_start_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
+	credits_button.pressed.connect(_on_credits_button_pressed)
 	
 	_setup_ui()
 
@@ -55,3 +57,6 @@ func _on_start_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_credits_button_pressed() -> void:
+	pass
