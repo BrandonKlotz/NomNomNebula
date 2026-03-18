@@ -70,7 +70,7 @@ metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 [sub_resource type="Resource" id="Resource_lqfd0"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("9_jnt4g")
-volume_db = -5.0
+volume_db = -7.0
 pitch_randomness = 0.05
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
