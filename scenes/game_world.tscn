@@ -31,6 +31,21 @@
 [ext_resource type="PackedScene" uid="uid://bliqp60aweli1" path="res://scenes/game_scenes/black_hole.tscn" id="25_y5rsn"]
 [ext_resource type="Shader" uid="uid://dwat4244mpgov" path="res://shaders/chromatic_aberration.gdshader" id="26_y5rsn"]
 
+[sub_resource type="Gradient" id="Gradient_gqenn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vbm8o"]
+gradient = SubResource("Gradient_gqenn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqenn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 960, 1)
+orbit_velocity_min = -0.014999906
+orbit_velocity_max = 0.015000096
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_vbm8o")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y38y"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5nmku"]
@@ -101,6 +116,13 @@ position = Vector2(0, 1920)
 texture = ExtResource("5_iokjm")
 region_enabled = true
 region_rect = Rect2(0, 0, 5760, 1920)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=442388193]
+amount = 700
+lifetime = 25.89
+preprocess = 10.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_gqenn")
 
 [node name="AnimationComponent" type="Node2D" parent="." unique_id=1041619207]
 script = ExtResource("2_odt01")

@@ -7,6 +7,7 @@ func _ready() -> void:
 	EventManager.on_player_destabilized.connect(on_start_game_over)
 
 func on_start_game_over():
+	self.visible = true
 	active = true
 	Globals.player.can_control = false
 	Globals.game_camera.target = Globals.player
