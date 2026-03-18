@@ -9,6 +9,7 @@ extends State
 var was_inside_inner_radius: bool = false
 var absorbing_timer: float
 var inner_radius: float = 50
+var absorbing_speed : float = 1
 
 func enter() -> void:
 	galaxy.charge_player.play()
@@ -29,7 +30,8 @@ func update(delta: float) -> void:
 	target.global_position = galaxy.global_position + _get_offset_to_player() * -1.0 * 0.5
 
 	if not is_inside:
-		absorbing_timer -= delta
+		absorbing_timer -= delta * absorbing_speed*(Globals.player.absortion_speed_factor*Globals.player.target_size)
+		print(absorbing_timer)
 	else:
 		absorbing_timer = absorption_time_required
 	

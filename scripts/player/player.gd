@@ -15,6 +15,8 @@ var can_control : bool = true
 var target_size: float = 0.5
 var velocity: Vector2 = Vector2.ZERO
 var color_amount : int = 1
+var escaping_timer_factor : float = 1
+var absortion_speed_factor : float = 1
 
 func _ready() -> void:
 	animation.play("main")
@@ -125,14 +127,15 @@ func _apply_stability_drain_factor(value: float) -> void:
 
 # TODO: Grey
 func _apply_escaping_time(value: float) -> void:
-	print("TODO: _apply_escaping_time")
-	pass
+	escaping_timer_factor = value
 	
 func _apply_absorption_speed_factor(value: float) -> void:
-	print("TODO: _apply_absorption_speed_factor")
+	absortion_speed_factor = value
 	pass
 
+func _invert_axes_directions(value:Vector2) -> void:
+	player_movement.invert_axes(value)
+
 func _apply_movement_speed_factor(value: float) -> void:
-	print("TODO: _apply_movement_speed_factor")
-	pass
+	player_movement.apply_movement_factor_speed(value)
 #endregion
