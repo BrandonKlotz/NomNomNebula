@@ -19,9 +19,9 @@ func _ready() -> void:
 	EventManager.on_game_state_changed.connect(_on_game_state_changed)
 	
 	# FIXME: remove
-	#await get_tree().create_timer(5.0).timeout
-	#var r = GalaxyData.new()
-	#absorb_galaxy(r)
+	await get_tree().create_timer(4.0).timeout
+	var r = GalaxyData.new()
+	absorb_galaxy(r)
 
 func _process(_delta: float) -> void:
 	camera_target.global_position = global_position + (velocity)
@@ -50,7 +50,7 @@ func absorb_galaxy(data: GalaxyData) -> void:
 	
 	# FIXME: Remove
 	#buff_debuff = BuffDebuffPool.pool["buffs"][5]
-	#buff_debuff = BuffDebuffPool.pool["debuffs"][1]
+	#buff_debuff = BuffDebuffPool.pool["debuffs"][4]
 	#print(buff_debuff)
 	
 	player_movement.set_control_type(PlayerMovement.ControlType.NORMAL)
@@ -67,16 +67,11 @@ func apply_buff_debuff(buff: Dictionary) -> void:
 		BuffDebuffKey.STABILITY_TIME: _apply_stability_time,
 		BuffDebuffKey.SIZE_CHANGE_FACTOR: _apply_size_change_factor,
 		BuffDebuffKey.CONTROL_TYPE: _apply_control_type,
-		
-		# TODO: Grey
-		BuffDebuffKey.ESCAPING_TIME_FACTOR: _apply_escaping_time_factor,
+		BuffDebuffKey.STABILITY_MAX: _apply_stability_max,
+		BuffDebuffKey.STABILITY_DRAIN_FACTOR: _apply_stability_drain_factor,
+		BuffDebuffKey.ESCAPING_TIME: _apply_escaping_time,
 		BuffDebuffKey.ABSORPTION_SPEED_FACTOR: _apply_absorption_speed_factor,
 		BuffDebuffKey.MOVEMENT_SPEED_FACTOR: _apply_movement_speed_factor,
-		
-		# TODO: cris
-		BuffDebuffKey.STABILITY_MAX: _apply_stability_max,
-		BuffDebuffKey.STABILITY_SPEED_FACTOR: _apply_stability_speed_factor,
-		BuffDebuffKey.BLACK_HOLES_PROB_FACTOR: _apply_black_holes_prob_factor,
 	}
 
 	for key in buff.keys():
@@ -115,9 +110,15 @@ func _apply_dash_recharge_factor(value: float) -> void:
 func _apply_stability_time(value: float) -> void:
 	stabilization_component.add_time(value)
 
-# TODO: missing applies
-func _apply_escaping_time_factor(value: float) -> void:
-	print("TODO: _apply_escaping_time_factor")
+func _apply_stability_max(value: int) -> void:
+	stabilization_component.modify_max_time(value)
+
+func _apply_stability_drain_factor(value: float) -> void:
+	stabilization_component.apply_drain_factor(value)
+
+# TODO: Grey
+func _apply_escaping_time(value: float) -> void:
+	print("TODO: _apply_escaping_time")
 	pass
 	
 func _apply_absorption_speed_factor(value: float) -> void:
@@ -126,17 +127,5 @@ func _apply_absorption_speed_factor(value: float) -> void:
 
 func _apply_movement_speed_factor(value: float) -> void:
 	print("TODO: _apply_movement_speed_factor")
-	pass
-
-func _apply_stability_max(value: int) -> void:
-	print("TODO: _apply_stability_max")
-	pass
-
-func _apply_stability_speed_factor(value: float) -> void:
-	print("TODO: _apply_stability_speed_factor")
-	pass
-
-func _apply_black_holes_prob_factor(value: float) -> void:
-	print("TODO: _apply_black_holes_prob_factor")
 	pass
 #endregion

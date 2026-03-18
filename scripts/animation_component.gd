@@ -22,7 +22,7 @@ func subtle_wobble(override_node: Node = null) -> void:
 
 	var tween: Tween = create_tween()
 	var original_scale: Vector2 = parent.scale
-	var click_scale: float = 0.96
+	var click_scale: float = 0.98
 
 	tween.tween_property(parent, "scale", original_scale * click_scale, 0.05)\
 		.set_trans(Tween.TRANS_QUAD)\

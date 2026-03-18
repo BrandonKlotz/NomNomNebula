@@ -43,7 +43,6 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://components/": "orange",
 "res://resources/": "pink",
 "res://scenes/": "purple",
 "res://scripts/": "green",

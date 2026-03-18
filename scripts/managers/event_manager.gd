@@ -22,6 +22,7 @@ signal on_player_absorbed()
 signal on_attracting_player
 signal on_player_destabilized
 signal on_stabilization_changed(data: Dictionary)
+signal on_stabilization_max_changed
 signal on_stabilization_warning
 signal on_stabilization_warning_end
 signal on_galaxies_updated(Array)
