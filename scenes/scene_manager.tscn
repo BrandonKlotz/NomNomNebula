@@ -7,8 +7,8 @@
 shader = ExtResource("2_65mdo")
 shader_parameter/progress = 0.0
 shader_parameter/reverse = false
-shader_parameter/numberOfTiles = Vector2(20, 20)
-shader_parameter/pixelsPerTile = Vector2(16, 16)
+shader_parameter/numberOfTiles = Vector2(32, 32)
+shader_parameter/pixelsPerTile = Vector2(32, 32)
 
 [node name="SceneManager" type="CanvasLayer" unique_id=805521949]
 layer = 99

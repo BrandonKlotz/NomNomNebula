@@ -7,18 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="5_o0nwa"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="7_3o3s0"]
 [ext_resource type="Texture2D" uid="uid://b53onynrxfexa" path="res://resources/UI/arrow_right.png" id="7_aay0u"]
+[ext_resource type="PackedScene" uid="uid://datwf23lf12kx" path="res://scenes/menu_particles.tscn" id="8_aay0u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0nwa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aay0u"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0nwa"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(26.805, 123.29, 1)
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
 
 [node name="GameTitle" type="Node2D" unique_id=1992495304]
 script = ExtResource("1_ke8lo")
@@ -232,9 +225,5 @@ grow_horizontal = 2
 grow_vertical = 0
 custom_title = "Close"
 
-[node name="StarParticles" type="GPUParticles2D" parent="CanvasLayer/Panel" unique_id=137655603]
+[node name="StarParticles" parent="CanvasLayer/Panel" unique_id=498228107 instance=ExtResource("8_aay0u")]
 position = Vector2(-31, 90)
-amount = 100
-lifetime = 60.0
-preprocess = 100.0
-process_material = SubResource("ParticleProcessMaterial_o0nwa")

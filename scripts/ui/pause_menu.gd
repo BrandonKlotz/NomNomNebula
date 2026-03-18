@@ -4,8 +4,8 @@ extends Node
 signal on_resume
 signal on_finish
 
-@onready var resume_button: Button = $PauseMenu/ResumeButton
-@onready var exit_button: Button = $PauseMenu/ExitButton
+@onready var resume_button: MainButton = $PauseMenu/HBoxContainer/ResumeButton
+@onready var exit_button: MainButton = $PauseMenu/HBoxContainer/ExitButton
 @onready var effects_slider: HSlider = $PauseMenu/EffectsSlider
 @onready var music_slider: HSlider = $PauseMenu/MusicSlider
 @onready var delete_button: Button = $PauseMenu/DeleteButton

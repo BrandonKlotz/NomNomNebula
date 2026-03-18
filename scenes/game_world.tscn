@@ -30,12 +30,6 @@
 [ext_resource type="Script" uid="uid://c4u4i0c0aw3dp" path="res://scripts/shock_wave.gd" id="25_5nmku"]
 [ext_resource type="Shader" uid="uid://dwat4244mpgov" path="res://shaders/chromatic_aberration.gdshader" id="26_y5rsn"]
 
-[sub_resource type="Gradient" id="Gradient_gqenn"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vbm8o"]
-gradient = SubResource("Gradient_gqenn")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqenn"]
 particle_flag_disable_z = true
 emission_shape = 3
@@ -43,7 +37,6 @@ emission_box_extents = Vector3(960, 960, 1)
 orbit_velocity_min = -0.014999906
 orbit_velocity_max = 0.015000096
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_vbm8o")
 
 [sub_resource type="Environment" id="Environment_gqenn"]
 background_mode = 3
@@ -131,6 +124,8 @@ amount = 700
 lifetime = 25.89
 preprocess = 10.0
 randomness = 0.5
+visibility_rect = Rect2(-960, -960, 1920, 1920)
+trail_sections = 23
 process_material = SubResource("ParticleProcessMaterial_gqenn")
 
 [node name="AnimationComponent" type="Node2D" parent="." unique_id=1041619207]
@@ -349,6 +344,22 @@ theme_override_font_sizes/font_size = 7
 text = "Must orbit the galaxy at a stable distance to absorb it
 "
 autowrap_mode = 2
+
+[node name="ConditionsPanel" type="Panel" parent="CanvasLayer" unique_id=1017290899]
+offset_left = 5.0
+offset_top = 137.0
+offset_right = 102.0
+offset_bottom = 176.0
+
+[node name="ConditionsLabel" type="Label" parent="CanvasLayer/ConditionsPanel" unique_id=1734102955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "Conditions:"
 
 [node name="VFX" type="Panel" parent="CanvasLayer" unique_id=2058071242]
 visible = false

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://datwf23lf12kx"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0nwa"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(26.805, 123.29, 1)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+
+[node name="StarParticles" type="GPUParticles2D" unique_id=498228107]
+amount = 100
+lifetime = 60.0
+preprocess = 100.0
+process_material = SubResource("ParticleProcessMaterial_o0nwa")

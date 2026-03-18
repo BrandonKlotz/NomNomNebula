@@ -13,6 +13,7 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var main_camera: MainCamera = $MainCamera
 @onready var galaxy_spawner: GalaxySpawner = $GalaxySpawner
 @onready var minimap_markers: MinimapMarkers = $MinimapViewport/MinimapMarkers
+@onready var conditions_label: Label = $CanvasLayer/ConditionsPanel/ConditionsLabel
 
 enum GameState {
 	ONGOING, PAUSED, FINISHED
@@ -47,10 +48,15 @@ func _ready() -> void:
 	EventManager.on_tooltip_show.connect(_on_galaxy_tooltip_show)
 	EventManager.on_tooltip_hide.connect(_on_galaxy_tooltip_hide)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
+	EventManager.on_buff_applied.connect(_on_buff_applied)
+	
 	AudioManager.play_music(AudioManager.tracks.game_music)
 	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
 
+func _on_buff_applied(data: Dictionary) -> void:
+	conditions_label.text = "\n".join(data.keys().map(func(c: String) -> String: return c + " : " + str(data[c])))
+ 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and current_state != GameState.FINISHED:
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)

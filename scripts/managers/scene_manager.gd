@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var target_scene: String = ""
-var duration: float = 1.0
+var duration: float = 0.8
 var is_loading: bool = false
 var progress: Array = []
 var material: ShaderMaterial

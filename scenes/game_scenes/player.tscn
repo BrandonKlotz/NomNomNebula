@@ -201,21 +201,3 @@ player = NodePath("..")
 player_movement = NodePath("../PlayerMovement")
 
 [node name="CameraTarget" type="Node2D" parent="." unique_id=2122891678]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=654997824]
-
-[node name="ConditionsPanel" type="Panel" parent="CanvasLayer" unique_id=1264211058]
-offset_left = 5.0
-offset_top = 137.0
-offset_right = 102.0
-offset_bottom = 176.0
-
-[node name="ConditionsLabel" type="Label" parent="CanvasLayer/ConditionsPanel" unique_id=442156544]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 5
-text = "Conditions:"

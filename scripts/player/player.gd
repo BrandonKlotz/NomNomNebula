@@ -6,7 +6,6 @@ extends Node2D
 @onready var player_movement: PlayerMovement = $PlayerMovement
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_target : Node2D = $CameraTarget
-@onready var conditions_label: Label = $CanvasLayer/ConditionsPanel/ConditionsLabel
 @onready var dash_particles: GPUParticles2D = $DashParticles
 
 var can_move: bool = true
@@ -68,7 +67,7 @@ func absorb_galaxy(data: GalaxyData) -> void:
 	stabilization_component.reset_buffs()
 	
 	apply_buff_debuff(buff_debuff)
-	conditions_label.text = "\n".join(buff_debuff.keys().map(func(c: String) -> String: return c + " : " + str(buff_debuff[c])))
+	EventManager.on_buff_applied.emit(buff_debuff)
 
 func apply_buff_debuff(buff: Dictionary) -> void:
 	var HANDLERS: Dictionary = {

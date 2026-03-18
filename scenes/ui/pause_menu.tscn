@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b5ht42oxsuuv2" path="res://scripts/ui/pause_menu.gd" id="1_6tw0m"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="2_0lmf7"]
+[ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="3_f6eus"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6eus"]
-bg_color = Color(0, 0, 0, 0.47843137)
+bg_color = Color(0, 0, 0, 0.7058824)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lmf7"]
 
@@ -24,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -80.5
-offset_top = -53.0
-offset_right = 79.0
-offset_bottom = 43.0
+offset_left = -107.0
+offset_top = -70.0
+offset_right = 107.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_0lmf7")
@@ -46,69 +47,78 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 
 [node name="Label" type="Label" parent="PauseMenu" unique_id=1778887417]
-layout_mode = 0
-offset_left = 57.0
-offset_top = 8.0
-offset_right = 97.0
-offset_bottom = 22.0
-theme_override_font_sizes/font_size = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_top = 11.0
+offset_right = 28.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
 text = "Pause"
 
 [node name="Label2" type="Label" parent="PauseMenu" unique_id=173630286]
 layout_mode = 0
-offset_left = 11.5
-offset_top = 48.0
-offset_right = 51.5
-offset_bottom = 62.0
+offset_left = 33.0
+offset_top = 73.0
+offset_right = 73.0
+offset_bottom = 87.0
 theme_override_font_sizes/font_size = 8
 text = "SFX"
 
 [node name="Label3" type="Label" parent="PauseMenu" unique_id=1701451898]
 layout_mode = 0
-offset_left = 10.5
-offset_top = 28.0
-offset_right = 50.5
-offset_bottom = 42.0
+offset_left = 32.0
+offset_top = 53.0
+offset_right = 72.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 8
 text = "Music"
 
-[node name="ResumeButton" type="Button" parent="PauseMenu" unique_id=433400399]
-layout_mode = 0
-offset_left = 10.5
-offset_top = 72.0
-offset_right = 60.5
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 8
-text = "Resume"
-
-[node name="ExitButton" type="Button" parent="PauseMenu" unique_id=1025437990]
-layout_mode = 0
-offset_left = 66.5
-offset_top = 72.0
-offset_right = 151.5
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 8
-text = "Return to Title"
-
 [node name="DeleteButton" type="Button" parent="PauseMenu" unique_id=253590657]
 layout_mode = 0
-offset_left = 43.5
-offset_top = 100.0
-offset_right = 111.5
-offset_bottom = 116.0
+offset_left = 68.0
+offset_top = 141.0
+offset_right = 136.0
+offset_bottom = 157.0
 theme_override_font_sizes/font_size = 8
 text = "Delete data"
 
 [node name="EffectsSlider" type="HSlider" parent="PauseMenu" unique_id=2034721373]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 45.0
-offset_right = 146.0
-offset_bottom = 61.0
+offset_left = 94.5
+offset_top = 70.0
+offset_right = 167.5
+offset_bottom = 86.0
 
 [node name="MusicSlider" type="HSlider" parent="PauseMenu" unique_id=889660522]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 26.0
-offset_right = 146.0
-offset_bottom = 42.0
+offset_left = 94.5
+offset_top = 51.0
+offset_right = 167.5
+offset_bottom = 67.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu" unique_id=502909651]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -25.0
+offset_right = 52.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="ResumeButton" parent="PauseMenu/HBoxContainer" unique_id=287327500 instance=ExtResource("3_f6eus")]
+layout_mode = 2
+custom_title = "Resume"
+
+[node name="ExitButton" parent="PauseMenu/HBoxContainer" unique_id=279225581 instance=ExtResource("3_f6eus")]
+layout_mode = 2
+custom_title = "Exit to Title"

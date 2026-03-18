@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://c60pdghh651sm"]
 
 [ext_resource type="Script" uid="uid://bpc4j0pk5q4ck" path="res://scripts/game_over.gd" id="1_xeevv"]
+[ext_resource type="Texture2D" uid="uid://d2rdhv0ac2g1t" path="res://resources/UI/GG-MenuBG.png" id="2_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="3_racf3"]
+[ext_resource type="PackedScene" uid="uid://datwf23lf12kx" path="res://scenes/menu_particles.tscn" id="3_tbwuq"]
+[ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="4_7m3ot"]
+[ext_resource type="Texture2D" uid="uid://y71y2r5t4km7" path="res://resources/UI/score_star.png" id="4_v3hpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqhvx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3hpu"]
 
 [node name="GameOver" type="Node2D" unique_id=962722867]
 script = ExtResource("1_xeevv")
+
+[node name="GgMenuBg" type="Sprite2D" parent="." unique_id=208713689]
+position = Vector2(160, 90)
+texture = ExtResource("2_wqhvx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=928735873]
 
@@ -13,56 +26,130 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wqhvx")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/SummaryPanel" unique_id=754256228]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 29.0
-offset_right = 228.0
-offset_bottom = 165.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -68.5
+offset_right = 109.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v3hpu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SummaryPanel/Panel" unique_id=647013183]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_racf3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1235052244]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 5.0
-offset_right = 85.0
-offset_bottom = 19.0
-theme_override_font_sizes/font_size = 12
-text = "Finished"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.5
+offset_top = 14.5
+offset_right = 53.5
+offset_bottom = 28.5
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Game Over"
 horizontal_alignment = 1
 
-[node name="CurrentLabel" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=765802719]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 39.0
-offset_right = 108.0
-offset_bottom = 53.0
-theme_override_font_sizes/font_size = 12
-text = "Your score: 99"
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1641199783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="HighestLabel" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1030136943]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 56.0
-offset_right = 108.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 12
-text = "Highest score: 99"
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer" unique_id=885884109]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+alignment = 1
 
-[node name="StartOverButton" type="Button" parent="CanvasLayer/SummaryPanel/Panel" unique_id=353620936]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 83.0
-offset_right = 87.0
-offset_bottom = 105.0
-theme_override_font_sizes/font_size = 12
-text = "Start Over"
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=1030136943]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Highest score"
+horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/SummaryPanel/Panel" unique_id=787000946]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 107.0
-offset_right = 97.0
-offset_bottom = 129.0
-theme_override_font_sizes/font_size = 12
-text = "Return to Title"
+[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=728368313]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 1
+
+[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=395833735]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_v3hpu")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer" unique_id=1817010706]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer2" unique_id=790342154]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Highest score"
+horizontal_alignment = 1
+
+[node name="CurrentScore" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer2" unique_id=672994065]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel" unique_id=760028493]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -25.5
+offset_right = 75.0
+offset_bottom = -10.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="StartOverButton" parent="CanvasLayer/SummaryPanel/Panel/HBoxContainer" unique_id=287327500 instance=ExtResource("4_7m3ot")]
+layout_mode = 2
+custom_title = "Play Again"
+
+[node name="ExitButton" parent="CanvasLayer/SummaryPanel/Panel/HBoxContainer" unique_id=751067962 instance=ExtResource("4_7m3ot")]
+layout_mode = 2
+custom_title = "Exit to Title"
+
+[node name="StarParticles" parent="CanvasLayer/SummaryPanel" unique_id=498228107 instance=ExtResource("3_tbwuq")]
+position = Vector2(-31, 90)
