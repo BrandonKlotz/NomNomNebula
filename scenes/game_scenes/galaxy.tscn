@@ -439,6 +439,7 @@ galaxy = NodePath("../..")
 metadata/_custom_type_script = "uid://btwfig6s12las"
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1434764620]
+visible = false
 offset_left = -19.0
 offset_top = -31.0
 offset_right = 35.0
