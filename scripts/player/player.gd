@@ -1,7 +1,6 @@
 class_name Player
 extends Node2D
 
-
 @onready var dash_component: DashComponent = $DashComponent
 @onready var stabilization_component: StabilizationComponent = $StabilizationComponent
 @onready var player_movement: PlayerMovement = $PlayerMovement
@@ -16,7 +15,7 @@ var target_size: float = 0.5
 var velocity: Vector2 = Vector2.ZERO
 var color_amount : int = 1
 var escaping_timer_factor : float = 1
-var absortion_speed_factor : float = 1
+var absorption_speed_factor : float = 1
 
 func _ready() -> void:
 	animation.play("main")
@@ -57,6 +56,7 @@ func absorb_galaxy(data: GalaxyData) -> void:
 	var buff_debuff: Dictionary = data.buff_debuff
 	
 	# FIXME: Remove
+	#buff_debuff = BuffDebuffPool.buffs[0]
 	#buff_debuff = BuffDebuffPool.buffs[0]
 	#buff_debuff = BuffDebuffPool.pool["debuffs"][4]
 	#print(buff_debuff)
@@ -132,7 +132,7 @@ func _apply_escaping_time(value: float) -> void:
 	escaping_timer_factor = value
 	
 func _apply_absorption_speed_factor(value: float) -> void:
-	absortion_speed_factor = value
+	absorption_speed_factor = value
 	pass
 
 func _invert_axes_directions(value:Vector2) -> void:

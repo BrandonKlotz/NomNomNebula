@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 	if recharge_elapsed >= _get_recharge_time():
 		recharge_elapsed = 0.0
 		recharging = false
-		current_buff_dashes = 0
 		dash_count = get_max_dashes()
 		_emit_change()
 		AudioManager.play_sfx(AudioManager.tracks.dash_recovered)

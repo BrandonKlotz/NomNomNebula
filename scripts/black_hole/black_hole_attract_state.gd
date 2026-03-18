@@ -32,13 +32,12 @@ func update(delta: float) -> void:
 		elapsed_time += delta
 	
 	if timer <= 0:
-		strong_attract_start_time = Time.get_ticks_msec()/1000.0
+		strong_attract_start_time = Time.get_ticks_msec() / 1000.0
 		strenght = 15.0
 		
-	var force : Vector2 = calc_force()
+	var force: Vector2 = calc_force()
 	Globals.player.apply_force(force)
-	sprite.material.set_shader_parameter("holeSize", 0.1+0.4*elapsed_time/max_time)
-	
+	sprite.material.set_shader_parameter("holeSize", 0.1 + 0.4 * elapsed_time / max_time)
 	black_hole.timer_label.text = "%.2f" % timer
 
 func on_exited_area(_area:Area2D) -> void:
@@ -55,13 +54,12 @@ func calc_force() -> Vector2:
 	var offset: Vector2 = get_offset_to_player()
 	var dir: Vector2 = offset.normalized()
 	var distance = maxf(offset.length(), 5.0)
-	return dir * strenght / (distance*0.01)
+	return dir * strenght / (distance * 0.01)
 	
 func get_offset_to_player() -> Vector2:
 	return black_hole.global_position - Globals.player.global_position
 	
 func on_player_dash_used():
-	print('a')
 	last_dash_used_time = Time.get_ticks_msec() / 1000.0
 	if timer < 0.5 or abs(last_dash_used_time - strong_attract_start_time) < 0.5:
 		change_state.emit(self, "disabled")

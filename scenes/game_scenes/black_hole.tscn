@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqrf1vf5m2mh0" path="res://resources/Art/Galaxy Sprite Sheets/player galaxy.png" id="3_j8733"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_wcccu"]
 [ext_resource type="Script" uid="uid://bwthvu36djjr5" path="res://scripts/black_hole/black_hole_idle_state.gd" id="4_af03i"]
-[ext_resource type="Script" uid="uid://dtpatowrx86mu" path="res://scripts/black_hole/black_hole_attrach_state.gd" id="5_6ssig"]
+[ext_resource type="Script" uid="uid://dtpatowrx86mu" path="res://scripts/black_hole/black_hole_attract_state.gd" id="5_6ssig"]
 [ext_resource type="Script" uid="uid://nb7owm6wnxtl" path="res://scripts/black_hole/black_hole_disabled_state.gd" id="9_87cyb"]
 
 [sub_resource type="Resource" id="Resource_q3qfo"]
@@ -80,7 +80,7 @@ script = ExtResource("4_af03i")
 attraction_area = NodePath("../../InteractionArea")
 metadata/_custom_type_script = "uid://bwthvu36djjr5"
 
-[node name="Attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite")]
+[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite")]
 script = ExtResource("5_6ssig")
 attraction_area = NodePath("../../InteractionArea")
 black_hole = NodePath("../..")

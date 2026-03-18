@@ -30,7 +30,7 @@ func update(delta: float) -> void:
 	target.global_position = galaxy.global_position + _get_offset_to_player() * -1.0 * 0.5
 
 	if not is_inside:
-		absorbing_timer -= delta * absorbing_speed*(Globals.player.absortion_speed_factor*Globals.player.target_size)
+		absorbing_timer -= delta * absorbing_speed*(Globals.player.absorption_speed_factor*Globals.player.target_size)
 		print(absorbing_timer)
 	else:
 		absorbing_timer = absorption_time_required
