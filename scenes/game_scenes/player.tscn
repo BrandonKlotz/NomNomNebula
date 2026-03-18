@@ -11,6 +11,26 @@
 [ext_resource type="Texture2D" uid="uid://b53onynrxfexa" path="res://resources/UI/arrow_right.png" id="10_ttkvm"]
 [ext_resource type="Script" uid="uid://c1npqec65kjpn" path="res://scripts/player/vel_direction_arrow.gd" id="11_7iota"]
 
+[sub_resource type="Gradient" id="Gradient_ttkvm"]
+offsets = PackedFloat32Array(0.67027026, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7iota"]
+gradient = SubResource("Gradient_ttkvm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bk2f8"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 28.92
+direction = Vector3(0, 0, 0)
+spread = 25.0
+initial_velocity_max = 80.32
+gravity = Vector3(0, 0, 0)
+scale_over_velocity_max = 96.39
+color_ramp = SubResource("GradientTexture1D_7iota")
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 1.296
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttkvm"]
 atlas = ExtResource("4_wxxbh")
 region = Rect2(0, 0, 32, 32)
@@ -125,6 +145,14 @@ radius = 22.090721
 [node name="Player" type="Node2D" unique_id=1205687715]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fdpfy")
+
+[node name="DashParticles" type="GPUParticles2D" parent="." unique_id=1154075137]
+position = Vector2(-8, 0)
+amount = 20
+lifetime = 0.5
+explosiveness = 0.8
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bk2f8")
 
 [node name="PlayerMovement" type="Node2D" parent="." unique_id=1515665023 node_paths=PackedStringArray("player", "movement_indicator")]
 script = ExtResource("3_bhlyf")

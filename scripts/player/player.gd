@@ -8,6 +8,7 @@ extends Node2D
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var camera_target : Node2D = $CameraTarget
 @onready var conditions_label: Label = $CanvasLayer/ConditionsPanel/ConditionsLabel
+@onready var dash_particles: GPUParticles2D = $DashParticles
 
 var can_move: bool = true
 var can_control : bool = true
@@ -18,6 +19,9 @@ var color_amount : int = 1
 func _ready() -> void:
 	animation.play("main")
 	EventManager.on_game_state_changed.connect(_on_game_state_changed)
+	
+	dash_particles.one_shot = true
+	dash_particles.emitting = false
 	
 	# FIXME: remove
 	await get_tree().create_timer(4.0).timeout
@@ -30,6 +34,7 @@ func _process(_delta: float) -> void:
 func use_dash() -> void:
 	dash_component.consume_dash()
 	EventManager.on_camera_shake.emit(1.0, 1.0)
+	dash_particles.restart()
 
 func use_dash_error() -> void:
 	EventManager.on_dash_error.emit()
