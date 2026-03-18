@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 	_handle_wrapping()
 
 func _handle_wrapping() -> void:
-	var pos: Vector2 = self.position
+	var pos: Vector2 = owner.position
 	var padding: float = TILE_SIZE * PADDING_TILES
 	var max_x: float = CANVAS_SIZE - padding
 	var min_x: float = (CANVAS_SIZE - padding) * -1
@@ -30,8 +30,8 @@ func _handle_wrapping() -> void:
 	elif pos.y < min_x:
 		pos.y += size
 		offset.y = size
-
-	self.position = pos
+	
+	owner.position = pos
 	
 	if move_camera and offset != Vector2.ZERO:
 		Globals.game_camera.position += offset

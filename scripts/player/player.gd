@@ -9,12 +9,12 @@ extends Node2D
 @onready var dash_particles: GPUParticles2D = $DashParticles
 
 var can_move: bool = true
-var can_control : bool = true
+var can_control: bool = true
 var target_size: float = 0.5
 var velocity: Vector2 = Vector2.ZERO
-var color_amount : int = 1
-var escaping_timer_factor : float = 1
-var absorption_speed_factor : float = 1
+var color_amount: int = 1
+var escaping_timer_factor: float = 1
+var absorption_speed_factor: float = 1
 
 func _ready() -> void:
 	animation.play("main")
