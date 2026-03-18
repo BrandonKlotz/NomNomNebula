@@ -11,6 +11,9 @@ func enter() -> void:
 	attraction_area.area_entered.connect(start_attraction_state)
 	
 func update(_delta: float) -> void:
+	if not Flags.move_galaxies():
+		return
+	
 	add_random_velocity()
 
 func start_attraction_state(_area: Area2D) -> void:

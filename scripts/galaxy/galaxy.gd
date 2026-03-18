@@ -4,7 +4,6 @@ extends Node2D
 const VORTEX_MATERIAL: Resource = preload("uid://jske8d54cs0g")
 
 @export var data: GalaxyData
-@export var buff_debuff : BuffDebuff
 @export var scaling_speed: float = 1
 
 @onready var animation: AnimatedSprite2D = get_node("Animation")
@@ -16,8 +15,6 @@ var size: float
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	buff_debuff = BuffDebuff.new()
-	buff_debuff.mass = 1
 	EventManager.on_game_state_changed.connect(_on_game_state_changed)
 	# duplicate shape to make size unique per galaxy
 	var shape: CircleShape2D = interaction_collision_shape.shape.duplicate()
@@ -72,3 +69,11 @@ func is_good_galaxy() -> bool:
 
 func uid() -> String:
 	return data.uid
+
+func set_good():
+	var buff: Dictionary = BuffDebuffFactory.generate_buff()
+	self.data.buff_debuff = buff
+
+func set_bad():
+	var debuff: Dictionary = BuffDebuffFactory.generate_debuff()
+	self.data.buff_debuff = debuff

@@ -8,7 +8,10 @@ func _ready() -> void:
 
 func present(data: GalaxyData) -> void:
 	self.visible = true
-	data_label.text = data.uid
+	data_label.text = "\n".join([
+		data.uid,
+		data.buff_debuff
+	])
 
 func dismiss() -> void:
 	self.visible = false

@@ -3,6 +3,7 @@ class_name Flags
 #region Values
 const SKIP_SCENE_MANAGER: int = 1
 const AUTOSTART: int = 1
+const MOVE_GALAXIES: int = 0
 #endregion
 
 #region Functions
@@ -11,6 +12,9 @@ static func skip_scene_manager() -> bool:
 
 static func autostart() -> bool:
 	return is_debug() and AUTOSTART
+
+static func move_galaxies() -> bool:
+	return is_debug() and MOVE_GALAXIES
 #endregion
 
 static func is_debug() -> bool:

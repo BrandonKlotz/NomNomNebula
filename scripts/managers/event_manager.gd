@@ -9,7 +9,7 @@ signal on_camera_shake(strengh: float, time: float)
 signal on_shock_wave
 signal on_game_state_changed(state: GameWorld.GameState)
 
-signal on_galaxy_absorbed(data: GalaxyData, buff_debuff: BuffDebuff)
+signal on_galaxy_absorbed(data: GalaxyData)
 signal on_tooltip_show(data: GalaxyData)
 signal on_tooltip_hide
 signal on_dash_used

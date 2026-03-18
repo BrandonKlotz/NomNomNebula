@@ -2,7 +2,7 @@ class_name PlayerMovement
 extends Node2D
 
 enum MovementType {
-	NORMAL, TANK, INVERSE
+	NORMAL, TANK, INVERTED
 }
 
 @export var player: Player
@@ -10,6 +10,10 @@ enum MovementType {
 @export var acceleration: float = 300.0
 @export var friction: float = 0.98
 @export var movement_type: MovementType = MovementType.NORMAL
+
+func set_control_type(type: MovementType) -> void:
+	movement_type = type
+	# actually do something
 
 func _process(delta: float) -> void:
 	if not player.can_move:

@@ -103,8 +103,8 @@ func _handle_finish() -> void:
 	Engine.time_scale = 1.0
 	SceneManager.transition_to(Scenes.TITLE)
 
-func _on_galaxy_absorbed(data: GalaxyData, buff_debuff: BuffDebuff) -> void:
-	player.absorb_galaxy(buff_debuff)
+func _on_galaxy_absorbed(data: GalaxyData) -> void:
+	player.absorb_galaxy(data)
 	galaxy_spawner.remove_galaxy(data)
 
 func _on_galaxy_tooltip_show(data: GalaxyData) -> void:

@@ -36,11 +36,11 @@ func _process(_delta: float) -> void:
 	if galaxies.is_empty():
 		return
 
-	for galaxy in galaxies:
-		var id: String = galaxy.uid()
-
-		if not galaxy_markers.has(id):
-			continue
-
-		var marker: Sprite2D = galaxy_markers[id]
-		marker.position = galaxy.position * world_scale
+	#for galaxy in galaxies:
+		#var id: String = galaxy.uid()
+#
+		#if not galaxy_markers.has(id):
+			#continue
+#
+		#var marker: Sprite2D = galaxy_markers[id]
+		#marker.position = galaxy.position * world_scale
