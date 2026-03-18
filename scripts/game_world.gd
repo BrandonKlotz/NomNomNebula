@@ -80,14 +80,12 @@ func _handle_toggle_pause() -> void:
 		pause_menu.dismiss()
 		
 		EventManager.on_game_state_changed.emit(GameState.ONGOING)
-		AudioManager.resume_music()
 		Engine.time_scale = 1.0
 	else:
 		pause_menu.present()
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
 		
 		EventManager.on_game_state_changed.emit(GameState.PAUSED)
-		AudioManager.pause_music()
 		Engine.time_scale = 0.0
 
 func _on_game_over() -> void:

@@ -36,14 +36,14 @@ func apply_force(force: Vector2) -> void:
 	velocity += force
 
 func absorb_galaxy(data: GalaxyData) -> void:
-	#var buff_debuff: Dictionary = data.buff_debuff
+	var buff_debuff: Dictionary = data.buff_debuff
 	#var buff_debuff: Dictionary = BuffDebuffPool.pool["buffs"][0]
-	var buff_debuff: Dictionary = BuffDebuffPool.pool["debuffs"][2]
-	print(buff_debuff)
+	
+	#var buff_debuff: Dictionary = BuffDebuffPool.pool["debuffs"][2]
+	#print(buff_debuff)
 	
 	dash_component.reset_buffs()
 	#stabilization_component.reset_buffs()
-	
 	apply_buff_debuff(buff_debuff)
 
 func apply_buff_debuff(buff: Dictionary) -> void:
@@ -52,12 +52,12 @@ func apply_buff_debuff(buff: Dictionary) -> void:
 		BuffDebuffKey.DASH_FORCE_FACTOR: _apply_dash_force_factor,
 		BuffDebuffKey.DASH_RECHARGE_FACTOR: _apply_dash_recharge_factor,
 		BuffDebuffKey.STABILITY_TIME: _apply_stability_time,
-		
+		BuffDebuffKey.SIZE_CHANGE_FACTOR: _apply_size_change_factor,
+		# not done yet
 		BuffDebuffKey.STABILITY_SPEED_FACTOR: _apply_stability_speed_factor,
 		BuffDebuffKey.ESCAPING_TIME_FACTOR: _apply_escaping_time_factor,
 		BuffDebuffKey.ABSORTION_SPEED_FACTOR: _apply_absortion_speed_factor,
 		BuffDebuffKey.MOVEMENT_SPEED_FACTOR: _apply_movement_speed_factor,
-		BuffDebuffKey.SIZE_CHANGE_FACTOR: _apply_size_change_factor,
 		BuffDebuffKey.CONTROL_TYPE: _apply_control_type,
 		BuffDebuffKey.STABILITY_MAX: _apply_stability_max,
 		BuffDebuffKey.BLACK_HOLES_PROB_FACTOR: _apply_black_holes_prob_factor,
@@ -103,10 +103,6 @@ func _apply_stability_time(value: float) -> void:
 func _apply_escaping_time_factor(value: float) -> void:
 	print("TODO: _apply_escaping_time_factor")
 	pass
-
-func _apply_black_holes_prob_factor(value: float) -> void:
-	print("TODO: _apply_black_holes_prob_factor")
-	pass
 	
 func _apply_absortion_speed_factor(value: float) -> void:
 	print("TODO: _apply_absortion_speed_factor")
@@ -122,5 +118,9 @@ func _apply_stability_max(value: int) -> void:
 
 func _apply_stability_speed_factor(value: float) -> void:
 	print("TODO: _apply_stability_speed_factor")
+	pass
+
+func _apply_black_holes_prob_factor(value: float) -> void:
+	print("TODO: _apply_black_holes_prob_factor")
 	pass
 #endregion
