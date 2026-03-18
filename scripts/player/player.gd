@@ -17,9 +17,11 @@ var color_amount : int = 1
 func _ready() -> void:
 	animation.play("main")
 	EventManager.on_game_state_changed.connect(_on_game_state_changed)
-	await get_tree().create_timer(5.0).timeout
-	var r = GalaxyData.new()
-	absorb_galaxy(r)
+	
+	# FIXME: remove
+	#await get_tree().create_timer(5.0).timeout
+	#var r = GalaxyData.new()
+	#absorb_galaxy(r)
 
 func _process(_delta: float) -> void:
 	camera_target.global_position = global_position + (velocity)
@@ -42,16 +44,19 @@ func apply_force(force: Vector2) -> void:
 	velocity += force
 
 func absorb_galaxy(data: GalaxyData) -> void:
-	$Sprite2D.material.set_shader_parameter("color_count", color_amount+1)
+	$Sprite2D.material.set_shader_parameter("color_count", color_amount + 1)
 	color_amount += 1
-	var buff_debuff: Dictionary = data.buff_debuff
-	#var buff_debuff: Dictionary = BuffDebuffPool.pool["buffs"][0]
 	
-	#var buff_debuff: Dictionary = BuffDebuffPool.pool["debuffs"][2]
+	#var buff_debuff: Dictionary = data.buff_debuff
+	
+	#var buff_debuff: Dictionary = BuffDebuffPool.pool["buffs"][4]
+	var buff_debuff: Dictionary = BuffDebuffPool.pool["debuffs"][1]
 	#print(buff_debuff)
 	
+	player_movement.set_control_type(PlayerMovement.ControlType.NORMAL)
 	dash_component.reset_buffs()
-	#stabilization_component.reset_buffs()
+	stabilization_component.reset_buffs()
+	
 	apply_buff_debuff(buff_debuff)
 
 func apply_buff_debuff(buff: Dictionary) -> void:
@@ -61,12 +66,15 @@ func apply_buff_debuff(buff: Dictionary) -> void:
 		BuffDebuffKey.DASH_RECHARGE_FACTOR: _apply_dash_recharge_factor,
 		BuffDebuffKey.STABILITY_TIME: _apply_stability_time,
 		BuffDebuffKey.SIZE_CHANGE_FACTOR: _apply_size_change_factor,
-		# not done yet
-		BuffDebuffKey.STABILITY_SPEED_FACTOR: _apply_stability_speed_factor,
+		BuffDebuffKey.CONTROL_TYPE: _apply_control_type,
+		
+		# TODO: Grey
 		BuffDebuffKey.ESCAPING_TIME_FACTOR: _apply_escaping_time_factor,
 		BuffDebuffKey.ABSORPTION_SPEED_FACTOR: _apply_absorption_speed_factor,
 		BuffDebuffKey.MOVEMENT_SPEED_FACTOR: _apply_movement_speed_factor,
-		BuffDebuffKey.CONTROL_TYPE: _apply_control_type,
+		
+		# TODO: cris
+		BuffDebuffKey.STABILITY_SPEED_FACTOR: _apply_stability_speed_factor,
 		BuffDebuffKey.STABILITY_MAX: _apply_stability_max,
 		BuffDebuffKey.BLACK_HOLES_PROB_FACTOR: _apply_black_holes_prob_factor,
 	}
@@ -93,7 +101,7 @@ func _apply_size_change_factor(value: float) -> void:
 	target_size *= (1.0 + value)
 
 func _apply_control_type(value: int) -> void:
-	player_movement.set_control_type(PlayerMovement.MovementType.values()[value])
+	player_movement.set_control_type(PlayerMovement.ControlType.values()[value])
 
 func _apply_extra_dashes(value: int) -> void:
 	dash_component.apply_extra_dashes(value)

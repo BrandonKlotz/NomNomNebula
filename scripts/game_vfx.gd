@@ -5,5 +5,7 @@ extends Node
 @onready var color_aberration: ColorRect = $ColorAberration
 
 func _ready() -> void:
+	self.visible = true
+	
 	stabilization.visible = false
 	color_aberration.visible = false

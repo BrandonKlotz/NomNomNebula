@@ -5,12 +5,12 @@ extends Sprite2D
 @export var distance: float = 30
 
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 func _process(_delta: float) -> void:
-	if not player_movement.current_movement_type == player_movement.MovementType.TANK:
+	if not player_movement.current_movement_type == player_movement.ControlType.TANK:
 		return
-	var player_direction :Vector2 = Utils.rotation_to_vector(player_movement.movement_angle)
+	
+	var player_direction: Vector2 = Utils.rotation_to_vector(player_movement.movement_angle)
 	rotation = player_movement.movement_angle
 	global_position = player.position + player_direction * distance

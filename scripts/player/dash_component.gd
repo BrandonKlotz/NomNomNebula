@@ -16,6 +16,7 @@ var dash_delay_timer: float = 0.0
 var current_buff_dashes: int = 0
 
 func _ready() -> void:
+	effective_recharge = base_recharge
 	effective_speed = base_speed
 	dash_count = get_max_dashes()
 
@@ -60,7 +61,6 @@ func consume_dash() -> void:
 	if dash_count == 0:
 		_start_recharge()
 
-
 func dash_error() -> void:
 	AudioManager.play_sfx(AudioManager.tracks.dash_error)
 
@@ -89,6 +89,7 @@ func _get_recharge_time() -> float:
 func _start_recharge() -> void:
 	if recharging:
 		return
+	
 	recharging = true
 	recharge_elapsed = 0.0
 	EventManager.on_dash_recover_progress.emit(0.0)

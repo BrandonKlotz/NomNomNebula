@@ -1,6 +1,8 @@
 class_name GameWorld
 extends Node
 
+const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
+
 @onready var dash_panel: DashPanel = $CanvasLayer/DashPanel
 @onready var player: Player = $Player
 @onready var pause_menu: PauseMenu = $CanvasLayer/PauseMenu
@@ -44,6 +46,7 @@ func _ready() -> void:
 	EventManager.on_tooltip_hide.connect(_on_galaxy_tooltip_hide)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
 	AudioManager.play_music(AudioManager.tracks.game_music)
+	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
 
 func _process(_delta: float) -> void:

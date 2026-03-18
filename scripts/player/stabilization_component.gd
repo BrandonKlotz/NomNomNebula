@@ -52,10 +52,11 @@ func add_time(amount: float) -> void:
 	EventManager.on_stabilization_changed.emit(_get_data())
 
 func reset_buffs() -> void:
-	_reset_effective()
-	# clamp current_time in case max was reduced
-	current_time = min(current_time, effective_max_time)
-	EventManager.on_stabilization_changed.emit(_get_data())
+	#_reset_effective()
+	## clamp current_time in case max was reduced
+	#current_time = min(current_time, effective_max_time)
+	#EventManager.on_stabilization_changed.emit(_get_data())
+	pass
 
 func apply_stability_time(amount: float) -> void:
 	add_time(amount)

@@ -218,6 +218,7 @@ text = "Galaxy data"
 horizontal_alignment = 1
 
 [node name="StabilizationPanel" parent="CanvasLayer" unique_id=2092434660 instance=ExtResource("18_xxaiy")]
+mouse_filter = 2
 
 [node name="AbsorptionTutorial" type="Panel" parent="CanvasLayer" unique_id=2100812602]
 offset_left = 114.0
@@ -314,6 +315,7 @@ offset_bottom = 46.0
 texture = ExtResource("22_5nmku")
 
 [node name="VFX" type="Panel" parent="CanvasLayer" unique_id=2058071242]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -331,6 +333,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("25_5nmku")
 shock_wave_force = 0.05
 
