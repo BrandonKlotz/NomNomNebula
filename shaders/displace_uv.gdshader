@@ -1,0 +1,7 @@
+shader_type canvas_item;
+uniform vec2 offset;
+
+void fragment() {
+	vec2 uv = UV + offset;
+	COLOR = texture(TEXTURE, uv);
+}

@@ -17,10 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://deemgxdklxpvu" path="res://scenes/ui/pause_menu.tscn" id="11_odt01"]
 [ext_resource type="Texture2D" uid="uid://bwgjk5vsqnrxm" path="res://resources/Art/icons/gear.png" id="11_ph1f2"]
 [ext_resource type="Script" uid="uid://1hy21bsnn0ng" path="res://scripts/ui/galaxy_info_panel.gd" id="17_oyepb"]
+[ext_resource type="Shader" uid="uid://br1gbhg6xop70" path="res://shaders/displace_uv.gdshader" id="18_eto5o"]
 [ext_resource type="PackedScene" uid="uid://jgiwhntmki7w" path="res://scenes/ui/stabilization_panel.tscn" id="18_xxaiy"]
 [ext_resource type="PackedScene" uid="uid://dpwoginuct65t" path="res://scenes/main_camera.tscn" id="19_fg3oe"]
 [ext_resource type="Script" uid="uid://c81dqmvah0kk" path="res://scripts/ui/stabilization_screen_fx.gd" id="19_mf52o"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="20_0y38y"]
+[ext_resource type="Script" uid="uid://cqkpva7850ljk" path="res://scripts/ui/radar_wrap.gd" id="20_gqenn"]
 [ext_resource type="Shader" uid="uid://d1clynis8x1u3" path="res://shaders/stabilization_screen.gdshader" id="20_iokjm"]
 [ext_resource type="Texture2D" uid="uid://bxwpenyw8iyku" path="res://resources/Art/radar.png" id="22_5nmku"]
 [ext_resource type="Script" uid="uid://2bqc4b10ula4" path="res://scripts/game_vfx.gd" id="23_eto5o"]
@@ -33,6 +35,10 @@
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5nmku"]
 viewport_path = NodePath("MinimapViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqenn"]
+shader = ExtResource("18_eto5o")
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eto5o"]
 
@@ -249,6 +255,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_5nmku")
 
+[node name="RadarTexture" type="TextureRect" parent="CanvasLayer/MinimapPanel" unique_id=460278077]
+modulate = Color(1, 1, 1, 0.13725491)
+material = SubResource("ShaderMaterial_gqenn")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_5nmku")
+stretch_mode = 1
+script = ExtResource("20_gqenn")
+
 [node name="PlayerMarker" type="TextureRect" parent="CanvasLayer/MinimapPanel" unique_id=331728141]
 modulate = Color(0.24705882, 0.5137255, 1, 1)
 layout_mode = 1
@@ -265,15 +290,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("24_0y38y")
-
-[node name="RadarTexture" type="TextureRect" parent="CanvasLayer/MinimapPanel" unique_id=460278077]
-modulate = Color(1, 1, 1, 0.13725491)
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 46.0
-offset_bottom = 46.0
-texture = ExtResource("22_5nmku")
 
 [node name="StabilizationPanel" parent="CanvasLayer" unique_id=2092434660 instance=ExtResource("18_xxaiy")]
 mouse_filter = 2
