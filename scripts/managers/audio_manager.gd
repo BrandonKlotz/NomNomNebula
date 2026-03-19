@@ -33,7 +33,7 @@ func _setup_nodes() -> void:
 	add_child(effects_pool)
 	add_child(music_player)
 
-func play_music(setting: AudioSetting) -> void:
+func play_music(setting: AudioSetting, with_fade: bool = true) -> void:
 	if music_tween:
 		music_tween.kill()
 		
@@ -41,9 +41,12 @@ func play_music(setting: AudioSetting) -> void:
 	music_player.volume_db = -80.0
 	music_player.play()
 	
-	music_tween = create_tween()
-	music_tween.tween_property(music_player, "volume_db", setting.volume_db, fade_duration)\
-		.set_trans(Tween.TRANS_SINE)
+	if with_fade:
+		music_tween = create_tween()
+		music_tween.tween_property(music_player, "volume_db", setting.volume_db, fade_duration)\
+			.set_trans(Tween.TRANS_SINE)
+	else:
+		music_player.volume_db = setting.volume_db
 
 func stop_music() -> void:
 	if music_tween:

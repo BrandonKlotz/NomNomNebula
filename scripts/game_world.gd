@@ -47,7 +47,7 @@ func _ready() -> void:
 		Globals.current_save.music_level
 	)
 	
-	#_start_playlist()
+	_start_playlist()
 	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
 
@@ -64,8 +64,7 @@ func _start_playlist() -> void:
 func _play_current_track() -> void:
 	var setting: AudioSetting = playlist[current_track]
 	
-	AudioManager.play_music(setting)
-	AudioManager.music_player.finished.connect(_on_track_finished)
+	AudioManager.play_music(setting, current_track == 0)
 	
 	if AudioManager.music_player.finished.is_connected(_on_track_finished):
 		AudioManager.music_player.finished.disconnect(_on_track_finished)
