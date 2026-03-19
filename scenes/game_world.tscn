@@ -315,11 +315,16 @@ offset_left = 41.0
 offset_top = 11.0
 offset_right = 46.0
 offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("18_mtxny")
 stretch_mode = 4
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer/ScorePanel" unique_id=1959748708]
 position = Vector2(28, 27)
+
+[node name="AnimationComponent" type="Node" parent="CanvasLayer/ScorePanel" unique_id=309586092]
+script = ExtResource("2_odt01")
+metadata/_custom_type_script = "uid://bo0y5ea02unt7"
 
 [node name="DashPanel" parent="CanvasLayer" unique_id=696284378 instance=ExtResource("3_ywgp6")]
 anchors_preset = 7

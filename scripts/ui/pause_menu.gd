@@ -64,13 +64,16 @@ func _subscribe_to_sliders() -> void:
 			save.music_level = int(music_slider.value)
 			DataManager.write_save(save)
 			AudioManager.configure_audio_server(save.sfx_level, save.music_level)
-			AudioManager.play_sfx(AudioManager.tracks.hover)
+			AudioManager.play_sfx(AudioManager.tracks.click)
 	)
+	
+	music_slider.value_changed.connect(func(_v: float) -> void: AudioManager.play_sfx(AudioManager.tracks.hover))
+	effects_slider.value_changed.connect(func(_v: float) -> void: AudioManager.play_sfx(AudioManager.tracks.hover))
 	
 	effects_slider.drag_ended.connect(func(value_changed: bool) -> void:
 		if value_changed:
 			save.sfx_level = int(effects_slider.value)
 			DataManager.write_save(save)
 			AudioManager.configure_audio_server(save.sfx_level, save.music_level)
-			AudioManager.play_sfx(AudioManager.tracks.hover)
+			AudioManager.play_sfx(AudioManager.tracks.click)
 	)
