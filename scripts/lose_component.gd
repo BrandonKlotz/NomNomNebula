@@ -10,7 +10,7 @@ func on_start_game_over():
 	self.visible = true
 	active = true
 	Globals.player.can_control = false
-	Globals.player.can_be_absord = false
+	Globals.player.can_be_absorbed = false
 	Globals.game_camera.target = Globals.player
 	Globals.game_camera.hard_zoom = true
 	Globals.game_camera.target_zoom = Vector2(2.0, 2.0)

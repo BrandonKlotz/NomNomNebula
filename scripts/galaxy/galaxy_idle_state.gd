@@ -17,7 +17,7 @@ func update(_delta: float) -> void:
 	add_random_velocity()
 
 func start_attraction_state(_area: Area2D) -> void:
-	if Globals.player.can_be_absord:
+	if Globals.player.can_be_absorbed:
 		change_state.emit("attract")
 
 func add_random_velocity() -> void:

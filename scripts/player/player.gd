@@ -17,7 +17,7 @@ var color_amount: int = 1
 var escaping_timer_factor: float = 1.0
 var absorption_speed_factor: float = 1.0
 var increase_size_factor: float = 0.15
-var can_be_absord : bool = true
+var can_be_absorbed : bool = true
 
 func _ready() -> void:
 	animation.play("main")

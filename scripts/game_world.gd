@@ -9,7 +9,6 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var pause_button: Button = $CanvasLayer/PauseButton
 @onready var animation_component: AnimationComponent = $AnimationComponent
 @onready var galaxy_info_panel: GalaxyInfoPanel = $CanvasLayer/GalaxyInfoPanel
-@onready var absorption_tutorial: Panel = $CanvasLayer/AbsorptionTutorial
 @onready var main_camera: MainCamera = $MainCamera
 @onready var galaxy_spawner: GalaxySpawner = $GalaxySpawner
 @onready var minimap_markers: MinimapMarkers = $MinimapViewport/MinimapMarkers
@@ -41,10 +40,7 @@ func _ready() -> void:
 		animation_component.subtle_wobble(pause_button)
 	)
 	
-	absorption_tutorial.visible = false
-	
 	EventManager.on_game_over.connect(_on_game_over_animation)
-	EventManager.on_attracting_player.connect(_on_start_tutorial)
 	EventManager.on_tooltip_show.connect(_on_galaxy_tooltip_show)
 	EventManager.on_tooltip_hide.connect(_on_galaxy_tooltip_hide)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
@@ -70,19 +66,10 @@ func _process(_delta: float) -> void:
 	if showing_absorption_tutorial and Input.is_action_just_pressed("dash"):
 		Engine.time_scale = 1.0
 		showing_absorption_tutorial = false
-		absorption_tutorial.visible = false
 
 func _on_player_wrapped(offset: Vector2) -> void:
 	var camera: MainCamera = Globals.game_camera
 	camera.position += offset
-	
-func _on_start_tutorial():
-	if Globals.current_save.is_first_time:
-		Globals.current_save.is_first_time = false
-		DataManager.write_save(Globals.current_save)
-		absorption_tutorial.visible = true
-		showing_absorption_tutorial = true
-		Engine.time_scale = 0.2
 	
 func _setup_tooltip_timer() -> void:
 	tooltip_timer = Timer.new()
@@ -109,7 +96,6 @@ func _on_game_over_animation():
 	# wait
 	# shader del radar se remueve
 	_on_game_over()
-	pass
 
 func _on_game_over() -> void:
 	if current_score > Globals.current_save.highest_score:

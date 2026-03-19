@@ -21,7 +21,7 @@ func update(delta: float) -> void:
 	sprite.material.set_shader_parameter('holeSize', current_value)
 	
 func start_attraction_state(_area: Area2D) -> void:
-	if Globals.player.can_be_absord:
+	if Globals.player.can_be_absorbed:
 		change_state.emit("attract")
 	
 func exit() -> void:
