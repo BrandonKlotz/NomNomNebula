@@ -14,6 +14,52 @@
 script = ExtResource("2_87cyb")
 metadata/_custom_type_script = "uid://bi43xj8ctf3ny"
 
+[sub_resource type="Gradient" id="Gradient_q3qfo"]
+offsets = PackedFloat32Array(0.7108434, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k57ui"]
+gradient = SubResource("Gradient_q3qfo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.809, 0.239)
+
+[sub_resource type="Animation" id="Animation_87cyb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_q3qfo"]
+resource_name = "expand"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5333),
+"transitions": PackedFloat32Array(1, 1, 2.6390169),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(30, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k57ui"]
+_data = {
+&"RESET": SubResource("Animation_87cyb"),
+&"expand": SubResource("Animation_q3qfo")
+}
+
 [sub_resource type="Gradient" id="Gradient_87cyb"]
 offsets = PackedFloat32Array(0.41791046, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.078431375, 0.15686275, 0.34901962, 1)
@@ -52,7 +98,14 @@ radius = 185.0108
 script = ExtResource("1_djh0g")
 data = SubResource("Resource_q3qfo")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=266289218]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=188034298]
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("GradientTexture2D_k57ui")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1967006967]
+libraries/ = SubResource("AnimationLibrary_k57ui")
+
+[node name="Vortex" type="Sprite2D" parent="." unique_id=266289218]
 material = SubResource("ShaderMaterial_lfll1")
 texture = ExtResource("2_bd3hg")
 
@@ -75,20 +128,24 @@ script = ExtResource("3_wcccu")
 initial_state = NodePath("idle")
 metadata/_custom_type_script = "uid://dkmph7m6e1a2x"
 
-[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("attraction_area")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("sprite", "attraction_area", "timer_label")]
 script = ExtResource("4_af03i")
+sprite = NodePath("../../Vortex")
 attraction_area = NodePath("../../InteractionArea")
+timer_label = NodePath("../../TimerLabel")
 metadata/_custom_type_script = "uid://bwthvu36djjr5"
 
-[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite")]
+[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite", "timer_label")]
 script = ExtResource("5_6ssig")
 attraction_area = NodePath("../../InteractionArea")
 black_hole = NodePath("../..")
-sprite = NodePath("../../Sprite2D")
+sprite = NodePath("../../Vortex")
+timer_label = NodePath("../../TimerLabel")
 metadata/_custom_type_script = "uid://dtpatowrx86mu"
 
-[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097]
+[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097 node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_87cyb")
+sprite = NodePath("../../Vortex")
 metadata/_custom_type_script = "uid://nb7owm6wnxtl"
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1322696501]

@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://2bqc4b10ula4" path="res://scripts/game_vfx.gd" id="23_eto5o"]
 [ext_resource type="Texture2D" uid="uid://6yo25fpoqpne" path="res://resources/Art/minimap_marker.png" id="24_0y38y"]
 [ext_resource type="Script" uid="uid://c4u4i0c0aw3dp" path="res://scripts/shock_wave.gd" id="25_5nmku"]
+[ext_resource type="PackedScene" uid="uid://bliqp60aweli1" path="res://scenes/game_scenes/black_hole.tscn" id="25_y5rsn"]
 [ext_resource type="Shader" uid="uid://dwat4244mpgov" path="res://shaders/chromatic_aberration.gdshader" id="26_y5rsn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqenn"]
@@ -132,6 +133,9 @@ process_material = SubResource("ParticleProcessMaterial_gqenn")
 script = ExtResource("2_odt01")
 
 [node name="Player" parent="." unique_id=1205687715 instance=ExtResource("2_47u71")]
+
+[node name="BlackHole" parent="." unique_id=585464348 instance=ExtResource("25_y5rsn")]
+position = Vector2(179, -106)
 
 [node name="MainCamera" parent="." unique_id=1322683729 node_paths=PackedStringArray("player") groups=["camera"] instance=ExtResource("19_fg3oe")]
 player = NodePath("../Player")
