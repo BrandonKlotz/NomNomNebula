@@ -3,7 +3,6 @@ extends Node2D
 
 @export var data: BlackHoleData
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
-@onready var timer_label: Label = $TimerLabel
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
 
@@ -14,7 +13,8 @@ func _ready() -> void:
 
 func _on_center_area_entered(_area: Area2D) -> void:
 	EventManager.on_player_absorbed.emit(self)
-	EventManager.on_camera_shake.emit(4.0, 2.0)
+	EventManager.on_camera_shake.emit(4.0)
+	
 	Globals.player.can_move = false
 	animation_player.play("expand")
 	state_machine.on_change_state('disabled')

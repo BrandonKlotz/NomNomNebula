@@ -15,6 +15,7 @@ const debuffs: Array = [
 	{ "rarity": 1, BuffDebuffKey.CONTROL_TYPE_TANK: 1 }, # tank control
 	{ "rarity": 1, BuffDebuffKey.CONTROL_TYPE_INVERTED: 2 }, # inverted control
 	{ "rarity": 0, BuffDebuffKey.DASH_RECHARGE_FACTOR_INCREASED: 0.5 }, # charge 50% faster
+	{ "rarity": 0, BuffDebuffKey.LIMIT_DASH: -1 }, # -1 dash
 ]
 
 #{ "rarity": 0, BuffDebuffKey.EXTRA_DASHES: -1 },

@@ -5,7 +5,7 @@ extends Node
 
 #region GameClock
 signal on_world_ready
-signal on_camera_shake(strengh: float, time: float)
+signal on_camera_shake(data: Dictionary)
 signal on_shock_wave(node)
 signal on_game_state_changed(state: GameWorld.GameState)
 

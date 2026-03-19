@@ -42,7 +42,7 @@ func _ready() -> void:
 
 func _clear_globals() -> void:
 	Globals.player = null
-	Globals.current_score = -1
+	Globals.current_score = 0
 	Globals.game_camera = null
 	
 func _load_save() -> SaveGame:

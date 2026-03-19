@@ -11,6 +11,7 @@ const ABSORPTION_SPEED_FACTOR: String = "absorption_speed_factor"
 const STABILITY_MAX: String = "stability_max"
 const CONTROL_TYPE_TANK: String = "control_type_tank"
 const CONTROL_TYPE_INVERTED: String = "control_type_inverted"
+const LIMIT_DASH: String = "limit_dash"
 
 const DESCRIPTIONS: Dictionary[String, String] = {
 	EXTRA_DASHES: "Gives extra dashes",
@@ -24,4 +25,5 @@ const DESCRIPTIONS: Dictionary[String, String] = {
 	STABILITY_MAX: "Stability max decreased",
 	CONTROL_TYPE_TANK: "Movement is tank",
 	CONTROL_TYPE_INVERTED: "Movement is inverted",
+	LIMIT_DASH: "Only one burst"
 }

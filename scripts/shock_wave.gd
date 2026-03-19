@@ -4,12 +4,10 @@ extends ColorRect
 @export var shock_wave_center: Vector2 = Vector2(0.5, 0.5)
 @export var shock_wave_force: float = 0.5
 
-var camera: MainCamera 
 var target: Node
 var shock_wave_size: float = 2.0
 
 func _ready() -> void:
-	camera = get_tree().get_first_node_in_group('camera')
 	EventManager.on_shock_wave.connect(start_shock_wave)
 
 func start_shock_wave(node) -> void:
@@ -17,13 +15,13 @@ func start_shock_wave(node) -> void:
 	target = node
 
 func _process(delta: float) -> void:
-	if not camera:
+	if not Globals.game_camera:
 		return
 		
 	if shock_wave_size < 2:
-		var target_screen_coords : Vector2 = get_viewport().get_canvas_transform() * target.global_position
-		var screen_size: Vector2 = get_viewport().get_visible_rect().size / camera.zoom
-		shock_wave_size += shock_wave_speed*shock_wave_speed*delta
+		var target_screen_coords: Vector2 = get_viewport().get_canvas_transform() * target.global_position
+		var screen_size: Vector2 = get_viewport().get_visible_rect().size / Globals.game_camera.zoom
+		shock_wave_size += shock_wave_speed * shock_wave_speed * delta
 		self.material.set_shader_parameter("size", shock_wave_size)
-		self.material.set_shader_parameter("center", target_screen_coords/camera.zoom/screen_size)
+		self.material.set_shader_parameter("center", target_screen_coords / Globals.game_camera.zoom/screen_size)
 		

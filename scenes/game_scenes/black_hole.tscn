@@ -129,28 +129,22 @@ script = ExtResource("3_wcccu")
 initial_state = NodePath("idle")
 metadata/_custom_type_script = "uid://dkmph7m6e1a2x"
 
-[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("sprite", "attraction_area", "timer_label")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("sprite", "attraction_area")]
 script = ExtResource("4_af03i")
 sprite = NodePath("../../Vortex")
 attraction_area = NodePath("../../InteractionArea")
-timer_label = NodePath("../../TimerLabel")
 metadata/_custom_type_script = "uid://bwthvu36djjr5"
 
-[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite", "timer_label")]
+[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite")]
 script = ExtResource("5_6ssig")
 attraction_area = NodePath("../../InteractionArea")
 black_hole = NodePath("../..")
 sprite = NodePath("../../Vortex")
-timer_label = NodePath("../../TimerLabel")
 metadata/_custom_type_script = "uid://dtpatowrx86mu"
 
 [node name="disabled" type="Node" parent="StateMachine" unique_id=68756097 node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_87cyb")
 sprite = NodePath("../../Vortex")
 metadata/_custom_type_script = "uid://nb7owm6wnxtl"
-
-[node name="TimerLabel" type="Label" parent="." unique_id=1322696501]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]

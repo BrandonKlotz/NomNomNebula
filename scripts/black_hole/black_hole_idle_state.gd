@@ -13,7 +13,6 @@ var direction: float = 0
 func enter() -> void:
 	start_value = sprite.material.get_shader_parameter("holeSize")
 	current_value = start_value
-	timer_label.visible = false
 	attraction_area.area_entered.connect(start_attraction_state)
 	
 func update(delta: float) -> void:

@@ -10,11 +10,7 @@ func _ready() -> void:
 	start_over_button.pressed.connect(_start_over)
 	exit_button.pressed.connect(_exit_game)
 	
-	Globals.current_save = DataManager.load_all_saves()[0]
-	Globals.current_score = 66
-	
 	_setup_data()
-	
 	
 	AudioManager.play_music(AudioManager.tracks.title_music)
 	SceneManager.fade_in()

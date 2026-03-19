@@ -131,7 +131,7 @@ offset_top = 8.0
 offset_bottom = 41.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 14
-text = "CREDITS"
+text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
