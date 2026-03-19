@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://43825t84jvkq" path="res://resources/Art/Galaxy Sprite Sheets/Smaller Galaxy 2.0.png" id="6_pdkth"]
 [ext_resource type="Script" uid="uid://btwfig6s12las" path="res://scripts/galaxy/galaxy_desintegrate_state.gd" id="7_0t61a"]
 [ext_resource type="Material" uid="uid://jske8d54cs0g" path="res://shaders/mats/vortex_material.tres" id="9_y80rp"]
+[ext_resource type="Script" uid="uid://d2syqet6n2u2u" path="res://scripts/incremented_size_buff.gd" id="15_y80rp"]
 
 [sub_resource type="Gradient" id="Gradient_uaiqi"]
 offsets = PackedFloat32Array(0.6721311, 1)
@@ -442,6 +443,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center" unique_id=1403290327]
 shape = SubResource("CircleShape2D_4oih2")
+
+[node name="IncrementedSizeBuff" type="Node" parent="." unique_id=750055645 node_paths=PackedStringArray("interaction_collision_shape")]
+script = ExtResource("15_y80rp")
+interaction_collision_shape = NodePath("../InteractionArea/CollisionShape2D")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1730946245 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_nbxba")

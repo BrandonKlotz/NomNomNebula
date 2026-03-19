@@ -9,7 +9,7 @@ var target: Node
 var shock_wave_size: float = 2.0
 
 func _ready() -> void:
-	camera = Globals.game_camera
+	camera = get_tree().get_first_node_in_group('camera')
 	EventManager.on_shock_wave.connect(start_shock_wave)
 
 func start_shock_wave(node) -> void:
@@ -19,7 +19,7 @@ func start_shock_wave(node) -> void:
 func _process(delta: float) -> void:
 	if not camera:
 		return
-	
+		
 	if shock_wave_size < 2:
 		var target_screen_coords : Vector2 = get_viewport().get_canvas_transform() * target.global_position
 		var size: Vector2 = get_viewport().get_visible_rect().size / camera.zoom

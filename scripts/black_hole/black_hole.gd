@@ -18,7 +18,7 @@ func _on_center_area_entered(_area: Area2D) -> void:
 	Globals.player.can_move = false
 	animation_player.play("expand")
 	state_machine.on_change_state('disabled')
-	get_tree().create_timer(1.0).timeout.connect(_on_game_over_emit)
+	get_tree().create_timer(0.8).timeout.connect(_on_game_over_emit)
 	EventManager.on_shock_wave.emit(self)
 	
 func _on_game_over_emit() -> void:

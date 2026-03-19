@@ -6,9 +6,8 @@
 script = ExtResource("1_nccpp")
 uid = "g1"
 strength = 2
-interaction_radius = 70.0
+stability_buff = 3.0
 animation = "green"
 halo_color1 = Color(0.39215687, 0.36862746, 0.11764706, 1)
 halo_color2 = Color(0.42745098, 0.6431373, 0.47843137, 1)
-stability_buff = 3.0
 metadata/_custom_type_script = "uid://bp640lhsn8ukq"

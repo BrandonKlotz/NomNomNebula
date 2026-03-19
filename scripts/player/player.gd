@@ -32,6 +32,7 @@ func _ready() -> void:
 	#absorb_galaxy(r)
 
 func _process(_delta: float) -> void:
+	print(target_size)
 	camera_target.global_position = global_position + (velocity)
 
 func use_dash() -> void:
@@ -129,7 +130,7 @@ func _apply_movement_speed_factor(value: float) -> void:
 	player_movement.apply_movement_factor_speed(value)
 
 func _apply_interaction_radius_factor(value: float) -> void:
-	pass
+	EventManager.on_increment_galaxy_size.emit(value)
 
 #func _apply_size_change_factor(value: float) -> void:
 	#target_size *= (1.0 + value)

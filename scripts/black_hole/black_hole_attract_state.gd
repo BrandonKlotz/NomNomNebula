@@ -49,8 +49,8 @@ func exit() -> void:
 	timer_label.visible = false
 	attraction_area.area_exited.disconnect(on_exited_area)
 	EventManager.on_dash_used.disconnect(on_player_dash_used)
-	
-	Globals.game_camera.set_target(Globals.player)
+	Globals.game_camera.target_zoom = Vector2(1.0, 1.0)
+	Globals.game_camera.set_target(Globals.player.camera_target)
 	
 func calc_force() -> Vector2:
 	var offset: Vector2 = get_offset_to_player()

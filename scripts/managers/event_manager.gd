@@ -10,6 +10,7 @@ signal on_shock_wave(node)
 signal on_game_state_changed(state: GameWorld.GameState)
 
 signal on_galaxy_absorbed(data: GalaxyData)
+signal on_increment_galaxy_size(amount:float)
 signal on_tooltip_show(data: GalaxyData)
 signal on_tooltip_hide
 signal on_dash_used

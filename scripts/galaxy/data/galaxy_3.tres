@@ -6,9 +6,8 @@
 script = ExtResource("1_jcxts")
 uid = "g3"
 strength = 2
-interaction_radius = 50.0
+stability_buff = 4.0
 animation = "blue"
 halo_color1 = Color(0.13725491, 0.4627451, 0.6784314, 1)
 halo_color2 = Color(0.43529412, 1, 1, 1)
-stability_buff = 4.0
 metadata/_custom_type_script = "uid://bp640lhsn8ukq"

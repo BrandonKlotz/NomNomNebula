@@ -83,3 +83,4 @@ func set_good():
 func set_bad():
 	var debuff: Dictionary = BuffDebuffFactory.generate_debuff()
 	self.data.buff_debuff = debuff
+	
