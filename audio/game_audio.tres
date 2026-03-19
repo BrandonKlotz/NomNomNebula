@@ -11,10 +11,14 @@
 [ext_resource type="AudioStream" uid="uid://bpb36h71m85n0" path="res://audio/sounds/Ratchet_Click_1.mp3" id="7_s34iw"]
 [ext_resource type="AudioStream" uid="uid://b1gjtho0xxfqd" path="res://audio/sounds/Digital Click 12.wav" id="8_7rb6b"]
 [ext_resource type="AudioStream" uid="uid://b85hbn4ajqt1w" path="res://audio/sounds/Sci Fi Explosion 12.wav" id="8_lqfd0"]
+[ext_resource type="AudioStream" uid="uid://d1cislt5ew0cm" path="res://audio/sounds/phase 4 over.mp3" id="8_t6l7x"]
 [ext_resource type="AudioStream" uid="uid://2826cgt8jbh4" path="res://audio/sounds/Impact 5.wav" id="9_jnt4g"]
 [ext_resource type="AudioStream" uid="uid://0xdt4tdyyt7m" path="res://audio/sounds/Abstract1.mp3" id="10_lelip"]
-[ext_resource type="AudioStream" uid="uid://cdwbrxqx7df0y" path="res://audio/sounds/main full.mp3" id="11_lqfd0"]
-[ext_resource type="AudioStream" uid="uid://ccxvjc2485p2m" path="res://audio/sounds/possible main menu music.mp3" id="15_lqfd0"]
+[ext_resource type="AudioStream" uid="uid://dc481i081xkck" path="res://audio/sounds/track_1.mp3" id="12_qbjt1"]
+[ext_resource type="AudioStream" uid="uid://gha67am8nhxb" path="res://audio/sounds/track_2.mp3" id="13_t6l7x"]
+[ext_resource type="AudioStream" uid="uid://dx3b6uee88fpu" path="res://audio/sounds/track_3.mp3" id="14_ohw5w"]
+[ext_resource type="AudioStream" uid="uid://beteij734fvqh" path="res://audio/sounds/phase 1 main.mp3" id="15_lqfd0"]
+[ext_resource type="AudioStream" uid="uid://q53cqck51biu" path="res://audio/sounds/track_4.mp3" id="15_o54tp"]
 
 [sub_resource type="Resource" id="Resource_a6wuk"]
 script = ExtResource("1_ixyf6")
@@ -54,6 +58,11 @@ source = ExtResource("7_d16nq")
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
+[sub_resource type="Resource" id="Resource_ohw5w"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("8_t6l7x")
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
 [sub_resource type="Resource" id="Resource_qbjt1"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("8_lqfd0")
@@ -74,17 +83,31 @@ volume_db = -7.0
 pitch_randomness = 0.05
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
-[sub_resource type="Resource" id="Resource_uhasv"]
-script = ExtResource("1_ixyf6")
-source = ExtResource("11_lqfd0")
-volume_db = -5.0
-metadata/_custom_type_script = "uid://cjikpvjnra8yr"
-
 [sub_resource type="Resource" id="Resource_lelip"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("7_s34iw")
 volume_db = -7.0
 pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_34ufb"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("12_qbjt1")
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_e6bbm"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("13_t6l7x")
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_tbhh0"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("14_ohw5w")
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
+[sub_resource type="Resource" id="Resource_fcyoq"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("15_o54tp")
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_jnt4g"]
@@ -112,5 +135,9 @@ galaxy_repel = SubResource("Resource_lqfd0")
 galaxy_info = SubResource("Resource_nagqu")
 galaxy_desintegrated = SubResource("Resource_qbjt1")
 title_music = SubResource("Resource_va0tg")
-game_music = SubResource("Resource_uhasv")
+finish_music = SubResource("Resource_ohw5w")
+music_track_1 = SubResource("Resource_34ufb")
+music_track_2 = SubResource("Resource_e6bbm")
+music_track_3 = SubResource("Resource_tbhh0")
+music_track_4 = SubResource("Resource_fcyoq")
 metadata/_custom_type_script = "uid://qkqrrmo7u8ws"

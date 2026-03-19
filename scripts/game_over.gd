@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	_setup_data()
 	
-	AudioManager.play_music(AudioManager.tracks.title_music)
+	AudioManager.play_music(AudioManager.tracks.finish_music)
 	SceneManager.fade_in()
 
 func _start_over() -> void:

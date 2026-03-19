@@ -21,6 +21,7 @@ func _ready() -> void:
 func _on_dash_used() -> void:
 	if remaining > 0:
 		slots[remaining - 1].play_consume()
+		slots[remaining - 1].show_wobble()
 
 func setup(max_dashes: int) -> void:
 	slot_count = max_dashes

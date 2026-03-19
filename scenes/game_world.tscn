@@ -43,9 +43,9 @@ tonemap_mode = 2
 tonemap_exposure = 1.5
 tonemap_white = 3.75
 glow_enabled = true
-glow_intensity = 3.69
+glow_intensity = 2.0
 glow_strength = 0.7
-glow_bloom = 0.2
+glow_bloom = 0.22
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0y38y"]
 
@@ -149,7 +149,7 @@ script = ExtResource("7_iokjm")
 [node name="Post" type="Node2D" parent="." unique_id=128399805]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Post" unique_id=823920515]
-energy = 0.6
+energy = 0.83
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Post" unique_id=740197548]
 color = Color(0.023529412, 0.08627451, 0.25882354, 1)

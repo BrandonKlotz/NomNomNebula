@@ -5,6 +5,7 @@ extends Node2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionArea/CollisionShape2D
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
+@onready var audio_player: AudioStreamPlayer2D = $audio_player
 
 func _ready() -> void:
 	var shape: CircleShape2D = interaction_collision_shape.shape.duplicate()

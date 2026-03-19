@@ -19,6 +19,7 @@ func enter() -> void:
 	timer = max_time
 	elapsed_time = 0
 	
+	black_hole.audio_player.play(0)
 	attraction_area.area_exited.connect(on_exited_area)
 	EventManager.on_dash_used.connect(on_player_dash_used)
 	EventManager.on_attracting_player.emit()
@@ -47,6 +48,7 @@ func exit() -> void:
 	EventManager.on_dash_used.disconnect(on_player_dash_used)
 	Globals.game_camera.target_zoom = Vector2.ONE * (Globals.player.target_size+0.5)
 	Globals.game_camera.set_target(Globals.player.camera_target)
+	black_hole.audio_player.stop()
 	
 func calc_force() -> Vector2:
 	var offset: Vector2 = get_offset_to_player()

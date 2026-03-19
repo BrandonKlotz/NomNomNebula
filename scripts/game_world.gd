@@ -21,6 +21,8 @@ enum GameState {
 var tooltip_duration: float = 2.0
 var showing_absorption_tutorial: bool = false
 var current_state: GameState = GameState.ONGOING
+var playlist: Array[AudioSetting] = []
+var current_track: int = 0
 
 func _ready() -> void:
 	Globals.player = player
@@ -45,9 +47,37 @@ func _ready() -> void:
 		Globals.current_save.music_level
 	)
 	
-	AudioManager.play_music(AudioManager.tracks.game_music)
+	#_start_playlist()
 	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
+
+func _start_playlist() -> void:
+	playlist = [
+		AudioManager.tracks.music_track_1,
+		AudioManager.tracks.music_track_2,
+		AudioManager.tracks.music_track_3,
+		AudioManager.tracks.music_track_4,
+	]
+	
+	_play_current_track()
+
+func _play_current_track() -> void:
+	var setting: AudioSetting = playlist[current_track]
+	
+	AudioManager.play_music(setting)
+	AudioManager.music_player.finished.connect(_on_track_finished)
+	
+	if AudioManager.music_player.finished.is_connected(_on_track_finished):
+		AudioManager.music_player.finished.disconnect(_on_track_finished)
+	
+	AudioManager.music_player.finished.connect(_on_track_finished)
+
+func _on_track_finished() -> void:
+	if current_track >= playlist.size() - 1:
+		_play_current_track()
+	else:
+		current_track += 1
+		_play_current_track()
 
 func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
@@ -94,6 +124,9 @@ func _on_game_over() -> void:
 		DataManager.write_save(Globals.current_save)
 	
 	SceneManager.transition_to(Scenes.FINISH)
+	
+	AudioManager.music_player.finished.disconnect(_on_track_finished)
+	AudioManager.stop_music()
 
 func _handle_finish() -> void:
 	Engine.time_scale = 1.0

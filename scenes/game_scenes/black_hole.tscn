@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="2_bd3hg"]
 [ext_resource type="Shader" uid="uid://b5nxg5x7mydn4" path="res://shaders/galaxy_distortion.gdshader" id="2_j2sgm"]
 [ext_resource type="Texture2D" uid="uid://bqrf1vf5m2mh0" path="res://resources/Art/Galaxy Sprite Sheets/player galaxy.png" id="3_j8733"]
+[ext_resource type="AudioStream" uid="uid://bgt61s23pmbwg" path="res://audio/sounds/charge_up_v2.wav" id="3_q3qfo"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_wcccu"]
 [ext_resource type="Script" uid="uid://bwthvu36djjr5" path="res://scripts/black_hole/black_hole_idle_state.gd" id="4_af03i"]
 [ext_resource type="Script" uid="uid://dtpatowrx86mu" path="res://scripts/black_hole/black_hole_attract_state.gd" id="5_6ssig"]
@@ -98,6 +99,11 @@ radius = 185.0108
 [node name="BlackHole" type="Node2D" unique_id=585464348]
 script = ExtResource("1_djh0g")
 data = SubResource("Resource_q3qfo")
+
+[node name="audio_player" type="AudioStreamPlayer2D" parent="." unique_id=2105837444]
+stream = ExtResource("3_q3qfo")
+pitch_scale = 0.8
+bus = &"SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=188034298]
 scale = Vector2(1e-05, 1e-05)

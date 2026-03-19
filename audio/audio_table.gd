@@ -20,4 +20,10 @@ extends Resource
 
 @export_category("Music")
 @export var title_music: AudioSetting
-@export var game_music: AudioSetting
+@export var finish_music: AudioSetting
+
+@export_category("Playlist")
+@export var music_track_1: AudioSetting
+@export var music_track_2: AudioSetting
+@export var music_track_3: AudioSetting
+@export var music_track_4: AudioSetting
