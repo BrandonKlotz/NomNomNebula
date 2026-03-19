@@ -43,7 +43,7 @@ func _ready() -> void:
 	
 	absorption_tutorial.visible = false
 	
-	EventManager.on_player_destabilized.connect(_on_game_over_animation)
+	EventManager.on_game_over.connect(_on_game_over_animation)
 	EventManager.on_attracting_player.connect(_on_start_tutorial)
 	EventManager.on_tooltip_show.connect(_on_galaxy_tooltip_show)
 	EventManager.on_tooltip_hide.connect(_on_galaxy_tooltip_hide)
@@ -108,7 +108,7 @@ func _on_game_over_animation():
 	current_state = GameState.FINISHED
 	# wait
 	# shader del radar se remueve
-	#_on_game_over()
+	_on_game_over()
 	pass
 
 func _on_game_over() -> void:

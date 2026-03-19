@@ -13,9 +13,11 @@ var can_control: bool = true
 var target_size: float = 0.5
 var velocity: Vector2 = Vector2.ZERO
 var color_amount: int = 1
+
 var escaping_timer_factor: float = 1.0
 var absorption_speed_factor: float = 1.0
 var increase_size_factor: float = 0.15
+var can_be_absord : bool = true
 
 func _ready() -> void:
 	animation.play("main")

@@ -12,7 +12,7 @@ var drain_multiplier: float = 1.0
 func _ready() -> void:
 	
 	if Flags.override_stabilization():
-		max_time = 200
+		max_time = 10.0
 	
 	current_time = max_time
 	_emit_change()

@@ -26,6 +26,7 @@ signal on_stabilization_max_changed
 signal on_stabilization_warning
 signal on_stabilization_warning_end
 signal on_galaxies_updated(Array)
+signal on_game_over
 #endregion
 
 @warning_ignore_restore("unused_signal")

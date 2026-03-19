@@ -4,6 +4,7 @@ extends State
 @export var attraction_area: Area2D
 @export var black_hole: BlackHole
 @export var sprite: Sprite2D
+@export var timer_label : Label
 
 @onready var max_time: float
 
@@ -14,6 +15,7 @@ var strong_attract_start_time: float
 var elapsed_time: float
 
 func enter() -> void:
+	timer_label.visible = true
 	max_time = black_hole.data.event_start_time * Globals.player.escaping_timer_factor
 	strenght = black_hole.data.strength
 	timer = max_time
@@ -41,10 +43,10 @@ func update(delta: float) -> void:
 	black_hole.timer_label.text = "%.2f" % timer
 
 func on_exited_area(_area:Area2D) -> void:
-	change_state.emit(self, "idle")
+	change_state.emit("idle")
 	
 func exit() -> void:
-	sprite.material.set_shader_parameter("holeSize", 0.15)
+	timer_label.visible = false
 	attraction_area.area_exited.disconnect(on_exited_area)
 	EventManager.on_dash_used.disconnect(on_player_dash_used)
 	
@@ -62,7 +64,6 @@ func get_offset_to_player() -> Vector2:
 func on_player_dash_used():
 	last_dash_used_time = Time.get_ticks_msec() / 1000.0
 	if timer < 0.5 or abs(last_dash_used_time - strong_attract_start_time) < 0.5:
-		change_state.emit(self, "disabled")
+		change_state.emit("disabled")
 		Globals.player.apply_force((Globals.player.global_position - black_hole.global_position).normalized() * 200)
-		sprite.material.set_shader_parameter("holeSize", 0.0)
 		EventManager.on_shock_wave.emit(black_hole)

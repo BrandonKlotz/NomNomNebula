@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if current_state:
 		current_state.update(delta)
 
-func on_change_state(_state: State, new_state_name: String):
+func on_change_state(new_state_name: String):
 	current_state.exit()
 	if not new_state_name in states:
 		return
