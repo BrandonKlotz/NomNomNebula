@@ -23,7 +23,7 @@ func _animate_logo() -> void:
 	tween.tween_interval(0.5)
 	
 	tween.tween_property(logo_panel, "modulate:a", 1.0, 0.4)
-	tween.tween_interval(1.0)
+	tween.tween_interval(1.2)
 	tween.tween_property(logo_panel, "modulate:a", 0.0, 0.5)
 	tween.tween_callback(_navigate_to_title)
 
