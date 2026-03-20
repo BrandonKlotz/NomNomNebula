@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://nkp4vejhsogg" path="res://scripts/black_hole/black_hole.gd" id="1_djh0g"]
 [ext_resource type="Script" uid="uid://bi43xj8ctf3ny" path="res://scripts/data/black_hole_data.gd" id="2_87cyb"]
-[ext_resource type="Texture2D" uid="uid://d0i2dq4b2ljw2" path="res://icon.svg" id="2_bd3hg"]
-[ext_resource type="Shader" uid="uid://b5nxg5x7mydn4" path="res://shaders/galaxy_distortion.gdshader" id="2_j2sgm"]
-[ext_resource type="Texture2D" uid="uid://bqrf1vf5m2mh0" path="res://resources/Art/Galaxy Sprite Sheets/player galaxy.png" id="3_j8733"]
 [ext_resource type="AudioStream" uid="uid://bgt61s23pmbwg" path="res://audio/sounds/charge_up_v2.wav" id="3_q3qfo"]
 [ext_resource type="Script" uid="uid://dkmph7m6e1a2x" path="res://scripts/state_machine.gd" id="3_wcccu"]
 [ext_resource type="Script" uid="uid://bwthvu36djjr5" path="res://scripts/black_hole/black_hole_idle_state.gd" id="4_af03i"]
@@ -211,34 +208,6 @@ _data = {
 &"expand": SubResource("Animation_q3qfo")
 }
 
-[sub_resource type="Gradient" id="Gradient_87cyb"]
-offsets = PackedFloat32Array(0.41791046, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.078431375, 0.15686275, 0.34901962, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q3qfo"]
-gradient = SubResource("Gradient_87cyb")
-
-[sub_resource type="Gradient" id="Gradient_k57ui"]
-offsets = PackedFloat32Array(0.73880595, 1)
-colors = PackedColorArray(0.09803922, 0.09803922, 0.08235294, 1, 0.13333334, 0.34901962, 0.40784314, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f7t0w"]
-gradient = SubResource("Gradient_k57ui")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfll1"]
-shader = ExtResource("2_j2sgm")
-shader_parameter/resolution = Vector2(32, 32)
-shader_parameter/colorResolution = 100.0
-shader_parameter/holeSize = 0.12999999709424
-shader_parameter/holeColor = SubResource("GradientTexture2D_f7t0w")
-shader_parameter/image = ExtResource("3_j8733")
-shader_parameter/rotations = 1.0
-shader_parameter/depth = 0.5
-shader_parameter/spiralIntensity = 1.0
-shader_parameter/shrinkSpeed = 0.2
-shader_parameter/roationSpeed = 1.490119991842676e-07
-shader_parameter/haloColor = SubResource("GradientTexture2D_q3qfo")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_j2sgm"]
 radius = 15.132746
 
@@ -267,11 +236,6 @@ texture = SubResource("GradientTexture2D_k57ui")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1967006967]
 libraries/ = SubResource("AnimationLibrary_k57ui")
 
-[node name="Vortex" type="Sprite2D" parent="." unique_id=266289218]
-visible = false
-material = SubResource("ShaderMaterial_lfll1")
-texture = ExtResource("2_bd3hg")
-
 [node name="Center" type="Area2D" parent="." unique_id=480486904]
 collision_layer = 4
 collision_mask = 2
@@ -291,22 +255,19 @@ script = ExtResource("3_wcccu")
 initial_state = NodePath("idle")
 metadata/_custom_type_script = "uid://dkmph7m6e1a2x"
 
-[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("sprite", "attraction_area")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("attraction_area")]
 script = ExtResource("4_af03i")
-sprite = NodePath("../../Vortex")
 attraction_area = NodePath("../../InteractionArea")
 metadata/_custom_type_script = "uid://bwthvu36djjr5"
 
-[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole", "sprite")]
+[node name="attract" type="Node" parent="StateMachine" unique_id=1740205127 node_paths=PackedStringArray("attraction_area", "black_hole")]
 script = ExtResource("5_6ssig")
 attraction_area = NodePath("../../InteractionArea")
 black_hole = NodePath("../..")
-sprite = NodePath("../../Vortex")
 metadata/_custom_type_script = "uid://dtpatowrx86mu"
 
-[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097 node_paths=PackedStringArray("sprite")]
+[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097]
 script = ExtResource("9_87cyb")
-sprite = NodePath("../../Vortex")
 metadata/_custom_type_script = "uid://nb7owm6wnxtl"
 
 [connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]

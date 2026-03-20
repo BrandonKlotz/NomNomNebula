@@ -3,7 +3,6 @@ extends State
 
 @export var attraction_area: Area2D
 @export var black_hole: BlackHole
-@export var sprite: Sprite2D
 
 @onready var max_time: float
 
@@ -38,8 +37,7 @@ func update(delta: float) -> void:
 		strenght = 600.0
 		
 	var force: Vector2 = calc_force()
-	Globals.player.apply_force(force*delta)
-	sprite.material.set_shader_parameter("holeSize", 0.1 + 0.4 * elapsed_time / max_time)
+	Globals.player.apply_force(force * delta)
 
 func on_exited_area(_area:Area2D) -> void:
 	change_state.emit("idle")

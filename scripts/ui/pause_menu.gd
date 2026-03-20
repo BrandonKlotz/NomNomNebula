@@ -8,7 +8,6 @@ signal on_finish
 @onready var exit_button: MainButton = $PauseMenu/HBoxContainer/ExitButton
 @onready var effects_slider: HSlider = $PauseMenu/EffectsSlider
 @onready var music_slider: HSlider = $PauseMenu/MusicSlider
-@onready var delete_button: Button = $PauseMenu/DeleteButton
 
 var save: SaveGame
 
@@ -22,18 +21,6 @@ func _ready() -> void:
 		on_finish.emit()
 		AudioManager.play_sfx(AudioManager.tracks.click)
 	)
-	
-	if Flags.is_debug():
-		delete_button.pressed.connect(func() -> void:
-			Engine.time_scale = 1.0
-			var new_save: SaveGame = DataManager.new_save_file(Globals.current_save.slot, false)
-			new_save.uid = Globals.current_save.uid
-			Globals.current_save = new_save
-			DataManager.write_save(Globals.current_save)
-			SceneManager.transition_to(Scenes.WORLD)
-		)
-	else:
-		delete_button.visible = false
 	
 	var saves: Array[SaveGame] = DataManager.load_all_saves()
 	if not saves.is_empty():

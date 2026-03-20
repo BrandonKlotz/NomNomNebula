@@ -19,10 +19,8 @@ func _on_center_area_entered(_area: Area2D) -> void:
 	Globals.game_camera.target = self
 	Globals.player.can_move = false
 
-	#state_machine.on_change_state('disabled')
 	EventManager.on_black_hole_expanded.emit()
-	get_tree().create_timer(1.5).timeout.connect(_on_game_over_emit)
-	#EventManager.on_shock_wave.emit(self)
+	get_tree().create_timer(1.2).timeout.connect(_on_game_over_emit)
 
 func _on_game_over_emit() -> void:
 	EventManager.on_game_over.emit()
