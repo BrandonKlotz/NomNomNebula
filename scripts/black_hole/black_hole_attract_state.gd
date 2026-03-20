@@ -25,7 +25,7 @@ func enter() -> void:
 	EventManager.on_dash_used.connect(on_player_dash_used)
 	EventManager.on_attracting_player.emit()
 	
-	Globals.game_camera.target_zoom = Vector2(0.4, 0.4)
+	Globals.game_camera.target_zoom = Vector2(0.5, 0.5)
 	Globals.game_camera.set_target(black_hole)
 
 func update(delta: float) -> void:
@@ -47,7 +47,6 @@ func on_exited_area(_area:Area2D) -> void:
 func exit() -> void:
 	attraction_area.area_exited.disconnect(on_exited_area)
 	EventManager.on_dash_used.disconnect(on_player_dash_used)
-	Globals.game_camera.target_zoom = Vector2.ONE * (Globals.player.target_size+0.5)
 	Globals.game_camera.set_target(Globals.player.camera_target)
 	black_hole.audio_player.stop()
 	black_hole.play_dissappear()

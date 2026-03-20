@@ -19,9 +19,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if target == Globals.player.camera_target and not hard_zoom:
-		target_zoom = Vector2.ONE - Vector2(Globals.player.velocity.length() * 0.0015, Globals.player.velocity.length() * 0.0015)
-	
-	position += (target.global_position - global_position)*follow_speed * delta
+		target_zoom = (Vector2.ONE/(Globals.player.target_size))*0.7
+		if Globals.player.target_size < 0.3:
+			target_zoom = Vector2(1.75, 1.75)
+		position += (target.global_position - global_position)*follow_speed/Globals.player.target_size * delta
+	else:
+		position += (target.global_position - global_position)*follow_speed * delta
 	zoom = lerp(zoom, target_zoom, zoom_speed*delta)
 	
 	if shake_strength > 0:

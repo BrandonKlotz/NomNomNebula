@@ -20,6 +20,9 @@ func enter() -> void:
 			child.set_deferred("monitorable", false)
 
 	_play_disintegration_tween()
+	var timer = get_tree().create_timer(1)
+	Globals.player.apply_force((Globals.player.global_position - galaxy.global_position).normalized() * 250)
+	timer.timeout.connect(_free_galaxy)
 	EventManager.on_galaxy_absorbed.emit(galaxy.data)
 
 func _play_disintegration_tween() -> void:
@@ -56,10 +59,6 @@ func _play_disintegration_tween() -> void:
 
 	tween.set_parallel(false)
 	tween.chain()
-	
-	var timer = get_tree().create_timer(1)
-	Globals.player.apply_force((Globals.player.global_position - galaxy.global_position).normalized() * 250)
-	timer.timeout.connect(_free_galaxy)
 
 func _free_galaxy() -> void:
 	tween.kill()

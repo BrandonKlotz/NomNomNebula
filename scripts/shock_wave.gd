@@ -5,7 +5,7 @@ extends ColorRect
 @export var shock_wave_force: float = 0.5
 
 var target: Node
-var shock_wave_size: float = 2.0
+var shock_wave_size: float = 5.0
 
 func _ready() -> void:
 	EventManager.on_shock_wave.connect(start_shock_wave)
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if not Globals.game_camera:
 		return
 		
-	if shock_wave_size < 2:
+	if shock_wave_size < 5:
 		var target_screen_coords: Vector2 = get_viewport().get_canvas_transform() * target.global_position
 		var screen_size: Vector2 = get_viewport().get_visible_rect().size / Globals.game_camera.zoom
 		shock_wave_size += shock_wave_speed * shock_wave_speed * delta

@@ -13,4 +13,4 @@ func _process(_delta: float) -> void:
 	
 	var player_direction: Vector2 = Utils.rotation_to_vector(player_movement.movement_angle)
 	rotation = player_movement.movement_angle
-	global_position = player.position + player_direction * distance
+	global_position = player.position + player_direction * distance * player.target_size

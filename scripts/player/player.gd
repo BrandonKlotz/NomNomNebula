@@ -11,11 +11,11 @@ extends Node2D
 
 var can_move: bool = true
 var can_control: bool = true
-var target_size: float = 0.5
+var target_size: float = 2.0
 var velocity: Vector2 = Vector2.ZERO
 var escaping_timer_factor: float = 1.0
 var absorption_speed_factor: float = 1.0
-var increase_size_factor: float = 0.10
+var increase_size_factor: float = 0.05
 var can_be_absorbed : bool = true
 var exotic_matter_count: int = 0
 
@@ -27,8 +27,17 @@ func _ready() -> void:
 	dash_particles.emitting = false
 
 func _process(_delta: float) -> void:
-	camera_target.global_position = global_position + (velocity)
-
+	set_target_camera_position()
+	
+func set_target_camera_position():
+	var target_position : Vector2
+	var max_distance : float = target_size*200
+	var _temp_velocity : Vector2 = velocity*0.5
+	target_position = global_position + _temp_velocity
+	if _temp_velocity.length() > max_distance:
+		target_position = global_position + velocity.normalized()*max_distance
+	camera_target.global_position = target_position
+	
 func use_dash() -> void:
 	dash_component.consume_dash()
 	EventManager.on_camera_shake.emit(1.0)
@@ -50,7 +59,6 @@ func apply_force(force: Vector2) -> void:
 func absorb_galaxy(data: GalaxyData) -> void:
 	var buff_debuff: Dictionary = data.buff_debuff
 	buff_debuff.duplicate()
-	
 	# clean all previously applied buffs/debuffs
 	target_size += increase_size_factor
 	player_movement.set_control_type(PlayerMovement.ControlType.NORMAL)

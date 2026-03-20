@@ -145,7 +145,7 @@ script = ExtResource("2_odt01")
 player = NodePath("../Player")
 
 [node name="BlackHole" parent="." unique_id=585464348 instance=ExtResource("6_eto5o")]
-position = Vector2(126, -120)
+position = Vector2(198, -176)
 
 [node name="GalaxySpawner" type="Node2D" parent="." unique_id=920155787]
 script = ExtResource("7_iokjm")
