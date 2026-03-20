@@ -14,6 +14,9 @@ var fade_duration: float = 1.0
 var base_music_db: float = 0.0
 var music_tween: Tween
 
+var playlist: Array[AudioSetting] = []
+var current_track: int = 0
+
 func _ready() -> void:
 	_setup_nodes()
 	_setup_player_pool()
@@ -116,3 +119,36 @@ func configure_audio_server(_sfx_level: int, _music_level: int) -> void:
 	
 	AudioServer.set_bus_volume_db(sfx_bus_id, linear_to_db(sfx_level))
 	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(music_level))
+
+#region Game playlst
+func start_playlist() -> void:
+	playlist = [
+		AudioManager.tracks.music_track_1,
+		AudioManager.tracks.music_track_2,
+		AudioManager.tracks.music_track_3,
+		AudioManager.tracks.music_track_4,
+		AudioManager.tracks.music_track_5,
+	]
+	
+	_play_current_track()
+
+func stop_playlist() -> void:
+	stop_music()
+	AudioManager.music_player.finished.disconnect(_on_track_finished)
+
+func _play_current_track() -> void:
+	var setting: AudioSetting = playlist[current_track]
+	AudioManager.play_music(setting, current_track == 0)
+	
+	if AudioManager.music_player.finished.is_connected(_on_track_finished):
+		AudioManager.music_player.finished.disconnect(_on_track_finished)
+	
+	AudioManager.music_player.finished.connect(_on_track_finished)
+
+func _on_track_finished() -> void:
+	if current_track >= playlist.size() - 1:
+		_play_current_track()
+	else:
+		current_track += 1
+		_play_current_track()
+#endregion

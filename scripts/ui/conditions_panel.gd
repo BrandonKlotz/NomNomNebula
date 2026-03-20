@@ -14,7 +14,11 @@ func _ready() -> void:
 	texture_rect.visible = false
 	tooltip.visible = false
 	
-	texture_rect.mouse_exited.connect(func() -> void: tooltip.visible = false)
+	texture_rect.mouse_exited.connect(func() -> void:
+		tooltip.visible = false
+		AudioManager.play_sfx(AudioManager.tracks.dismiss_ui)
+	)
+	
 	texture_rect.mouse_entered.connect(func() -> void:
 		tooltip.visible = true
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)

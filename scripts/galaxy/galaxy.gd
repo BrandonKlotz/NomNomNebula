@@ -59,6 +59,7 @@ func _on_center_area_entered(_area: Area2D) -> void:
 	EventManager.on_camera_shake.emit(4.0)
 	AudioManager.play_sfx(AudioManager.tracks.galaxy_repel)
 	repel_particles.restart()
+	audio_player.play(0)
 
 func _on_game_state_changed(state: GameWorld.GameState) -> void:
 	match state:

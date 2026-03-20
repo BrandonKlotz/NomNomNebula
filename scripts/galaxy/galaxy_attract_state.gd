@@ -16,8 +16,7 @@ func enter() -> void:
 	attraction_area.area_exited.connect(end_attraction_state)
 	EventManager.on_attracting_player.emit()
 	Globals.game_camera.set_target(galaxy)
-	Globals.game_camera.target_zoom = Vector2(galaxy.size/4, galaxy.size/4)
-	
+	Globals.game_camera.target_zoom = Vector2(galaxy.size / 4, galaxy.size/4)
 	absorption_timer = absorption_time_required * Globals.player.absorption_speed_factor
 
 func update(delta: float) -> void:

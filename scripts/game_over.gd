@@ -20,9 +20,11 @@ func _ready() -> void:
 
 func _start_over() -> void:
 	SceneManager.transition_to(Scenes.WORLD)
+	AudioManager.stop_playlist()
 	
 func _exit_game() -> void:
 	SceneManager.transition_to(Scenes.TITLE)
+	AudioManager.stop_playlist()
 
 func _setup_data() -> void:
 	var save: SaveGame = Globals.current_save
@@ -52,6 +54,6 @@ func _format_time(seconds: float) -> String:
 	var secs: float = fmod(seconds, 60.0)
 	
 	if mins > 0:
-		return "%d:%df" % [mins, int(secs)]
+		return "%d:%d" % [mins, int(secs)]
 	else:
 		return "%.2fs" % secs
