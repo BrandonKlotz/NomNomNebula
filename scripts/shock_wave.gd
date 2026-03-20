@@ -7,7 +7,7 @@ extends ColorRect
 var target: Node
 var shock_wave_size: float = 5.0
 
-func start_shock_wave(node) -> void:
+func on_shock_wave(node) -> void:
 	shock_wave_size = -0.1
 	target = node
 

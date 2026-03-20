@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://7amxt2ic65vm" path="res://scripts/minimap_markers.gd" id="3_5nmku"]
 [ext_resource type="PackedScene" uid="uid://exsf0igc7o8v" path="res://scenes/ui/dash_panel.tscn" id="3_ywgp6"]
 [ext_resource type="Texture2D" uid="uid://c08sriydsk3fv" path="res://resources/Art/Background tilemap.png" id="5_iokjm"]
-[ext_resource type="PackedScene" uid="uid://bliqp60aweli1" path="res://scenes/game_scenes/black_hole.tscn" id="6_eto5o"]
 [ext_resource type="Script" uid="uid://p0weimq4puxh" path="res://scripts/galaxy_spawner.gd" id="7_iokjm"]
 [ext_resource type="Script" uid="uid://brqw70d0541ub" path="res://scripts/lose_component.gd" id="8_kbri5"]
 [ext_resource type="Script" uid="uid://b57h78r6ydopc" path="res://scripts/minimap_camera.gd" id="8_y5rsn"]
@@ -149,9 +148,6 @@ script = ExtResource("2_odt01")
 
 [node name="MainCamera" parent="." unique_id=1322683729 node_paths=PackedStringArray("player") groups=["camera"] instance=ExtResource("19_fg3oe")]
 player = NodePath("../Player")
-
-[node name="BlackHole" parent="." unique_id=585464348 instance=ExtResource("6_eto5o")]
-position = Vector2(198, -176)
 
 [node name="GalaxySpawner" type="Node2D" parent="." unique_id=920155787]
 script = ExtResource("7_iokjm")

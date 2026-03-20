@@ -20,7 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if target == Globals.player.camera_target and not hard_zoom:
 		target_zoom = (Vector2.ONE/(Globals.player.target_size))*0.7
-		if Globals.player.target_size < 0.3:
+		if Globals.player.target_size < 0.4:
 			target_zoom = Vector2(1.75, 1.75)
 		position += (target.global_position - global_position)*follow_speed/Globals.player.target_size * delta
 	else:

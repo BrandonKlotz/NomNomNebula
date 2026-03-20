@@ -3,7 +3,6 @@ extends State
 
 @export var galaxy: Galaxy
 @export var attraction_area: Area2D
-@onready var target: Node2D = get_node("Target")
 
 var was_inside_inner_radius: bool = false
 var absorption_timer: float
@@ -16,8 +15,7 @@ func enter() -> void:
 	galaxy.audio_player.play(0)
 	attraction_area.area_exited.connect(end_attraction_state)
 	EventManager.on_attracting_player.emit()
-	
-	Globals.game_camera.set_target(target)
+	Globals.game_camera.set_target(galaxy)
 	Globals.game_camera.target_zoom = Vector2(galaxy.size/4, galaxy.size/4)
 	
 	absorption_timer = absorption_time_required * Globals.player.absorption_speed_factor
@@ -28,7 +26,6 @@ func update(delta: float) -> void:
 	var force: Vector2 = calc_force()
 	
 	Globals.player.apply_force(force*delta)
-	target.global_position = galaxy.global_position + (_get_offset_to_player() * -1.0 * 0.5)
 
 	if not is_inside:
 		absorption_timer -= delta * absorption_speed_factor

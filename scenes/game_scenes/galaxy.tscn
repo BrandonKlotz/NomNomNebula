@@ -462,8 +462,6 @@ galaxy = NodePath("../..")
 attraction_area = NodePath("../../InteractionArea")
 metadata/_custom_type_script = "uid://sunbyn5fx5l1"
 
-[node name="Target" type="Node2D" parent="StateMachine/attract" unique_id=1446115246]
-
 [node name="desintegrate" type="Node" parent="StateMachine" unique_id=2144533327 node_paths=PackedStringArray("galaxy")]
 script = ExtResource("7_0t61a")
 galaxy = NodePath("../..")

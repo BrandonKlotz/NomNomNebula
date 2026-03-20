@@ -16,6 +16,7 @@ func _ready() -> void:
 func _on_center_area_entered(_area: Area2D) -> void:
 	EventManager.on_player_absorbed.emit(self)
 	EventManager.on_camera_shake.emit(4.0)
+	Globals.game_camera.target = self
 	Globals.player.can_move = false
 
 	#state_machine.on_change_state('disabled')

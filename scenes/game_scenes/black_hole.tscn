@@ -240,10 +240,10 @@ shader_parameter/roationSpeed = 1.490119991842676e-07
 shader_parameter/haloColor = SubResource("GradientTexture2D_q3qfo")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j2sgm"]
-radius = 34.132095
+radius = 15.132746
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcccu"]
-radius = 185.0108
+radius = 239.0
 
 [node name="BlackHole" type="Node2D" unique_id=585464348]
 script = ExtResource("1_djh0g")
@@ -273,7 +273,6 @@ material = SubResource("ShaderMaterial_lfll1")
 texture = ExtResource("2_bd3hg")
 
 [node name="Center" type="Area2D" parent="." unique_id=480486904]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -281,7 +280,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_j2sgm")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1392238076]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
