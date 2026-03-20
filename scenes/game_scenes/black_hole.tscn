@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cjg3xweq5mab8" path="res://resources/Art/Black Hole Idle.png" id="4_k57ui"]
 [ext_resource type="Script" uid="uid://dtpatowrx86mu" path="res://scripts/black_hole/black_hole_attract_state.gd" id="5_6ssig"]
 [ext_resource type="Script" uid="uid://nb7owm6wnxtl" path="res://scripts/black_hole/black_hole_disabled_state.gd" id="9_87cyb"]
+[ext_resource type="Script" uid="uid://c3bstwna4seog" path="res://scripts/black_hole/black_hole_tow.gd" id="10_q3qfo"]
+[ext_resource type="Script" uid="uid://d0jhedixafhoy" path="res://scripts/black_hole/black_hole_desintegrate.gd" id="11_k57ui"]
 
 [sub_resource type="Resource" id="Resource_q3qfo"]
 script = ExtResource("2_87cyb")
@@ -255,8 +257,9 @@ script = ExtResource("3_wcccu")
 initial_state = NodePath("idle")
 metadata/_custom_type_script = "uid://dkmph7m6e1a2x"
 
-[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("attraction_area")]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1524967914 node_paths=PackedStringArray("black_hole", "attraction_area")]
 script = ExtResource("4_af03i")
+black_hole = NodePath("../..")
 attraction_area = NodePath("../../InteractionArea")
 metadata/_custom_type_script = "uid://bwthvu36djjr5"
 
@@ -266,8 +269,19 @@ attraction_area = NodePath("../../InteractionArea")
 black_hole = NodePath("../..")
 metadata/_custom_type_script = "uid://dtpatowrx86mu"
 
-[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097]
+[node name="disabled" type="Node" parent="StateMachine" unique_id=68756097 node_paths=PackedStringArray("black_hole")]
 script = ExtResource("9_87cyb")
+black_hole = NodePath("../..")
 metadata/_custom_type_script = "uid://nb7owm6wnxtl"
+
+[node name="tugofwar" type="Node" parent="StateMachine" unique_id=664027236 node_paths=PackedStringArray("black_hole")]
+script = ExtResource("10_q3qfo")
+black_hole = NodePath("../..")
+metadata/_custom_type_script = "uid://c3bstwna4seog"
+
+[node name="desintegrate" type="Node" parent="StateMachine" unique_id=1152005854 node_paths=PackedStringArray("black_hole")]
+script = ExtResource("11_k57ui")
+black_hole = NodePath("../..")
+metadata/_custom_type_script = "uid://d0jhedixafhoy"
 
 [connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]

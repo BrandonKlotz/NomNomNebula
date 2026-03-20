@@ -17,13 +17,16 @@ func _on_center_area_entered(_area: Area2D) -> void:
 	EventManager.on_player_absorbed.emit(self)
 	EventManager.on_camera_shake.emit(4.0)
 	Globals.game_camera.target = self
-	Globals.player.can_move = false
 	audio_player.stop()
+	
+	state_machine.current_state.change_state.emit("tugofwar")
+
+func game_over() -> void:
+	Globals.player.can_move = false
 	AudioManager.play_sfx(AudioManager.tracks.blackhole_consume)
 	EventManager.on_black_hole_expanded.emit()
-	get_tree().create_timer(1.2).timeout.connect(_on_game_over_emit)
-
-func _on_game_over_emit() -> void:
+	
+	await get_tree().create_timer(0.5).timeout
 	EventManager.on_game_over.emit()
 
 func play_appear() -> void:

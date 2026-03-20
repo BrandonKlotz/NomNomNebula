@@ -1,6 +1,8 @@
 class_name BlackHoleDisabled
 extends State
 
+@export var black_hole: BlackHole
+
 var start_value: float
 var current_value: float 
 

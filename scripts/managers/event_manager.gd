@@ -30,6 +30,7 @@ signal on_stabilization_warning_end
 signal on_galaxies_updated(Array)
 signal on_game_over
 signal on_black_hole_expanded
+signal on_black_hole_desintegrated(data: BlackHoleData)
 #endregion
 
 @warning_ignore_restore("unused_signal")
