@@ -66,6 +66,9 @@ func _setup_ui() -> void:
 	if Globals.current_save.highest_score == 0:
 		h_box_container.visible = false
 	
+	if OS.has_feature("web"):
+		exit_button.visible = false
+	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and credits_panel.visible:
@@ -78,6 +81,9 @@ func _on_start_button_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.tracks.click)
 
 func _on_exit_button_pressed() -> void:
+	if OS.has_feature("web"):
+		return
+	
 	AudioManager.play_sfx(AudioManager.tracks.click)
 	get_tree().quit()
 
