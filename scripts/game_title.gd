@@ -7,6 +7,7 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var credits_button: MainButton = $CanvasLayer/Panel/VBoxContainer/CreditsButton
 @onready var exit_button: MainButton = $CanvasLayer/Panel/ExitButton
 @onready var highest_score: Label = $CanvasLayer/Panel/VBoxContainer/HBoxContainer/HighestScore
+@onready var h_box_container: HBoxContainer = $CanvasLayer/Panel/VBoxContainer/HBoxContainer
 
 @onready var credits_panel: Panel = $CanvasLayer/Panel/CreditsPanel
 @onready var close_credits_button: MainButton = $CanvasLayer/Panel/CreditsPanel/CloseCreditsButton
@@ -65,7 +66,7 @@ func _setup_ui() -> void:
 	
 	highest_score.text = str(Globals.current_save.highest_score)
 	if Globals.current_save.highest_score == 0:
-		highest_score.visible = false
+		h_box_container.visible = false
 	
 
 func _process(_delta: float) -> void:

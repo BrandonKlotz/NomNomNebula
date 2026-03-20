@@ -30,7 +30,7 @@ func _setup_data() -> void:
 		return
 	
 	your_score.text = str(Globals.current_score)
-	time_elapsed.text = "%.2f" % Globals.elapse_time
+	time_elapsed.text = _format_time(Globals.elapse_time)
 	
 	normal_panel.visible = false
 	win_panel.visible = false
@@ -46,3 +46,12 @@ func _setup_data() -> void:
 	else:
 		normal_panel.visible = true
 		highest_score_2.text = str(save.highest_score)
+
+func _format_time(seconds: float) -> String:
+	var mins: int = int(seconds) / 60
+	var secs: float = fmod(seconds, 60.0)
+	
+	if mins > 0:
+		return "%d:%05.2f" % [mins, secs]
+	else:
+		return "%.2fs" % secs

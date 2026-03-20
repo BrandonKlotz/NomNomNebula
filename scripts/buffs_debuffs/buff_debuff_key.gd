@@ -14,16 +14,16 @@ const CONTROL_TYPE_INVERTED: String = "control_type_inverted"
 const LIMIT_DASH: String = "limit_dash"
 
 const DESCRIPTIONS: Dictionary[String, String] = {
-	EXTRA_DASHES: "Gives extra dashes",
+	EXTRA_DASHES: "Gives extra bursts",
 	DASH_FORCE_FACTOR: "Increases burst speed",
-	ESCAPING_TIME: "Gives more time to scape black holes",
+	ESCAPING_TIME: "Increase time to scape black holes",
 	DASH_RECHARGE_FACTOR: "Bursts recharge faster",
 	DASH_RECHARGE_FACTOR_INCREASED: "Bursts recharge slower",
-	MOVEMENT_WARP_FACTOR: "Movement speed incremented",
+	MOVEMENT_WARP_FACTOR: "Warp speed incremented",
 	INTERACTION_RADIUS_FACTOR: "Galaxies have more radius",
-	ABSORPTION_SPEED_FACTOR: "Time to absorbe galaxies",
+	ABSORPTION_SPEED_FACTOR: "Time to absorbe galaxies increased",
 	STABILITY_MAX: "Stability max decreased",
-	CONTROL_TYPE_TANK: "Movement is tank",
+	CONTROL_TYPE_TANK: "Tank movement",
 	CONTROL_TYPE_INVERTED: "Movement is inverted",
 	LIMIT_DASH: "Only one burst"
 }

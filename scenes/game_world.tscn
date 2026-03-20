@@ -17,13 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://dc6evfgquytc8" path="res://resources/Art/icons/Good Condition Icons Sprite Sheets.png" id="16_gqenn"]
 [ext_resource type="Script" uid="uid://mswum8c7a70x" path="res://scripts/ui/conditions_panel.gd" id="16_y5rsn"]
 [ext_resource type="Shader" uid="uid://br1gbhg6xop70" path="res://shaders/displace_uv.gdshader" id="18_eto5o"]
-[ext_resource type="Texture2D" uid="uid://y71y2r5t4km7" path="res://resources/UI/score_star.png" id="18_mtxny"]
 [ext_resource type="PackedScene" uid="uid://jgiwhntmki7w" path="res://scenes/ui/stabilization_panel.tscn" id="18_xxaiy"]
 [ext_resource type="PackedScene" uid="uid://dpwoginuct65t" path="res://scenes/main_camera.tscn" id="19_fg3oe"]
 [ext_resource type="Script" uid="uid://c81dqmvah0kk" path="res://scripts/ui/stabilization_screen_fx.gd" id="19_mf52o"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="20_0y38y"]
 [ext_resource type="Script" uid="uid://cqkpva7850ljk" path="res://scripts/ui/radar_wrap.gd" id="20_gqenn"]
 [ext_resource type="Shader" uid="uid://d1clynis8x1u3" path="res://shaders/stabilization_screen.gdshader" id="20_iokjm"]
+[ext_resource type="Texture2D" uid="uid://v2wqh5k5gep3" path="res://resources/UI/WinStar.png" id="21_i45ps"]
 [ext_resource type="Texture2D" uid="uid://bxwpenyw8iyku" path="res://resources/Art/radar.png" id="22_5nmku"]
 [ext_resource type="Script" uid="uid://2bqc4b10ula4" path="res://scripts/game_vfx.gd" id="23_eto5o"]
 [ext_resource type="Texture2D" uid="uid://6yo25fpoqpne" path="res://resources/Art/minimap_marker.png" id="24_0y38y"]
@@ -340,11 +340,11 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScorePanel" unique_id=1728317475]
 layout_mode = 0
 offset_left = 41.0
-offset_top = 11.0
-offset_right = 46.0
-offset_bottom = 16.0
+offset_top = 8.0
+offset_right = 50.0
+offset_bottom = 17.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("18_mtxny")
+texture = ExtResource("21_i45ps")
 stretch_mode = 4
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer/ScorePanel" unique_id=1959748708]

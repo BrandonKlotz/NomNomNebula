@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bje3wu1qqmsyh" path="res://scripts/game_title.gd" id="1_ke8lo"]
 [ext_resource type="Texture2D" uid="uid://xs064oduc2xk" path="res://resources/Art/icons/ic_human_made.png" id="2_db77j"]
 [ext_resource type="Texture2D" uid="uid://d2rdhv0ac2g1t" path="res://resources/UI/GG-MenuBG.png" id="2_o0nwa"]
-[ext_resource type="Texture2D" uid="uid://y71y2r5t4km7" path="res://resources/UI/score_star.png" id="5_8enjf"]
+[ext_resource type="Texture2D" uid="uid://v2wqh5k5gep3" path="res://resources/UI/WinStar.png" id="5_aay0u"]
 [ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="5_o0nwa"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="7_3o3s0"]
 [ext_resource type="Texture2D" uid="uid://b53onynrxfexa" path="res://resources/UI/arrow_right.png" id="7_aay0u"]
@@ -70,6 +70,7 @@ offset_right = 45.5
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="StartButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=287327500 instance=ExtResource("5_o0nwa")]
 layout_mode = 2
@@ -80,7 +81,7 @@ layout_mode = 2
 
 [node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=139631358]
 layout_mode = 2
-texture = ExtResource("5_8enjf")
+texture = ExtResource("5_aay0u")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=1030459068]
@@ -99,7 +100,7 @@ horizontal_alignment = 1
 
 [node name="ScoreStar" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=2081122111]
 layout_mode = 2
-texture = ExtResource("5_8enjf")
+texture = ExtResource("5_aay0u")
 stretch_mode = 5
 
 [node name="CreditsButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2005136893 instance=ExtResource("5_o0nwa")]
