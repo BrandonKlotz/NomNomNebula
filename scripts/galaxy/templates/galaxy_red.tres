@@ -6,7 +6,7 @@
 script = ExtResource("1_akt7l")
 uid = "red"
 strength = 2
-stability_buff = 1.0
+stability_buff = 5.0
 animation = "red"
 halo_color1 = Color(0.64705884, 0.1882353, 0.1882353, 1)
 halo_color2 = Color(0.8117647, 0.34117648, 0.23529412, 1)

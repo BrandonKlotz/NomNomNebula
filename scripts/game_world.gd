@@ -14,6 +14,7 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var conditions_panel: ConditionsPanel = $CanvasLayer/ConditionsPanel
 @onready var score_panel: ScorePanel = $CanvasLayer/ScorePanel
 @onready var radar_texture: RadarWrap = $CanvasLayer/MinimapPanel/RadarTexture
+@onready var burst_panel: Panel = $CanvasLayer/BurstPanel
 
 enum GameState {
 	ONGOING, PAUSED, FINISHED
@@ -28,6 +29,7 @@ func _ready() -> void:
 	Globals.game_camera = main_camera
 	
 	dash_panel.setup(player.get_dash_count())
+	burst_panel.visible = false
 	
 	pause_menu.on_resume.connect(_handle_toggle_pause)
 	pause_menu.on_finish.connect(_handle_finish)
@@ -40,6 +42,7 @@ func _ready() -> void:
 	EventManager.on_game_over.connect(_on_game_over_animation)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
 	EventManager.on_buffs_applied.connect(_on_buffs_applied)
+	EventManager.on_tug_of_war.connect(_on_tug_of_war)
 	
 	AudioManager.configure_audio_server(
 		Globals.current_save.sfx_level,
@@ -49,6 +52,10 @@ func _ready() -> void:
 	AudioManager.start_playlist()
 	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
+
+func _on_tug_of_war(value: bool) -> void:
+	burst_panel.visible = value
+	burst_panel.get_child(0).play("flash")
 
 func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
@@ -108,8 +115,12 @@ func _handle_finish() -> void:
 func _on_galaxy_absorbed(data: GalaxyData) -> void:
 	player.absorb_galaxy(data)
 	galaxy_spawner.remove_galaxy(data)
+	_grant_score(1)
 	
-	var points_earned: int = 1
+func _on_black_hole_desintegrated(data: BlackHoleData) -> void:
+	galaxy_spawner.remove_black_hole(data)
+	_grant_score(1)
+
+func _grant_score(points_earned: int) -> void:
 	Globals.current_score += points_earned
 	score_panel.increment_score(points_earned)
-	

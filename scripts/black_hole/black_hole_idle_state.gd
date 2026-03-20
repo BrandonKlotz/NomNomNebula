@@ -1,6 +1,7 @@
 class_name BlackHoleIdle
 extends State
 
+@export var black_hole: BlackHole
 @export var attraction_area: Area2D
 
 var start_value : float
@@ -8,6 +9,7 @@ var current_value : float
 var direction: float = 0
 
 func enter() -> void:
+	#black_hole.animation.play("main")
 	current_value = start_value
 	attraction_area.area_entered.connect(start_attraction_state)
 	

@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	if not Globals.game_camera:
 		return
 		
-	if shock_wave_size < 5:
+	if shock_wave_size < 4:
 		var target_screen_coords: Vector2 = get_viewport().get_canvas_transform() * target.global_position
 		var screen_size: Vector2 = get_viewport().get_visible_rect().size / Globals.game_camera.zoom
 		shock_wave_size += shock_wave_speed * shock_wave_speed * delta

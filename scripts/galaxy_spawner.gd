@@ -62,14 +62,14 @@ func _spawn_black_hole() -> void:
 	var black_hole: BlackHole = BLACK_HOLE.instantiate()
 	black_hole.position = pos
 	black_hole.data = BlackHoleData.new()
+	black_hole.data.uid = Utils.gen_uid("b")
 	add_child(black_hole)
 	black_holes.append(black_hole)
 
-func remove_black_hole(black_hole: BlackHole) -> void:
-	var idx: int = black_holes.find(black_hole)
+func remove_black_hole(data: BlackHoleData) -> void:
+	var idx: int = black_holes.find_custom(func(b: BlackHole) -> bool: return b.uid == data.uid)
 	if idx == -1:
 		return
-	black_hole.queue_free()
 	black_holes.remove_at(idx)
 	EventManager.on_galaxies_updated.emit(galaxies)
 

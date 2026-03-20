@@ -6,7 +6,7 @@
 script = ExtResource("1_ohua7")
 uid = "green"
 strength = 2
-stability_buff = 3.0
+stability_buff = 5.0
 animation = "green"
 halo_color1 = Color(0.039215688, 0.2509804, 0.101960786, 1)
 halo_color2 = Color(0.42745098, 0.52156866, 0.17254902, 1)

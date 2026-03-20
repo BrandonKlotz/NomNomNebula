@@ -1,9 +1,9 @@
 class_name MainCamera
 extends Camera2D
 
-@export var player : Player
-@export var follow_speed : float = 1.5
-@export var zoom_speed : float = 1
+@export var player: Player
+@export var follow_speed: float = 1.5
+@export var zoom_speed: float = 1
 
 var target : Node2D
 var rng = RandomNumberGenerator.new()
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 			target_zoom = Vector2(1.75, 1.75)
 		position += (target.global_position - global_position)*follow_speed/Globals.player.target_size * delta
 	else:
-		position += (target.global_position - global_position)*follow_speed * delta
+		position += (target.global_position - global_position) * follow_speed * delta
 	zoom = lerp(zoom, target_zoom, zoom_speed*delta)
 	
 	if shake_strength > 0:
