@@ -8,12 +8,12 @@ extends TextureRect
 @export var loop: bool = true
 
 var atlas: AtlasTexture
-var frame_size: Vector2 = Vector2(320, 180)
+var frame_size: Vector2
 var tween: Tween
 
 func _ready() -> void:
 	atlas = self.texture as AtlasTexture
-	_set_frame(0)
+	frame_size = atlas.region.size
 	
 	if autostart:
 		play_animation()

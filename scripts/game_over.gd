@@ -16,7 +16,6 @@ func _ready() -> void:
 	exit_button.pressed.connect(_exit_game)
 	
 	_setup_data()
-	
 	SceneManager.fade_in()
 
 func _start_over() -> void:
@@ -41,10 +40,9 @@ func _setup_data() -> void:
 	if has_beaten_score:
 		win_panel.visible = true
 		highest_score.text = str(Globals.current_score)
+		
+		save.highest_score = Globals.current_score
+		DataManager.write_save(save)
 	else:
 		normal_panel.visible = true
 		highest_score_2.text = str(save.highest_score)
-	
-	if has_beaten_score:
-		save.highest_score = Globals.current_score
-		DataManager.write_save(Globals.current_save)

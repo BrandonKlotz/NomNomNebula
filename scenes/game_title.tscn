@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bje3wu1qqmsyh" path="res://scripts/game_title.gd" id="1_ke8lo"]
 [ext_resource type="Texture2D" uid="uid://xs064oduc2xk" path="res://resources/Art/icons/ic_human_made.png" id="2_db77j"]
 [ext_resource type="Texture2D" uid="uid://d2rdhv0ac2g1t" path="res://resources/UI/GG-MenuBG.png" id="2_o0nwa"]
-[ext_resource type="Texture2D" uid="uid://bsom30nxt55e2" path="res://resources/UI/GG-Panel.png" id="3_1bayt"]
 [ext_resource type="Texture2D" uid="uid://y71y2r5t4km7" path="res://resources/UI/score_star.png" id="5_8enjf"]
 [ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="5_o0nwa"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="7_3o3s0"]
@@ -31,16 +30,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o0nwa")
 
-[node name="GgPanel" type="Sprite2D" parent="CanvasLayer/Panel" unique_id=1744304373]
-position = Vector2(159.00002, 104.00001)
-scale = Vector2(1.3407408, 1.2249999)
-texture = ExtResource("3_1bayt")
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Panel" unique_id=412810728]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -37.0
+offset_right = 85.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_3o3s0")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="ExitButton" parent="CanvasLayer/Panel" unique_id=1238453203 instance=ExtResource("5_o0nwa")]
 layout_mode = 0
-offset_left = 71.0
+offset_left = 75.0
 offset_top = 133.0
-offset_right = 121.0
+offset_right = 125.0
 offset_bottom = 148.0
 custom_title = "exit"
 

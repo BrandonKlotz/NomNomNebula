@@ -11,12 +11,12 @@ extends Node2D
 
 var can_move: bool = true
 var can_control: bool = true
-var target_size: float = 2.0
+var target_size: float = 0.5
 var velocity: Vector2 = Vector2.ZERO
 var escaping_timer_factor: float = 1.0
 var absorption_speed_factor: float = 1.0
 var increase_size_factor: float = 0.05
-var can_be_absorbed : bool = true
+var can_be_absorbed: bool = true
 var exotic_matter_count: int = 0
 
 func _ready() -> void:
@@ -31,8 +31,8 @@ func _process(_delta: float) -> void:
 	
 func set_target_camera_position():
 	var target_position : Vector2
-	var max_distance : float = target_size*200
-	var _temp_velocity : Vector2 = velocity*0.5
+	var max_distance : float = target_size * 200
+	var _temp_velocity : Vector2 = velocity * 0.5
 	target_position = global_position + _temp_velocity
 	if _temp_velocity.length() > max_distance:
 		target_position = global_position + velocity.normalized()*max_distance

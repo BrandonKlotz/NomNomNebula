@@ -4,8 +4,8 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 
 @onready var version_label: Label = $CanvasLayer/Panel/VersionLabel
 @onready var start_button: MainButton = $CanvasLayer/Panel/VBoxContainer/StartButton
-@onready var exit_button: MainButton = $CanvasLayer/Panel/VBoxContainer/ExitButton
-@onready var credits_button: MainButton = $CanvasLayer/Panel/CreditsButton
+@onready var credits_button: MainButton = $CanvasLayer/Panel/VBoxContainer/CreditsButton
+@onready var exit_button: MainButton = $CanvasLayer/Panel/ExitButton
 
 @onready var credits_panel: Panel = $CanvasLayer/Panel/CreditsPanel
 @onready var close_credits_button: MainButton = $CanvasLayer/Panel/CreditsPanel/CloseCreditsButton
