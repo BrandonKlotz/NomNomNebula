@@ -51,9 +51,9 @@ patch_margin_bottom = 16
 
 [node name="ExitButton" parent="CanvasLayer/Panel" unique_id=1238453203 instance=ExtResource("5_o0nwa")]
 layout_mode = 0
-offset_left = 75.0
+offset_left = 72.0
 offset_top = 133.0
-offset_right = 125.0
+offset_right = 122.0
 offset_bottom = 148.0
 custom_title = "exit"
 
@@ -87,7 +87,14 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
 theme_override_font_sizes/font_size = 8
-text = "Highest score 99"
+text = "Highest score"
+horizontal_alignment = 1
+
+[node name="HighestScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=1986827304]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
+theme_override_font_sizes/font_size = 8
+text = "99"
 horizontal_alignment = 1
 
 [node name="ScoreStar" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=2081122111]

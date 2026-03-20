@@ -84,12 +84,17 @@ func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
 
 var i = 0
+func _get_buff() -> Dictionary:
+	var options: Array = BuffDebuffPool.buffs + BuffDebuffPool.debuffs
+	var data: Dictionary = options[i].duplicate()
+	i = (i + 1) % options.size()
+	return data
+	
 func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug"):
-		var r = GalaxyData.new()
-		r.buff_debuff = BuffDebuffPool.buffs[i].duplicate()
-		i = (i+1) % 5
-		EventManager.on_galaxy_absorbed.emit(r)
+		var g = GalaxyData.new()
+		g.buff_debuff = _get_buff()
+		EventManager.on_galaxy_absorbed.emit(g)
 	
 	if current_state == GameState.ONGOING:
 		Globals.elapse_time += delta

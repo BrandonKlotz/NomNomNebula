@@ -6,6 +6,7 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var start_button: MainButton = $CanvasLayer/Panel/VBoxContainer/StartButton
 @onready var credits_button: MainButton = $CanvasLayer/Panel/VBoxContainer/CreditsButton
 @onready var exit_button: MainButton = $CanvasLayer/Panel/ExitButton
+@onready var highest_score: Label = $CanvasLayer/Panel/VBoxContainer/HBoxContainer/HighestScore
 
 @onready var credits_panel: Panel = $CanvasLayer/Panel/CreditsPanel
 @onready var close_credits_button: MainButton = $CanvasLayer/Panel/CreditsPanel/CloseCreditsButton
@@ -61,6 +62,11 @@ func _load_save() -> SaveGame:
 	
 func _setup_ui() -> void:
 	version_label.text = "v_" + ProjectSettings.get_setting("application/config/version")
+	
+	highest_score.text = str(Globals.current_save.highest_score)
+	if Globals.current_save.highest_score == 0:
+		highest_score.visible = false
+	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and credits_panel.visible:
