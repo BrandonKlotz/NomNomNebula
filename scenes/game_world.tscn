@@ -79,8 +79,8 @@ shader_parameter/thickness = 0.045
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fg3oe"]
 shader = ExtResource("20_iokjm")
-shader_parameter/intensity = 0.050000002375
-shader_parameter/time_scale = 1.2
+shader_parameter/intensity = 0.0800000038
+shader_parameter/time_scale = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbri5"]
 shader = ExtResource("26_y5rsn")
