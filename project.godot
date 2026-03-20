@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="GalacticGrowth"
+config/name="NomNomNebula"
 config/version="pre_0.0.12"
 run/main_scene="uid://bsxgfcqbim072"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="GalacticGrowth"
+config/custom_user_dir_name="NomNomNebula"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.09411765, 0.09411765, 0.09411765, 1)
 boot_splash/show_image=false

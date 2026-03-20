@@ -43,8 +43,9 @@ func _ready() -> void:
 
 func _clear_globals() -> void:
 	Globals.player = null
-	Globals.current_score = 0
 	Globals.game_camera = null
+	Globals.current_score = 0
+	Globals.elapse_time = 0.0
 	
 func _load_save() -> SaveGame:
 	var saves = DataManager.load_all_saves()

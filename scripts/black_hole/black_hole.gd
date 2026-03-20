@@ -16,12 +16,11 @@ func _ready() -> void:
 func _on_center_area_entered(_area: Area2D) -> void:
 	EventManager.on_player_absorbed.emit(self)
 	EventManager.on_camera_shake.emit(4.0)
-	
 	Globals.player.can_move = false
-	Globals.player.can_be_absorbed = false
-	Globals.game_camera.target = Globals.player
-	animation.play("expand")
-	#get_tree().create_timer(0.8).timeout.connect(_on_game_over_emit)
+
+	#state_machine.on_change_state('disabled')
+	EventManager.on_black_hole_expanded.emit()
+	get_tree().create_timer(1.5).timeout.connect(_on_game_over_emit)
 	#EventManager.on_shock_wave.emit(self)
 
 func _on_game_over_emit() -> void:

@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c60pdghh651sm"]
 
 [ext_resource type="Script" uid="uid://bpc4j0pk5q4ck" path="res://scripts/game_over.gd" id="1_xeevv"]
-[ext_resource type="Texture2D" uid="uid://d2rdhv0ac2g1t" path="res://resources/UI/GG-MenuBG.png" id="2_wqhvx"]
+[ext_resource type="Texture2D" uid="uid://dfcitvoxaqet3" path="res://resources/UI/purple-background.png" id="2_v3hpu"]
 [ext_resource type="Texture2D" uid="uid://dbbkcf55bocy6" path="res://resources/UI/panel_solid.png" id="3_racf3"]
 [ext_resource type="PackedScene" uid="uid://datwf23lf12kx" path="res://scenes/menu_particles.tscn" id="3_tbwuq"]
 [ext_resource type="PackedScene" uid="uid://dmhkwqvc0qyc7" path="res://scenes/ui/main_button.tscn" id="4_7m3ot"]
 [ext_resource type="Texture2D" uid="uid://y71y2r5t4km7" path="res://resources/UI/score_star.png" id="4_v3hpu"]
+[ext_resource type="Texture2D" uid="uid://v2wqh5k5gep3" path="res://resources/UI/WinStar.png" id="6_2jtsn"]
+[ext_resource type="Texture2D" uid="uid://clmrwxytod5dq" path="res://resources/UI/WinBorder.png" id="6_irg28"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqhvx"]
 
@@ -16,7 +18,7 @@ script = ExtResource("1_xeevv")
 
 [node name="GgMenuBg" type="Sprite2D" parent="." unique_id=208713689]
 position = Vector2(160, 90)
-texture = ExtResource("2_wqhvx")
+texture = ExtResource("2_v3hpu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=928735873]
 
@@ -28,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wqhvx")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/SummaryPanel" unique_id=754256228]
+[node name="NormalPanel" type="Panel" parent="CanvasLayer/SummaryPanel" unique_id=754256228]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_v3hpu")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SummaryPanel/Panel" unique_id=647013183]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SummaryPanel/NormalPanel" unique_id=647013183]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +58,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1235052244]
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel" unique_id=1235052244]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -70,7 +72,8 @@ theme_override_font_sizes/font_size = 14
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/Panel" unique_id=1641199783]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel" unique_id=1641199783]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -86,124 +89,273 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer" unique_id=1342325134]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer" unique_id=1342325134]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer3" unique_id=1753534711]
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer/HBoxContainer3" unique_id=1753534711]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "NEW HIGHEST SCORE"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer" unique_id=885884109]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer" unique_id=885884109]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=281704116]
+[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer/HBoxContainer" unique_id=281704116]
 layout_mode = 2
 texture = ExtResource("4_v3hpu")
 stretch_mode = 5
 
-[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=728368313]
+[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer/HBoxContainer" unique_id=728368313]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
 theme_override_font_sizes/font_size = 8
 text = "99"
 horizontal_alignment = 1
 
-[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer" unique_id=395833735]
+[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer/HBoxContainer" unique_id=395833735]
 layout_mode = 2
 texture = ExtResource("4_v3hpu")
 stretch_mode = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/Panel" unique_id=561760449]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel" unique_id=561760449]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 117.0
+offset_left = -53.0
 offset_top = -16.0
-offset_right = 221.0
+offset_right = 56.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2" unique_id=1972856951]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2" unique_id=1972856951]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer" unique_id=554399711]
+[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer" unique_id=554399711]
 layout_mode = 2
-texture = ExtResource("4_v3hpu")
+texture = ExtResource("6_2jtsn")
 stretch_mode = 5
 
-[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer" unique_id=33213046]
+[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer" unique_id=33213046]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
 theme_override_font_sizes/font_size = 8
 text = "Highest score"
 horizontal_alignment = 1
 
-[node name="HighestScore2" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer" unique_id=798132037]
+[node name="HighestScore2" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer" unique_id=798132037]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
 theme_override_font_sizes/font_size = 8
 text = "99"
 horizontal_alignment = 1
 
-[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer" unique_id=923351846]
+[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer" unique_id=923351846]
 layout_mode = 2
-texture = ExtResource("4_v3hpu")
+texture = ExtResource("6_2jtsn")
 stretch_mode = 5
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2" unique_id=1564231842]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2" unique_id=1564231842]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer3" unique_id=2145505639]
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer3" unique_id=2145505639]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Your score"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/SummaryPanel/Panel/VBoxContainer2/HBoxContainer3" unique_id=75434889]
+[node name="YourScore" type="Label" parent="CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer3" unique_id=75434889]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "99"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/Panel" unique_id=760028493]
+[node name="WinPanel" type="Panel" parent="CanvasLayer/SummaryPanel" unique_id=2012612529]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -68.5
+offset_right = 109.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v3hpu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SummaryPanel/WinPanel" unique_id=149119274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_irg28")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel" unique_id=1402169388]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.5
+offset_top = 14.5
+offset_right = 53.5
+offset_bottom = 28.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+theme_override_font_sizes/font_size = 14
+text = "New High Score!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SummaryPanel/WinPanel" unique_id=721539399]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer" unique_id=1582614485]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer/HBoxContainer3" unique_id=995741234]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "NEW HIGHEST SCORE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer" unique_id=386855145]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer/HBoxContainer" unique_id=488066]
+layout_mode = 2
+texture = ExtResource("4_v3hpu")
+stretch_mode = 5
+
+[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer/HBoxContainer" unique_id=807251317]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 1
+
+[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/WinPanel/VBoxContainer/HBoxContainer" unique_id=1719497692]
+layout_mode = 2
+texture = ExtResource("4_v3hpu")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/WinPanel" unique_id=944518470]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 47.5
+offset_right = 140.0
+offset_bottom = 63.5
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ScoreStar2" type="TextureRect" parent="CanvasLayer/SummaryPanel/WinPanel/HBoxContainer" unique_id=1336128183]
+layout_mode = 2
+texture = ExtResource("6_2jtsn")
+stretch_mode = 5
+
+[node name="HighestScore" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel/HBoxContainer" unique_id=931838332]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89411765, 0.85882354, 0.28235295, 1)
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 1
+
+[node name="ScoreStar" type="TextureRect" parent="CanvasLayer/SummaryPanel/WinPanel/HBoxContainer" unique_id=1634728832]
+layout_mode = 2
+texture = ExtResource("6_2jtsn")
+stretch_mode = 5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/SummaryPanel/WinPanel" unique_id=1787270193]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 8.0
+offset_right = 61.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel/HBoxContainer3" unique_id=763789274]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Time Elapsed"
+horizontal_alignment = 1
+
+[node name="TimeElapsed" type="Label" parent="CanvasLayer/SummaryPanel/WinPanel/HBoxContainer3" unique_id=2066337593]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "1:22"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SummaryPanel" unique_id=1252630680]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -25.5
-offset_right = 75.0
-offset_bottom = -10.5
+offset_left = -74.0
+offset_top = -47.0
+offset_right = 76.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="StartOverButton" parent="CanvasLayer/SummaryPanel/Panel/HBoxContainer" unique_id=287327500 instance=ExtResource("4_7m3ot")]
+[node name="StartOverButton" parent="CanvasLayer/SummaryPanel/HBoxContainer" unique_id=1320109355 instance=ExtResource("4_7m3ot")]
 layout_mode = 2
 custom_title = "Play Again"
 
-[node name="ExitButton" parent="CanvasLayer/SummaryPanel/Panel/HBoxContainer" unique_id=751067962 instance=ExtResource("4_7m3ot")]
+[node name="ExitButton" parent="CanvasLayer/SummaryPanel/HBoxContainer" unique_id=1729790345 instance=ExtResource("4_7m3ot")]
 layout_mode = 2
 custom_title = "Exit to Title"
 
