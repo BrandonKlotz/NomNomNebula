@@ -3,7 +3,7 @@ extends Node2D
 
 const CLOUD: PackedScene = preload("uid://ruadlq2l3he5")
 
-var max_clouds: int = 300
+var max_clouds: int = 250
 var spawn_range: float = 960.0
 var pool: Array = []
 var active_clouds: Array = []

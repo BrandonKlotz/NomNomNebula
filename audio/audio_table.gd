@@ -6,6 +6,7 @@ extends Resource
 @export var hover: AudioSetting
 @export var show_ui: AudioSetting
 @export var dismiss_ui: AudioSetting
+@export var logos: AudioSetting
 
 @export_category("Dash")
 @export var dash: AudioSetting

@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://0xdt4tdyyt7m" path="res://audio/sounds/Abstract1.mp3" id="10_lelip"]
 [ext_resource type="AudioStream" uid="uid://dc481i081xkck" path="res://audio/sounds/track_1.mp3" id="12_qbjt1"]
 [ext_resource type="AudioStream" uid="uid://gha67am8nhxb" path="res://audio/sounds/track_2.mp3" id="13_t6l7x"]
+[ext_resource type="AudioStream" uid="uid://dkyonko12bssd" path="res://audio/sounds/alien_sound.mp3" id="14_34ufb"]
 [ext_resource type="AudioStream" uid="uid://dx3b6uee88fpu" path="res://audio/sounds/track_3.mp3" id="14_ohw5w"]
 [ext_resource type="AudioStream" uid="uid://beteij734fvqh" path="res://audio/sounds/phase 1 main.mp3" id="15_lqfd0"]
 [ext_resource type="AudioStream" uid="uid://q53cqck51biu" path="res://audio/sounds/track_4.mp3" id="15_o54tp"]
@@ -99,6 +100,12 @@ volume_db = -7.0
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
+[sub_resource type="Resource" id="Resource_rv5qj"]
+script = ExtResource("1_ixyf6")
+source = ExtResource("14_34ufb")
+volume_db = -9.0
+metadata/_custom_type_script = "uid://cjikpvjnra8yr"
+
 [sub_resource type="Resource" id="Resource_34ufb"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("12_qbjt1")
@@ -122,6 +129,7 @@ metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 [sub_resource type="Resource" id="Resource_o54tp"]
 script = ExtResource("1_ixyf6")
 source = ExtResource("17_ohw5w")
+volume_db = -5.0
 metadata/_custom_type_script = "uid://cjikpvjnra8yr"
 
 [sub_resource type="Resource" id="Resource_jnt4g"]
@@ -141,6 +149,7 @@ click = SubResource("Resource_a6wuk")
 hover = SubResource("Resource_lelip")
 show_ui = SubResource("Resource_jnt4g")
 dismiss_ui = SubResource("Resource_7rb6b")
+logos = SubResource("Resource_rv5qj")
 dash = SubResource("Resource_ndm53")
 dash_error = SubResource("Resource_xqoq0")
 dash_empty = SubResource("Resource_w1bj7")

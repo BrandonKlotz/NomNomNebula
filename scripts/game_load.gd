@@ -21,7 +21,7 @@ func _animate_logo() -> void:
 	tween.tween_property(godot_panel, "modulate:a", 0.0, 0.5)
 	
 	tween.tween_interval(0.5)
-	
+	tween.tween_method(_play_sound, 0, 0, 0)
 	tween.tween_property(logo_panel, "modulate:a", 1.0, 0.4)
 	tween.tween_interval(1.2)
 	tween.tween_property(logo_panel, "modulate:a", 0.0, 0.5)
@@ -29,3 +29,6 @@ func _animate_logo() -> void:
 
 func _navigate_to_title() -> void:
 	SceneManager.transition_to(Scenes.TITLE)
+
+func _play_sound(_v: Variant) -> void:
+	AudioManager.play_sfx(AudioManager.tracks.logos)

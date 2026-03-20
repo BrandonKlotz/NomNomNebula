@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://p0weimq4puxh" path="res://scripts/galaxy_spawner.gd" id="7_iokjm"]
 [ext_resource type="Script" uid="uid://brqw70d0541ub" path="res://scripts/lose_component.gd" id="8_kbri5"]
 [ext_resource type="Script" uid="uid://b57h78r6ydopc" path="res://scripts/minimap_camera.gd" id="8_y5rsn"]
-[ext_resource type="PackedScene" uid="uid://bliqp60aweli1" path="res://scenes/game_scenes/black_hole.tscn" id="9_durro"]
 [ext_resource type="Shader" uid="uid://c52bjppebwpn2" path="res://shaders/shock_wave.gdshader" id="11_0y38y"]
 [ext_resource type="PackedScene" uid="uid://deemgxdklxpvu" path="res://scenes/ui/pause_menu.tscn" id="11_odt01"]
 [ext_resource type="Texture2D" uid="uid://bwgjk5vsqnrxm" path="res://resources/Art/icons/gear.png" id="11_ph1f2"]
@@ -169,10 +168,6 @@ script = ExtResource("2_odt01")
 [node name="GalaxySpawner" type="Node2D" parent="." unique_id=920155787]
 script = ExtResource("7_iokjm")
 
-[node name="BlackHole" parent="GalaxySpawner" unique_id=585464348 instance=ExtResource("9_durro")]
-position = Vector2(375.00003, -120.000015)
-rotation = -0.01165127
-
 [node name="Player" parent="." unique_id=1205687715 instance=ExtResource("2_47u71")]
 
 [node name="MainCamera" parent="." unique_id=1322683729 node_paths=PackedStringArray("player") groups=["camera"] instance=ExtResource("19_fg3oe")]
@@ -279,8 +274,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
-offset_top = -27.0
+offset_top = -30.0
 offset_right = 74.0
+offset_bottom = -3.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kbri5")
 script = ExtResource("16_y5rsn")
