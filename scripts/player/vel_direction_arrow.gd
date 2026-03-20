@@ -2,7 +2,7 @@ extends Sprite2D
 
 @export var player: Player
 @export var player_movement : PlayerMovement
-@export var distance: float = 30
+@export var distance: float = 50
 
 func _ready() -> void:
 	pass
