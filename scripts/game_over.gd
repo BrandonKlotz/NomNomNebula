@@ -1,10 +1,15 @@
 extends Node
 
-@onready var highest_score: Label = $CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer/HighestScore
-@onready var current_score: Label = $CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer2/CurrentScore
-@onready var score_star: TextureRect = $CanvasLayer/SummaryPanel/Panel/VBoxContainer/HBoxContainer/ScoreStar
-@onready var start_over_button: MainButton = $CanvasLayer/SummaryPanel/Panel/HBoxContainer/StartOverButton
-@onready var exit_button: MainButton = $CanvasLayer/SummaryPanel/Panel/HBoxContainer/ExitButton
+@onready var highest_score_2: Label = $CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer/HighestScore2
+@onready var highest_score: Label = $CanvasLayer/SummaryPanel/WinPanel/HBoxContainer/HighestScore
+@onready var your_score: Label = $CanvasLayer/SummaryPanel/NormalPanel/VBoxContainer2/HBoxContainer3/YourScore
+@onready var time_elapsed: Label = $CanvasLayer/SummaryPanel/WinPanel/HBoxContainer3/TimeElapsed
+
+@onready var normal_panel: Panel = $CanvasLayer/SummaryPanel/NormalPanel
+@onready var win_panel: Panel = $CanvasLayer/SummaryPanel/WinPanel
+
+@onready var start_over_button: MainButton = $CanvasLayer/SummaryPanel/HBoxContainer/StartOverButton
+@onready var exit_button: MainButton = $CanvasLayer/SummaryPanel/HBoxContainer/ExitButton
 
 func _ready() -> void:
 	start_over_button.pressed.connect(_start_over)
@@ -12,7 +17,6 @@ func _ready() -> void:
 	
 	_setup_data()
 	
-	AudioManager.play_music(AudioManager.tracks.finish_music)
 	SceneManager.fade_in()
 
 func _start_over() -> void:
@@ -23,15 +27,24 @@ func _exit_game() -> void:
 
 func _setup_data() -> void:
 	var save: SaveGame = Globals.current_save
-	
 	if not save:
 		return
 	
-	highest_score.text = str(save.highest_score)
-	current_score.text = str(Globals.current_score)
+	your_score.text = str(Globals.current_score)
+	time_elapsed.text = "%.2f" % Globals.elapse_time
+	
+	normal_panel.visible = false
+	win_panel.visible = false
 	
 	var has_beaten_score: bool = Globals.current_score > save.highest_score
-	score_star.visible = has_beaten_score
 	
 	if has_beaten_score:
-		highest_score.add_theme_color_override("font_color", Color("#e3db48"))
+		win_panel.visible = true
+		highest_score.text = str(Globals.current_score)
+	else:
+		normal_panel.visible = true
+		highest_score_2.text = str(save.highest_score)
+	
+	if has_beaten_score:
+		save.highest_score = Globals.current_score
+		DataManager.write_save(Globals.current_save)

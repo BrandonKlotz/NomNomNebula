@@ -119,12 +119,7 @@ func _on_game_over_animation():
 	_on_game_over()
 
 func _on_game_over() -> void:
-	if Globals.current_score > Globals.current_save.highest_score:
-		Globals.current_save.highest_score = Globals.current_score
-		DataManager.write_save(Globals.current_save)
-	
 	SceneManager.transition_to(Scenes.FINISH)
-	
 	AudioManager.music_player.finished.disconnect(_on_track_finished)
 	AudioManager.stop_music()
 

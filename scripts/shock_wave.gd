@@ -7,9 +7,6 @@ extends ColorRect
 var target: Node
 var shock_wave_size: float = 2.0
 
-func _ready() -> void:
-	EventManager.on_shock_wave.connect(start_shock_wave)
-
 func start_shock_wave(node) -> void:
 	shock_wave_size = -0.1
 	target = node
