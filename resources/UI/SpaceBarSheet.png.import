@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db6st66wm1ibw"
-path="res://.godot/imported/ExoticMatter-Sheet.png-f8ea584454e7c514e7f087e729318e8c.ctex"
+uid="uid://bg0r1wykhqe4c"
+path="res://.godot/imported/SpaceBarSheet.png-31277389c77beb6e7f27e4dbeb40591c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/UI/ExoticMatter-Sheet.png"
-dest_files=["res://.godot/imported/ExoticMatter-Sheet.png-f8ea584454e7c514e7f087e729318e8c.ctex"]
+source_file="res://resources/UI/SpaceBarSheet.png"
+dest_files=["res://.godot/imported/SpaceBarSheet.png-31277389c77beb6e7f27e4dbeb40591c.ctex"]
 
 [params]
 

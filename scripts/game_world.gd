@@ -41,6 +41,7 @@ func _ready() -> void:
 	
 	EventManager.on_game_over.connect(_on_game_over_animation)
 	EventManager.on_galaxy_absorbed.connect(_on_galaxy_absorbed)
+	EventManager.on_black_hole_desintegrated.connect(_on_black_hole_desintegrated)
 	EventManager.on_buffs_applied.connect(_on_buffs_applied)
 	EventManager.on_tug_of_war.connect(_on_tug_of_war)
 	
@@ -55,7 +56,6 @@ func _ready() -> void:
 
 func _on_tug_of_war(value: bool) -> void:
 	burst_panel.visible = value
-	burst_panel.get_child(0).play("flash")
 
 func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
@@ -63,7 +63,7 @@ func _on_buffs_applied(data: Dictionary) -> void:
 var i = 0
 func _get_buff() -> Dictionary:
 	var options: Array = BuffDebuffPool.buffs + BuffDebuffPool.debuffs
-	var data: Dictionary = options[9].duplicate()
+	var data: Dictionary = options[i].duplicate()
 	i = (i + 1) % options.size()
 	return data
 	

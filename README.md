@@ -162,4 +162,3 @@ Nom Nom Nebula was created for *My First Game Jam*, due March 20, 2026.
 - Music: Original chiptune/synth-pop soundtrack with building gameplay tracks and distinct menu music
 
 ---
-

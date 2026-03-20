@@ -14,7 +14,7 @@ const VORTEX_MATERIAL: Resource = preload("uid://jske8d54cs0g")
 
 var size: float
 var velocity: Vector2 = Vector2.ZERO
-var base_interaction_radius: float = 60.0
+var base_interaction_radius: float = 55.0
 
 func _ready() -> void:
 	EventManager.on_increment_galaxy_size.connect(_on_increment_interaction_radius)

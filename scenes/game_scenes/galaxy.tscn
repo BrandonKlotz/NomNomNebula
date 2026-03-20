@@ -421,7 +421,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_nxljd")
 
 [node name="InnerArea" type="Area2D" parent="." unique_id=1058516218]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -429,7 +428,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_0t61a")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=685365449]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -437,7 +435,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_ky37o")
 
 [node name="Center" type="Area2D" parent="." unique_id=352193348]
-visible = false
 scale = Vector2(1.545, 1.545)
 collision_layer = 4
 collision_mask = 2

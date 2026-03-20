@@ -14,6 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_q3qfo"]
 script = ExtResource("2_87cyb")
+uid = "b_1"
 strength = 400.0
 metadata/_custom_type_script = "uid://bi43xj8ctf3ny"
 

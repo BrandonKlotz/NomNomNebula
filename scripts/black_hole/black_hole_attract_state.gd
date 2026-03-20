@@ -60,7 +60,7 @@ func get_offset_to_player() -> Vector2:
 	
 func on_player_dash_used():
 	last_dash_used_time = Time.get_ticks_msec() / 1000.0
-	if timer < 0.5 or abs(last_dash_used_time - strong_attract_start_time) < 0.5:
+	if timer < 1.0 or abs(last_dash_used_time - strong_attract_start_time) < 0.5:
 		change_state.emit("disabled")
 		Globals.player.apply_force((Globals.player.global_position - black_hole.global_position).normalized() * 200)
 		EventManager.on_shock_wave.emit(black_hole)

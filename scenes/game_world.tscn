@@ -33,7 +33,7 @@
 [ext_resource type="Script" uid="uid://vntyq0qk1e48" path="res://scripts/ui/score_panel.gd" id="27_kbri5"]
 [ext_resource type="Texture2D" uid="uid://post4rb1ee80" path="res://resources/Art/black hole expand.png" id="28_gqenn"]
 [ext_resource type="Script" uid="uid://bhrxdvpaofu68" path="res://scripts/ui/animated_atlas.gd" id="29_vbm8o"]
-[ext_resource type="Texture2D" uid="uid://c2pveu6u6b3vj" path="res://resources/Art/keyboard_space.png" id="34_i5k1u"]
+[ext_resource type="Texture2D" uid="uid://bg0r1wykhqe4c" path="res://resources/UI/SpaceBarSheet.png" id="33_durro"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gqenn"]
 particle_flag_disable_z = true
@@ -97,67 +97,9 @@ shader_parameter/time_scale = 1.5
 atlas = ExtResource("28_gqenn")
 region = Rect2(0, 0, 320, 180)
 
-[sub_resource type="Animation" id="Animation_i5k1u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_thtoo"]
-resource_name = "flash"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2lekn"]
-_data = {
-&"RESET": SubResource("Animation_i5k1u"),
-&"flash": SubResource("Animation_thtoo")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5k1u"]
+atlas = ExtResource("33_durro")
+region = Rect2(0, 0, 34, 34)
 
 [node name="GameWorld" type="Node2D" unique_id=1299650942]
 script = ExtResource("1_0biqy")
@@ -228,7 +170,8 @@ script = ExtResource("2_odt01")
 script = ExtResource("7_iokjm")
 
 [node name="BlackHole" parent="GalaxySpawner" unique_id=585464348 instance=ExtResource("9_durro")]
-position = Vector2(253, -89)
+position = Vector2(375.00003, -120.000015)
+rotation = -0.01165127
 
 [node name="Player" parent="." unique_id=1205687715 instance=ExtResource("2_47u71")]
 
@@ -521,33 +464,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = 39.0
-offset_right = 28.0
+offset_left = -26.0
+offset_top = 46.0
+offset_right = 20.0
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BurstPanel" unique_id=980844566]
-libraries/ = SubResource("AnimationLibrary_2lekn")
-speed_scale = 3.0
-
 [node name="Label" type="Label" parent="CanvasLayer/BurstPanel" unique_id=483320192]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 6.0
-offset_right = 52.0
-offset_bottom = 14.0
+offset_left = 21.0
+offset_top = 3.0
+offset_right = 51.0
+offset_bottom = 11.0
 theme_override_font_sizes/font_size = 6
 text = "Burst"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BurstPanel" unique_id=1243990188]
 layout_mode = 0
-offset_left = 3.0
+offset_left = -4.0
 offset_top = 2.0
-offset_right = 23.03357
-offset_bottom = 15.659248
-texture = ExtResource("34_i5k1u")
+offset_right = 26.0
+offset_bottom = 19.0
+texture = SubResource("AtlasTexture_i5k1u")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("29_vbm8o")
+hframes = 3
+duration = 0.1
