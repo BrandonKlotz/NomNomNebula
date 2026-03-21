@@ -4,7 +4,7 @@ extends State
 @export var black_hole: BlackHole
 
 var escaped: bool = false
-var duration: float = 0.5
+var duration: float = 1.0
 var timer: float = 0.0
 var pull_strength: float = 800.0
 

@@ -15,7 +15,7 @@ var velocity: Vector2 = Vector2.ZERO
 var escaping_timer_factor: float = 1.0
 var absorption_speed_factor: float = 1.0
 var increase_size_factor: float = 0.05
-var can_be_absorbed : bool = true
+var can_be_absorbed: bool = true
 var exotic_matter_count: int = 0
 
 func _ready() -> void:
@@ -34,7 +34,7 @@ func set_target_camera_position():
 	var _temp_velocity : Vector2 = velocity*0.5
 	target_position = global_position + _temp_velocity
 	if _temp_velocity.length() > max_distance:
-		target_position = global_position + velocity.normalized()*max_distance
+		target_position = global_position + velocity.normalized() * max_distance
 	camera_target.global_position = target_position
 	
 func use_dash() -> void:

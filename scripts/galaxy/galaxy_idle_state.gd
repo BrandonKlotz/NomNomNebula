@@ -39,3 +39,4 @@ func add_random_velocity() -> void:
 
 func exit() -> void:
 	attraction_area.area_entered.disconnect(start_attraction_state)
+	EventManager.on_game_state_changed.disconnect(_on_state_changed)
