@@ -78,9 +78,8 @@ func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
 
 func _show_tutorial_first_time() -> void:
-	tutorial_panel.visible = false
 	var is_first_time: bool = Globals.current_save.is_first_time
-	
+
 	if is_first_time:
 		Globals.current_save.is_first_time = false
 		DataManager.write_save(Globals.current_save)
@@ -93,10 +92,11 @@ func _show_tutorial(autohide: bool = false) -> void:
 	if tutorial_tween:
 		tutorial_tween.kill()
 		
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(tutorial_panel, "modulate:a", 1.0, 0.3)
-	tween.tween_callback(func() -> void:
-		_change_state(GameState.PAUSED)
+	tutorial_tween = get_tree().create_tween()
+	tutorial_tween.tween_property(tutorial_panel, "modulate:a", 1.0, 0.3)
+	tutorial_tween.tween_callback(func() -> void:
+		current_state = GameState.PAUSED
+		EventManager.on_game_state_changed.emit(current_state)
 	)
 	
 	if autohide:
@@ -107,9 +107,9 @@ func _hide_tutorial() -> void:
 	if tutorial_tween:
 		tutorial_tween.kill()
 	
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(tutorial_panel, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func() -> void:
+	tutorial_tween = get_tree().create_tween()
+	tutorial_tween.tween_property(tutorial_panel, "modulate:a", 0.0, 0.3)
+	tutorial_tween.tween_callback(func() -> void:
 		tutorial_panel.visible = false
 		tutorial_panel.modulate.a = 1.0
 		_change_state(GameState.ONGOING)
