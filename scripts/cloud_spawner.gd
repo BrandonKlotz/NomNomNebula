@@ -3,7 +3,7 @@ extends Node2D
 
 const CLOUD: PackedScene = preload("uid://ruadlq2l3he5")
 
-var max_clouds: int = 250
+var max_clouds: int = 230
 var spawn_range: float = 960.0
 var pool: Array = []
 var active_clouds: Array = []
@@ -48,8 +48,8 @@ func _return_to_pool(cloud: Cloud) -> void:
 	pool.append(cloud)
 
 func _build_grid() -> void:
-	var cols = 5
-	var rows = 5
+	var cols = 10
+	var rows = 10
 	var cell_w = (spawn_range * 2) / cols
 	var cell_h = (spawn_range * 2) / rows
 	

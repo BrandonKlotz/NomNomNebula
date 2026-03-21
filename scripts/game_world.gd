@@ -15,13 +15,13 @@ const POINTER_C: Resource = preload("uid://b085nphr6bvo4")
 @onready var score_panel: ScorePanel = $CanvasLayer/ScorePanel
 @onready var radar_texture: RadarWrap = $CanvasLayer/MinimapPanel/RadarTexture
 @onready var burst_panel: Panel = $CanvasLayer/BurstPanel
+@onready var tutorial_panel: Node = $CanvasLayer/TutorialPanel
 
 enum GameState {
 	ONGOING, PAUSED, FINISHED
 }
 
 var tooltip_duration: float = 2.0
-var showing_absorption_tutorial: bool = false
 var current_state: GameState = GameState.ONGOING
 
 func _ready() -> void:
@@ -53,6 +53,7 @@ func _ready() -> void:
 	AudioManager.start_playlist()
 	Input.set_custom_mouse_cursor(POINTER_C)
 	SceneManager.fade_in()
+	_show_tutorial_if_needed()
 
 func _on_tug_of_war(value: bool) -> void:
 	burst_panel.visible = value
@@ -60,12 +61,34 @@ func _on_tug_of_war(value: bool) -> void:
 func _on_buffs_applied(data: Dictionary) -> void:
 	conditions_panel.set_data(data)
 
+func _show_tutorial_if_needed() -> void:
+	tutorial_panel.visible = false
+	if Globals.current_save.is_first_time:
+		Globals.current_save.is_first_time = false
+		DataManager.write_save(Globals.current_save)
+		tutorial_panel.visible = true
+		
+		current_state = GameState.PAUSED
+		EventManager.on_game_state_changed.emit(current_state)
+		
+		await get_tree().create_timer(4.0).timeout
+		
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(tutorial_panel, "modulate:a", 0.0, 0.5)
+		tween.tween_callback(func() -> void:
+			tutorial_panel.visible = false
+			current_state = GameState.ONGOING
+			EventManager.on_game_state_changed.emit(current_state)
+		)
+
+#region debug
 var i = 0
 func _get_buff() -> Dictionary:
 	var options: Array = BuffDebuffPool.buffs + BuffDebuffPool.debuffs
 	var data: Dictionary = options[i].duplicate()
 	i = (i + 1) % options.size()
 	return data
+#endregion
 	
 func _process(delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug"):
@@ -79,10 +102,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and current_state != GameState.FINISHED:
 		AudioManager.play_sfx(AudioManager.tracks.show_ui)
 		_handle_toggle_pause()
-	
-	if showing_absorption_tutorial and Input.is_action_just_pressed("dash"):
-		Engine.time_scale = 1.0
-		showing_absorption_tutorial = false
 
 func _on_player_wrapped(offset: Vector2) -> void:
 	var camera: MainCamera = Globals.game_camera

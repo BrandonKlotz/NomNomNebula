@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://0xdt4tdyyt7m" path="res://audio/sounds/Abstract1.mp3" id="10_lelip"]
 [ext_resource type="AudioStream" uid="uid://dc481i081xkck" path="res://audio/sounds/track_1.mp3" id="12_qbjt1"]
 [ext_resource type="AudioStream" uid="uid://gha67am8nhxb" path="res://audio/sounds/track_2.mp3" id="13_t6l7x"]
-[ext_resource type="AudioStream" uid="uid://dkyonko12bssd" path="res://audio/sounds/alien_sound.mp3" id="14_34ufb"]
+[ext_resource type="AudioStream" uid="uid://b6hmqffdq1wj0" path="res://audio/sounds/Complex Interface 5.wav" id="14_34ufb"]
 [ext_resource type="AudioStream" uid="uid://dx3b6uee88fpu" path="res://audio/sounds/track_3.mp3" id="14_ohw5w"]
 [ext_resource type="AudioStream" uid="uid://beteij734fvqh" path="res://audio/sounds/phase 1 main.mp3" id="15_lqfd0"]
 [ext_resource type="AudioStream" uid="uid://q53cqck51biu" path="res://audio/sounds/track_4.mp3" id="15_o54tp"]
