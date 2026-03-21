@@ -120,7 +120,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("pause") and current_state != GameState.FINISHED:
 		if tutorial_panel.visible:
-			tutorial_panel.visible = false
+			_hide_tutorial()
 			_change_state(GameState.ONGOING)
 		else:
 			_handle_toggle_pause()
