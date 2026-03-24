@@ -16,6 +16,7 @@ var size: float
 var velocity: Vector2 = Vector2.ZERO
 var base_interaction_radius: float = 55.0
 var is_active: bool = true
+var absorption_particles: GPUParticles2D
 
 func _ready() -> void:
 	EventManager.on_increment_galaxy_size.connect(_on_increment_interaction_radius)
@@ -89,4 +90,57 @@ func set_bad():
 	var debuff: Dictionary = BuffDebuffFactory.generate_debuff()
 	self.data.buff_debuff = debuff
 	self.data.is_good_galaxy = false
-	
+
+func start_absorption_particles() -> void:
+	# Create continuous particle system for absorption effect
+	if absorption_particles != null:
+		return  # Already exists
+
+	absorption_particles = GPUParticles2D.new()
+	add_child(absorption_particles)
+
+	# Use custom shader for gravitating particles
+	var particle_shader: Shader = load("res://shaders/absorption_particles.gdshader")
+	var shader_material: ShaderMaterial = ShaderMaterial.new()
+	shader_material.shader = particle_shader
+
+	# Set initial shader parameters
+	var target_pos = Globals.player.global_position if Globals.player else global_position
+	shader_material.set_shader_parameter("target_position", target_pos)
+	shader_material.set_shader_parameter("source_position", global_position)
+	shader_material.set_shader_parameter("attraction_strength", 250.0)
+	shader_material.set_shader_parameter("base_speed", 100.0)
+	shader_material.set_shader_parameter("spawn_radius", 40.0)
+
+	# Configure particle system for continuous emission
+	absorption_particles.process_material = shader_material
+	absorption_particles.amount = 100
+	absorption_particles.lifetime = 1.5
+	absorption_particles.one_shot = false  # Continuous emission
+	absorption_particles.explosiveness = 0.0
+	absorption_particles.randomness = 0.3
+	absorption_particles.local_coords = false
+	absorption_particles.fixed_fps = 30
+	absorption_particles.visibility_rect = Rect2(-200, -200, 400, 400)  # Large visibility area
+
+	# Don't set texture - use default like RepelParticles (small white squares)
+
+	absorption_particles.emitting = true
+	absorption_particles.z_index = 100  # Draw on top of everything
+	absorption_particles.modulate = Color(1, 1, 1, 1)  # Full opacity
+
+func update_absorption_particles_target(target_pos: Vector2) -> void:
+	if absorption_particles != null and absorption_particles.process_material is ShaderMaterial:
+		var material: ShaderMaterial = absorption_particles.process_material
+		material.set_shader_parameter("target_position", target_pos)
+		material.set_shader_parameter("source_position", global_position)
+
+func stop_absorption_particles() -> void:
+	if absorption_particles != null:
+		absorption_particles.emitting = false
+		# Clean up after existing particles finish
+		await get_tree().create_timer(absorption_particles.lifetime + 0.1).timeout
+		if absorption_particles != null:
+			absorption_particles.queue_free()
+			absorption_particles = null
+
