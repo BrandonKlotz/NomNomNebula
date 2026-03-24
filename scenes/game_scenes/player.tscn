@@ -673,6 +673,7 @@ script = ExtResource("4_8ut53")
 
 [node name="StabilizationComponent" type="Node2D" parent="." unique_id=212140747]
 script = ExtResource("5_2ue4q")
+disable_drain_for_testing = true
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1609183663]
 collision_layer = 2

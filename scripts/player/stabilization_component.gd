@@ -11,6 +11,9 @@ var drain_multiplier: float = 1.0
 
 var is_active: bool = true
 
+## DEBUG: Set to true to disable stability drain for testing
+@export var disable_drain_for_testing: bool = false
+
 func _ready() -> void:
 	current_time = max_time
 	_emit_change()
@@ -29,12 +32,16 @@ func _on_state_changed(state: GameWorld.GameState) -> void:
 func _process(delta: float) -> void:
 	if not is_active:
 		return
-		
+
 	if current_time <= 0:
 		return
-	
+
+	# Skip stability drain if testing mode is enabled
+	if disable_drain_for_testing:
+		return
+
 	var effective_drain: float = base_drain_rate * drain_multiplier
-	
+
 	current_time -= delta * effective_drain
 	current_time = max(current_time, 0.0)
 	

@@ -19,20 +19,27 @@ func enter() -> void:
 	Globals.game_camera.target_zoom = Vector2(galaxy.size / 4, galaxy.size/4)
 	absorption_timer = absorption_time_required * Globals.player.absorption_speed_factor
 
+	# Start absorption particle effect
+	galaxy.start_absorption_particles()
+
 func update(delta: float) -> void:
 	var offset = _get_offset_to_player()
 	var is_inside: bool = offset.length() <= inner_radius
 	var force: Vector2 = calc_force()
-	
+
 	Globals.player.apply_force(force*delta)
+
+	# Update particle target to follow player
+	if Globals.player != null:
+		galaxy.update_absorption_particles_target(Globals.player.global_position)
 
 	if not is_inside:
 		absorption_timer -= delta * absorption_speed_factor
 	else:
 		absorption_timer = absorption_time_required * Globals.player.absorption_speed_factor
-	
+
 	was_inside_inner_radius = is_inside
-		
+
 	if absorption_timer < 0:
 		change_state.emit("desintegrate")
 	
@@ -50,7 +57,13 @@ func end_attraction_state(_area: Area2D) -> void:
 	change_state.emit("idle")
 	
 func exit() -> void:
+	# Always return camera to player when leaving attract state
+	# (desintegrate state will immediately set it again if absorption completed)
 	Globals.game_camera.set_target(Globals.player.camera_target)
+
 	attraction_area.area_exited.disconnect(end_attraction_state)
 	absorption_timer = absorption_time_required
 	galaxy.audio_player.stop()
+
+	# Stop absorption particles when leaving attract state
+	galaxy.stop_absorption_particles()
